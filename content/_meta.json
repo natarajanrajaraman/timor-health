@@ -32,8 +32,9 @@
     "$comment": "The page renders its own staleness banner client-side from lastUpdatedByAI, so it keeps telling the truth after every piece of automation has died."
   },
   "corrections": {
-    "formUrl": null,
-    "$comment": "Google Form -> Sheet. Must NOT route into Raj's inbox. Set by scripts/setup-form.js output."
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSelnnVhohWkmmCZB94H0Y50TcVswLJQP0T6LwfizEKkIW17rg/viewform",
+    "$comment": "Created by scripts/setup-form.js. Responses are read via \"gog forms responses list 1-PDzWSiz4Sb8I3s9tQ3fu6L0kGtUiTdha2m514jJoN4\" - nothing reaches the editor’s inbox. The quarterly refresh reads them as an input.",
+    "formId": "1-PDzWSiz4Sb8I3s9tQ3fu6L0kGtUiTdha2m514jJoN4"
   },
   "referenceLibrary": {
     "provider": "google-drive",
