@@ -1253,8 +1253,12 @@ if (require.main === module && process.argv.includes('--self-test')) {
     if (x.length < 20000) throw new Error('llms-full.txt looks truncated: ' + x.length);
   });
   t('AI: llms-full.txt carries the per-section review state, not just the text', () => {
+    // Assert the stamp FORMAT, never a particular state. The first version asserted the literal
+    // "NOT yet reviewed by a human" and went red on 2026-08-25 for the worst possible reason:
+    // Raj reviewed the document. A suite must not fail because reality got healthier.
     const x = fs.readFileSync(path.join(DOCS, 'llms-full.txt'), 'utf8');
-    has(x, 'NOT yet reviewed by a human');
+    const stamped = /\((text updated [^;)]*; )?(reviewed \d{4}-\d{2}-\d{2}|NOT yet reviewed by a human)\)/.test(x);
+    if (!stamped) throw new Error('no per-section review stamp found in either state');
   });
   t('AI: data.json parses and marks the contested figures as CONTESTED', () => {
     const j = JSON.parse(fs.readFileSync(path.join(DOCS, 'data.json'), 'utf8'));
