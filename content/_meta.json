@@ -1,0 +1,174 @@
+{
+  "$comment": [
+    "Edition metadata and the honesty stamps. build.js reads this and REFUSES to build if the",
+    "invariants below are violated. See scripts/lib/meta.js for the checks.",
+    "",
+    "THE TWO DATES ARE NOT INTERCHANGEABLE AND MUST NOT BE COLLAPSED INTO ONE.",
+    "  lastReviewedByHuman - the date the named reviewer last signed off on this section/document.",
+    "  lastUpdatedByAI     - the date the text last changed, whether or not it has been reviewed.",
+    "Raj explicitly allowed AI updates to land AFTER his review (2026-08-25), so these two dates",
+    "diverging is the NORMAL state, not an error. When lastUpdatedByAI > lastReviewedByHuman the",
+    "page must say so IN WORDS above the fold. build.js generates that banner automatically so it",
+    "cannot be forgotten - do not replace it with two dates in a footer."
+  ],
+  "title": "Timor-Leste Health Landscape Scan",
+  "edition": "2026-Q3-draft",
+  "status": "prototype",
+  "documentLanguage": "en",
+  "canonicalUrl": null,
+  "conceptDoi": null,
+  "reviewer": {
+    "named": true,
+    "name": "Dr Natarajan Rajaraman",
+    "role": "Named human reviewer and editor",
+    "$comment": "If named is set to false, build.js rewrites the disclosure to 'automated compilation of cited sources' and DROPS the word 'landscape scan' from the header claim. The paragraph has to be true."
+  },
+  "lastReviewedByHuman": null,
+  "lastUpdatedByAI": "2026-08-25",
+  "refresh": {
+    "cadenceDays": 90,
+    "stalenessWarnDays": 120,
+    "stalenessAlarmDays": 180,
+    "$comment": "The page renders its own staleness banner client-side from lastUpdatedByAI, so it keeps telling the truth after every piece of automation has died."
+  },
+  "corrections": {
+    "formUrl": null,
+    "$comment": "Google Form -> Sheet. Must NOT route into Raj's inbox. Set by scripts/setup-form.js output."
+  },
+  "referenceLibrary": {
+    "provider": "google-drive",
+    "folderId": "1CWgBpaObmQYRaHnDayizum_ugJdvb-Ft",
+    "name": "Health Timor-SG Resources",
+    "url": "https://drive.google.com/drive/folders/1CWgBpaObmQYRaHnDayizum_ugJdvb-Ft",
+    "ownedByUs": false,
+    "linkApproved": false,
+    "$comment": "Lois's folder, reused rather than duplicated (Raj 2026-08-25). linkApproved MUST be set true before build.js will render the link - she has not yet been asked. See QUESTIONS-FOR-LOIS.md."
+  },
+  "relatedSite": {
+    "name": "TL-SG Health Collective",
+    "url": "https://sites.google.com/view/tlsghealth/",
+    "role": "practical guidance for visiting teams",
+    "$comment": "Cross-reference for PRACTICAL guidance only, never for facts this document needs to assert. Her site may or may not be thinned - design for coexistence."
+  },
+  "sections": [
+    {
+      "id": "00",
+      "file": "00-header.md",
+      "title": "What this is",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "01",
+      "file": "01-executive-summary.md",
+      "title": "Executive summary",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "01b",
+      "file": "01b-executive-summary-tet.md",
+      "title": "Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null,
+      "translationUnverified": true
+    },
+    {
+      "id": "02",
+      "file": "02-country-context.md",
+      "title": "Country context",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "03",
+      "file": "03-health-status.md",
+      "title": "Health status",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "04",
+      "file": "04-governance.md",
+      "title": "Organization and governance",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "05",
+      "file": "05-financing.md",
+      "title": "Financing",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "06",
+      "file": "06-workforce-education.md",
+      "title": "Workforce, education and infrastructure",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "07",
+      "file": "07-service-delivery.md",
+      "title": "Service delivery and priority programmes",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "08",
+      "file": "08-actor-map.md",
+      "title": "Who is doing what",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "10",
+      "file": "10-sources-method.md",
+      "title": "Sources and method",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "11",
+      "file": "11-limitations.md",
+      "title": "Limitations",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "12",
+      "file": "12-changelog.md",
+      "title": "What changed this edition",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    }
+  ],
+  "omittedSections": [
+    {
+      "id": "09",
+      "title": "Gaps and opportunities",
+      "reason": "Deliberately omitted from v1 (Raj, 2026-08-25). It is the only section that would be analysis rather than sourced description, and it is what a critical reader would use to dismiss the document. Adding it requires a named human to own the judgement.",
+      "renderNotice": true
+    }
+  ],
+  "tetunSummary": {
+    "present": true,
+    "method": "machine translation",
+    "reviewedByNativeSpeaker": false,
+    "$comment": "Raj reviews the ENGLISH only and does not certify the Tetun. Must be checked by a Tetun speaker before publication - see the note in the build output."
+  }
+}

@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timor-Leste Health Landscape Scan</title>
+<meta name="description" content="An unofficial, AI-compiled, source-cited automated compilation of cited sources of health and the health system of Timor-Leste. Edition 2026-Q3-draft.">
+<meta name="robots" content="index, follow">
+<style>:root{
+  --bg:#ffffff; --fg:#1a1c1e; --muted:#5a6169; --rule:#e3e6ea; --accent:#0b5c8a;
+  --card:#f6f8fa; --code-bg:#f2f4f7;
+  --warn-bg:#fff6e5; --warn-fg:#6b4700; --warn-rule:#e0a83a;
+  --alarm-bg:#fdecec; --alarm-fg:#7a1f1f; --alarm-rule:#d05a5a;
+  --ok-bg:#eef7f0; --ok-fg:#1f5130; --ok-rule:#69a97f;
+  --maxw:52rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14161a; --fg:#e6e8ea; --muted:#9aa3ad; --rule:#2b3038; --accent:#7fc2e8;
+    --card:#1b1f25; --code-bg:#1e232a;
+    --warn-bg:#2e2411; --warn-fg:#f0cf8a; --warn-rule:#8a6a1f;
+    --alarm-bg:#331a1a; --alarm-fg:#f2b0b0; --alarm-rule:#8c3a3a;
+    --ok-bg:#16261c; --ok-fg:#a9d9bb; --ok-rule:#3f7553;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161a; --fg:#e6e8ea; --muted:#9aa3ad; --rule:#2b3038; --accent:#7fc2e8;
+  --card:#1b1f25; --code-bg:#1e232a;
+  --warn-bg:#2e2411; --warn-fg:#f0cf8a; --warn-rule:#8a6a1f;
+  --alarm-bg:#331a1a; --alarm-fg:#f2b0b0; --alarm-rule:#8c3a3a;
+  --ok-bg:#16261c; --ok-fg:#a9d9bb; --ok-rule:#3f7553;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:1.5rem 1.25rem 5rem}
+h1,h2,h3,h4{line-height:1.25; font-weight:650}
+h1{font-size:1.9rem; margin:0 0 .4rem}
+h2{font-size:1.35rem; margin:2.6rem 0 .2rem; padding-top:1.2rem; border-top:1px solid var(--rule)}
+h3{font-size:1.08rem; margin:1.6rem 0 .3rem}
+h4{font-size:1rem; margin:1.2rem 0 .3rem; color:var(--muted)}
+p{margin:.7rem 0}
+a{color:var(--accent)}
+code{background:var(--code-bg); padding:.1em .35em; border-radius:3px; font-size:.88em;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre.code{background:var(--code-bg); padding:.85rem 1rem; border-radius:6px; overflow-x:auto; font-size:.85rem}
+pre.code code{background:none; padding:0}
+hr{border:0; border-top:1px solid var(--rule); margin:2rem 0}
+blockquote{margin:1rem 0; padding:.1rem 1rem; border-left:3px solid var(--rule); color:var(--muted)}
+ul,ol{padding-left:1.4rem} li{margin:.3rem 0}
+img{max-width:100%; height:auto}
+
+.table-wrap{overflow-x:auto; margin:1rem 0; border:1px solid var(--rule); border-radius:6px}
+table{border-collapse:collapse; width:100%; font-size:.92rem}
+th,td{padding:.5rem .7rem; border-bottom:1px solid var(--rule); text-align:left; vertical-align:top}
+th{background:var(--card); font-weight:650; white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+
+.eyebrow{font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 .5rem}
+.sub{color:var(--muted); margin:.2rem 0 0}
+
+.notice{border:1px solid var(--rule); border-left-width:4px; background:var(--card);
+  padding:.85rem 1rem; border-radius:6px; margin:1.2rem 0}
+.notice p{margin:.35rem 0}
+.notice .n-head{font-weight:650}
+.notice.sev-none{background:var(--ok-bg); color:var(--ok-fg); border-color:var(--ok-rule)}
+.notice.sev-medium{background:var(--warn-bg); color:var(--warn-fg); border-color:var(--warn-rule)}
+.notice.sev-high{background:var(--alarm-bg); color:var(--alarm-fg); border-color:var(--alarm-rule)}
+.notice.sev-none a,.notice.sev-medium a,.notice.sev-high a{color:inherit}
+
+.stamps{display:flex; flex-wrap:wrap; gap:.4rem .9rem; font-size:.82rem; color:var(--muted); margin:.5rem 0 0}
+.stamp b{font-weight:600; color:var(--fg)}
+.sec-stamp{font-size:.78rem; color:var(--muted); margin:.15rem 0 1rem}
+.sec-stamp .flag{color:var(--warn-fg); background:var(--warn-bg); border:1px solid var(--warn-rule);
+  padding:.05rem .4rem; border-radius:3px; margin-left:.3rem}
+
+nav.toc{background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:.9rem 1.1rem; margin:1.6rem 0}
+nav.toc p{margin:0 0 .4rem; font-weight:650; font-size:.9rem}
+nav.toc ol{margin:0; padding-left:1.3rem; font-size:.94rem}
+nav.toc li{margin:.22rem 0}
+
+footer{margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--rule); font-size:.88rem; color:var(--muted)}
+.tetun{background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:.2rem 1rem 1rem; margin:1.4rem 0}
+
+@media print{
+  .notice{border-left-width:2px}
+  nav.toc{break-inside:avoid}
+  h2{break-after:avoid}
+  a[href^="http"]::after{content:" (" attr(href) ")"; font-size:.75em; color:#555; word-break:break-all}
+  body{font-size:11pt}
+}
+@media (max-width:34rem){ h1{font-size:1.55rem} .wrap{padding:1rem .9rem 3rem} }</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Unofficial &middot; AI-compiled &middot; Edition 2026-Q3-draft</p>
+  <h1>Timor-Leste Health Landscape Scan</h1>
+  <p class="sub">An orientation document for anyone considering or delivering health work in
+  Timor-Leste. It is <b>not</b> an official document and carries no government, WHO or institutional
+  sanction. Its purpose is to help you act in line with national priorities and avoid duplicating
+  work others are already doing.</p>
+  <div class="stamps">
+    <span class="stamp">Text last updated by AI: <b>2026-08-25</b></span>
+    <span class="stamp">Last reviewed by a human: <b>never</b></span>
+    <span class="stamp">Document language: <b>English</b></span>
+  </div>
+</header>
+
+<div class="notice sev-high">
+  <p class="n-head">This edition has not yet been reviewed by a human.</p>
+  <p>It was compiled by an AI agent from the cited sources and is awaiting review by Dr Natarajan Rajaraman. Treat every statement as unverified and follow the citation.</p>
+</div>
+
+<div id="staleness" class="notice" style="display:none"></div>
+
+
+    <div class="notice">
+      <p class="n-head">Section 09 &mdash; Gaps and opportunities &mdash; is deliberately not included.</p>
+      <p>Deliberately omitted from v1 (Raj, 2026-08-25). It is the only section that would be analysis rather than sourced description, and it is what a critical reader would use to dismiss the document. Adding it requires a named human to own the judgement.</p>
+    </div>
+
+<nav class="toc" aria-label="Contents">
+  <p>Contents</p>
+  <ol>
+      <li><a href="#sec-00">What this is</a></li>
+      <li><a href="#sec-01">Executive summary</a></li>
+      <li><a href="#sec-01b">Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)</a></li>
+      <li><a href="#sec-02">Country context</a></li>
+      <li><a href="#sec-03">Health status</a></li>
+      <li><a href="#sec-04">Organization and governance</a></li>
+      <li><a href="#sec-05">Financing</a></li>
+      <li><a href="#sec-06">Workforce, education and infrastructure</a></li>
+      <li><a href="#sec-07">Service delivery and priority programmes</a></li>
+      <li><a href="#sec-08">Who is doing what</a></li>
+      <li><a href="#sec-10">Sources and method</a></li>
+      <li><a href="#sec-11">Limitations</a></li>
+      <li><a href="#sec-12">What changed this edition</a></li>
+  </ol>
+</nav>
+
+
+    <section id="sec-00">
+      <h2>What this is</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s00-what-this-document-is">What this document is</h3>
+<p>A concise, sourced orientation to health and the health system of <strong>Timor-Leste</strong>, for anyone — Timorese or foreign, government, NGO, clinical, academic or funder — deciding whether and how to act.</p>
+<p>Its job is narrow and worth stating plainly: to help you <strong>act in line with national priorities</strong>, and to stop you <strong>duplicating work that someone is already doing</strong>. Timor-Leste is a small country with a large number of visiting actors, and the commonest failure is not bad intent but arriving without knowing what already exists.</p>
+<h3 id="s00-what-it-is-not">What it is not</h3>
+<p><strong>It carries no official sanction.</strong> It is not published, endorsed, reviewed or checked by the Ministry of Health of Timor-Leste, by WHO, or by any government or institution. It is a private compilation of public sources.</p>
+<p><strong>It is not a health system profile or a health system review.</strong> Those terms belong to institutional series — WHO&#39;s country profiles, and the European Observatory&#39;s <em>Health Systems in Transition</em> (HiT) — which carry an expectation of institutional authorship, peer review and completeness that this document cannot meet and does not claim. This is a <strong>landscape scan</strong>: shorter, faster, current, and explicit about its limits.</p>
+<p><strong>It is not a substitute for talking to Timorese counterparts.</strong> Nothing here tells you what a particular municipality needs this year. It tells you enough to ask better questions.</p>
+<h3 id="s00-how-it-is-made">How it is made</h3>
+<p>The text is <strong>drafted and updated by an AI agent</strong> from the sources cited in each section, then <strong>reviewed by a named human editor</strong> who takes editorial responsibility for reviewed editions. The banner at the top of this page tells you which state this edition is in — including, honestly, when the text has changed since the last human review.</p>
+<p>The document is refreshed roughly <strong>every 90 days</strong>. Numeric indicators are re-pulled from source APIs each cycle rather than recalled, because a model recalling a number gets it wrong. Cited pages are re-fetched and compared, not merely pinged for a status code — see §10 for why that distinction turned out to matter.</p>
+<p><strong>Every substantive claim carries its source.</strong> Where a claim could not be verified, it is marked <strong>UNVERIFIED</strong> rather than quietly dropped or quietly asserted. Where two authoritative sources disagree, both are given and the disagreement is reported as a finding — this happens more often in Timor-Leste than you might expect, and in at least one case (§3) the disagreement is more useful than either number.</p>
+<h3 id="s00-language">Language</h3>
+<p>The document is written in <strong>English</strong>. The executive summary is also provided in <strong>Tetun</strong>, by <strong>machine translation</strong>, and is labelled as such. The named editor reviews the English text only and does not certify the Tetun.</p>
+<p>Where a source exists only in <strong>Tetun, Portuguese or Indonesian</strong>, that is stated in the citation. Surfacing material that is not available in English is one of the things this document is for: a large part of the Timorese policy record is published in Portuguese and Tetun only, and is effectively invisible to English-speaking partners.</p>
+<h3 id="s00-contacts-policy">Contacts policy</h3>
+<p>Organisational contact details listed here are <strong>published by the organisations themselves</strong> and are reproduced only in that form — a switchboard, an office address, a general enquiries address.</p>
+<p><strong>No named individual&#39;s personal mobile number or private email address appears in this document</strong>, even where it is publicly findable. If you are listed and would rather not be, or your details are wrong, use the correction link in the footer and it will be changed in the next edition or sooner.</p>
+<h3 id="s00-reuse">Reuse</h3>
+<p>Cite the edition and the DOI. Sources belong to their publishers; where this document quotes or tabulates them, the citation is the authority and you should follow it rather than relying on the summary here.</p>
+    </section>
+
+    <section id="sec-01">
+      <h2>Executive summary</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s01-at-a-glance">At a glance</h3>
+<p>Timor-Leste is a country of roughly <strong>1.4 million people</strong> with a <strong>tax- and petroleum-funded health system that is free at the point of care</strong>, delivered through <strong>six hospitals, about 71 community health centres and 344 health posts</strong>, and staffed by a workforce whose doctors were very largely <strong>trained in Cuba</strong>. It became <strong>ASEAN&#39;s eleventh member</strong> on 26 October 2025 and was <strong>certified malaria-free by WHO</strong> in July 2025.</p>
+<p>The operative national plan is the <strong>National Health Sector Strategic Plan II (2020–2030)</strong>. The best single current description of the system is the <strong>WHO Country Cooperation Strategy 2026–2030</strong>, published March 2026.</p>
+<h3 id="s01-the-ten-things-most-worth-knowing">The ten things most worth knowing</h3>
+<p><strong>1. Out-of-pocket spending is about 7% of current health expenditure</strong> (2023) — among the lowest anywhere in the world. Public care is genuinely free at the point of use. If your intervention design assumes user fees, cost-recovery or insurance, it does not fit this country. There is <strong>no social health insurance</strong>.</p>
+<p><strong>2. Do not benchmark Timor-Leste on health spending as a share of GDP.</strong> The ratio moved 4.92% → 7.46% → 9.60% across 2021–2023 while total health spending went US$178M → $240M → $200M. It moved almost entirely because <strong>petroleum GDP fell 43%</strong>, not because health spending changed. Use <strong>US$ per capita</strong> (US$144 in 2023) and <strong>health as a share of government expenditure</strong> (9.16%) instead. §5.</p>
+<p><strong>3. Two WHO products disagree about health spending by roughly 60%</strong>, and one WHO figure in wide circulation (11.4% of GDP) cannot be reproduced from any published primitive. §5 sets out which to use and why.</p>
+<p><strong>4. The single most useful data finding in this document is a contradiction.</strong> Skilled birth attendance is reported by the routine health information system as <strong>92% (2020) falling to 56.7% (2024)</strong>, and by the Demographic and Health Survey as <strong>60% (2016) rising to 78% (2025–26)</strong>. These do not merely differ — <strong>they move in opposite directions</strong>. Do not pick a number. §3.</p>
+<p><strong>5. The Ministry of Health has no public informational website.</strong> No news, no publications page, no facility registry, no contact page. It does run a live systems portal at <code>apps.ms.gov.tl</code>, linked from nowhere and largely absent from search results, which hosts the full national strategic plan and other core documents. Absence of a website is not absence of an institution — a pattern that repeats throughout. §4.</p>
+<p><strong>6. There is no &quot;who does what where&quot; dataset for Timor-Leste</strong> and no health-cluster partner list, because the country is not an active humanitarian-cluster operation. The actor map in §8 had to be built by hand and is maintained by hand. It is the least complete and most valuable section here.</p>
+<p><strong>7. The binding workforce constraint is postgraduate, not undergraduate.</strong> Six institutions produce 800+ new health professionals a year, but there is no domestic specialist training pipeline of scale. <strong>US$19.3 million — 14% of the entire health budget — leaves the country</strong> to pay for Timorese patients treated abroad. §5, §6.</p>
+<p><strong>8. Two of the country&#39;s three medical schools began teaching in 2021 and 2024</strong> and have not yet graduated anyone. One of them recruits substantially from overseas. Gross graduate output is therefore a poor proxy for domestic workforce supply. §6.</p>
+<p><strong>9. Training and research are gated.</strong> All clinical research, and all new training longer than three days delivered to health professionals, requires approval from <strong>INSP-TL</strong>, the National Institute of Public Health. Partners planning to teach should treat this as the first step, not a formality. §6.</p>
+<p><strong>10. A new tier of municipal hospitals is planned but does not yet exist.</strong> NHSSP II sets out a service-delivery structure including municipal hospitals between the regional and community-health-centre levels. Plan against the system as it is, while knowing where it intends to go. §4, §7.</p>
+<h3 id="s01-what-this-document-does-not-tell-you">What this document does not tell you</h3>
+<p>It does not assess what is working, rank where help is most needed, or recommend what you should do. That section — <em>gaps and opportunities</em> — has been <strong>deliberately left out of this edition</strong>, because it would be the only part that is judgement rather than sourced description, and it is exactly what a critical reader would use to dismiss everything else. If and when it appears, it will carry a named author.</p>
+<p>It is also weakest exactly where it is most valuable: the <strong>actor map and contact details in §8</strong> go stale faster than anything else here, and a meaningful share of Timorese health organisations have no working website at all. Treat §8 as a starting point for enquiry, and tell us when it is wrong.</p>
+    </section>
+
+    <section id="sec-01b">
+      <h2>Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s01b-tradusaun-makina-machine-translation">⚠️ Tradusaun makina / Machine translation</h3>
+<p><strong>TETUN:</strong> Rezumu ne&#39;e mak <strong>tradusaun makina</strong>. Editór umanu ne&#39;e la konfirma tradusaun ida-ne&#39;e. Se hakarak informasaun ne&#39;ebé loos, favór ida lee versaun Inglés iha leten. Se ita-boot hetan sala iha tradusaun ne&#39;e, favór ida hatete mai ami liu husi ligasaun korresaun iha okos.</p>
+<p><strong>ENGLISH:</strong> This summary is a <strong>machine translation</strong>. The named human editor has <strong>not</strong> verified it and does not certify it. Where precision matters, read the English version above. If you find an error in this translation, please tell us via the correction link in the footer.</p>
+<hr>
+<h3 id="s01b-rezumu-ezekutivu">Rezumu Ezekutivu</h3>
+<p>Timor-Leste iha populasaun besik <strong>millaun 1.4</strong>. Sistema saúde nasionál <strong>sei selu husi impostu no osan petróleu</strong>, no serbisu saúde iha setór públiku <strong>gratuita ba populasaun</strong> — ema la selu bainhira simu tratamentu.</p>
+<p>Sistema ne&#39;e inklui <strong>ospitál 6</strong>, <strong>sentru saúde komunitáriu besik 71</strong>, no <strong>postu saúde 344</strong>. Maioria médiku Timor-oan simu formasaun iha <strong>Kuba</strong>.</p>
+<p>Timor-Leste sai <strong>membru ASEAN nian ba dala-11</strong> iha <strong>26 Outubru 2025</strong>, no OMS fó sertifikadu katak Timor-Leste <strong>livre ona husi malária</strong> iha <strong>Jullu 2025</strong>.</p>
+<p>Planu nasionál ne&#39;ebé sei válidu mak <strong>Planu Estratéjiku Nasionál Setór Saúde II (2020–2030)</strong>.</p>
+<h3 id="s01b-buat-importante-balun">Buat importante balun</h3>
+<p><strong>1. Gastu husi ema rasik (out-of-pocket) mak porsentu 7 de&#39;it</strong> husi gastu saúde totál (2023) — ida-ne&#39;e ki&#39;ik tebes kompara ho mundu tomak. <strong>La iha seguru saúde sosiál iha Timor-Leste.</strong> Se ita-boot nia programa presiza ema selu ba serbisu saúde, programa ne&#39;e la kombina ho sistema ne&#39;e.</p>
+<p><strong>2. Labele uza &quot;gastu saúde nu&#39;udar porsentu husi PIB&quot; atu kompara Timor-Leste ho nasaun seluk.</strong> Númeru ne&#39;e sae husi 4.92% ba 9.60% entre 2021 no 2023, maibé sae tanba <strong>PIB petróleu tun ho 43%</strong>, la&#39;ós tanba gastu saúde aumenta. Uza <strong>dólar Amerikanu kada ema</strong> (US$144 iha 2023) no <strong>porsentu husi gastu governu nian</strong> (9.16%).</p>
+<p><strong>3. Dadus kona-ba partu ho asisténsia profisionál kontraditóriu.</strong> Sistema informasaun rutina hatete <strong>92% (2020) tun ba 56.7% (2024)</strong>; peskiza uma-kain (DHS) hatete <strong>60% (2016) sae ba 78% (2025–26)</strong>. Númeru rua ne&#39;e la&#39;ós de&#39;it diferente — <strong>sira la&#39;o ba direksaun kontráriu</strong>. <strong>Labele hili númeru ida de&#39;it.</strong></p>
+<p><strong>4. Ministériu Saúde la iha website públiku ne&#39;ebé funsiona.</strong> Maibé portál <code>apps.ms.gov.tl</code> funsiona no iha dokumentu importante barak, inklui Planu Estratéjiku Nasionál kompletu, iha lian <strong>Inglés no Tetun</strong>.</p>
+<p><strong>5. Formasaun no peskiza presiza aprovasaun husi INSP-TL.</strong> Peskiza klínika hotu-hotu, no formasaun foun ne&#39;ebé naruk liu loron 3 ba profisionál saúde, presiza aprovasaun husi <strong>Institutu Nasionál Saúde Públika (INSP-TL)</strong>. Ba parseiru ne&#39;ebé mai hanorin, ida-ne&#39;e mak dalan primeiru.</p>
+<p><strong>6. Konstranjimentu boot mak formasaun pós-graduasaun, la&#39;ós graduasaun.</strong> Institutu 6 prodús profisionál saúde foun liu 800 kada tinan, maibé <strong>la iha programa formasaun espesialista iha rai laran</strong>. <strong>US$19.3 millaun — 14% husi orsamentu saúde — sai husi rai</strong> atu selu tratamentu Timor-oan sira nian iha rai liur.</p>
+<h3 id="s01b-dokumentu-nee-las-ofisil">Dokumentu ne&#39;e la&#39;ós ofisiál</h3>
+<p><strong>Dokumentu ne&#39;e la&#39;ós dokumentu ofisiál.</strong> Ministériu Saúde, OMS, ka instituisaun governu ida la aprova ka la revee dokumentu ne&#39;e. Ne&#39;e kompilasaun privadu husi fonte públiku.</p>
+<p>Testu ne&#39;e <strong>ajente AI mak hakerek no atualiza</strong>, no <strong>editór umanu ho naran</strong> mak revee. Aviso iha pájina nia leten hatete ita-boot edisaun ida-ne&#39;e nia estadu — inklui bainhira testu muda tiha ona maibé editór seidauk revee.</p>
+<p><strong>Se ita-boot hetan sala iha dokumentu ne&#39;e</strong> — liuliu kona-ba ita-boot nia organizasaun rasik — ka ita-boot lakohi nia naran iha lista ne&#39;e, favór ida uza ligasaun korresaun iha okos.</p>
+    </section>
+
+    <section id="sec-02">
+      <h2>Country context</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s02-the-country-in-brief">The country in brief</h3>
+<p>The <strong>Democratic Republic of Timor-Leste</strong> occupies the eastern half of the island of Timor, plus the enclave of Oecusse on the north-west coast, and the islands of Atauro and Jaco. Population is approximately <strong>1.4 million</strong>. It restored independence in 2002 and is one of the youngest states in the world, with a correspondingly young population and a health system built almost entirely since 2002.</p>
+<p>Terrain matters more here than in most country profiles. The country is <strong>mountainous</strong>, the road network is poor and seasonally interrupted, and a substantial part of the population lives in areas that are hard to reach for part of the year. Any service-delivery or outreach plan that does not account for this will underestimate its own logistics.</p>
+<h3 id="s02-administrative-structure-14-municipality-level-units">Administrative structure — 14 municipality-level units</h3>
+<p>⚠️ <strong>This is commonly got wrong, including in recent partner documents.</strong></p>
+<p>Timor-Leste has <strong>13 ordinary municipalities plus the Special Administrative Region of Oe-Cusse Ambeno (RAEOA)</strong> = <strong>14 municipality-level units</strong>. <strong>Atauro separated from Dili to become a municipality in its own right on 1 January 2022.</strong> WHO&#39;s Country Cooperation Strategy 2026–2030 uses &quot;14 municipalities&quot; throughout.</p>
+<p>Documents written before 2022 — and a surprising number written after — say &quot;12 municipalities plus RAEOA&quot; or &quot;13 districts&quot;. If a partner document says 12, it predates 2022 or copied something that did.</p>
+<p><strong>RAEOA is not merely a municipality.</strong> It is a special administrative region with its own authority and its own line in the national health budget, and it operates with a degree of autonomy that affects how programmes are agreed and delivered there. Treat Oecusse as a separate negotiation.</p>
+<p>Below municipality level, the administrative chain runs through <strong>administrative posts</strong>, <strong>sucos</strong> (villages) and <strong>aldeias</strong> (hamlets). Health facilities and community health volunteers are organised against this structure, so it is worth learning.</p>
+<h3 id="s02-language">Language</h3>
+<p>Timor-Leste has <strong>two official languages — Tetun and Portuguese</strong> — and two working languages, <strong>Indonesian and English</strong>, recognised in the constitution. More than twenty indigenous languages are spoken.</p>
+<p><strong>The practical position for a visiting partner:</strong></p>
+<ul><li><strong>Tetun (Tetun-Dili) is the language of clinical and community work.</strong> Materials intended for health workers or communities need to be in Tetun, and translation is not an optional final step.</li><li><strong>Portuguese is the language of law and much formal policy.</strong> Decree-laws, budget documents and a large part of the formal policy record are published in Portuguese.</li><li><strong>Indonesian remains widely understood</strong>, particularly by older professionals educated before 1999, and some institutional websites are in Indonesian.</li><li><strong>Spanish appears in the medical workforce</strong> as a direct consequence of the Cuban training relationship (§6).</li><li><strong>English is a working language but is not reliably shared</strong>, especially outside Dili and outside senior levels.</li></ul>
+<p>This multilingual record is a real barrier to partners, and surfacing material that exists only in Tetun or Portuguese is one of this document&#39;s stated purposes. Where a source is not in English, the citation says so.</p>
+<h3 id="s02-regional-and-international-position">Regional and international position</h3>
+<ul><li><strong>Timor-Leste became the eleventh member of ASEAN on 26 October 2025.</strong> This is recent enough that many reference documents do not reflect it, and it changes the regional integration, trade and mobility context that health planning sits inside.</li><li><strong>Timor-Leste is in the WHO South-East Asia Region (SEARO), not the Western Pacific Region.</strong> This is verified and it matters practically: regional guidance, comparators, meetings and technical support all come through SEARO, and searching WPRO for Timor-Leste material returns nothing.</li><li>The economy is dominated by the <strong>Petroleum Fund</strong>, and petroleum revenue underwrites the state budget including health. Petroleum GDP has been falling sharply, which has consequences for how health financing statistics should be read — see §5, where this produces one of the most misleading standard indicators in the country.</li></ul>
+<h3 id="s02-sources-for-this-section">Sources for this section</h3>
+<ul><li>WHO <strong>Country Cooperation Strategy for Timor-Leste 2026–2030</strong>, WHO SEARO, published 2026-03-26, ISBN 9789290222316 — <a href="https://iris.who.int/handle/10665/385106" target="_blank" rel="noopener noreferrer">record</a>. The best single current description of the country and system.</li><li><strong>National Health Sector Strategic Plan II (2020–2030)</strong> — the operative national plan, hosted in full at <code>apps.ms.gov.tl</code> (see §4 and §10).</li><li>World Bank, <em>Leveling Up: How ASEAN Membership Can Support Timor-Leste&#39;s Economic Transformation</em>.</li><li>Constitution of the Democratic Republic of Timor-Leste (language provisions).</li></ul>
+    </section>
+
+    <section id="sec-03">
+      <h2>Health status</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s03-how-to-read-this-section">How to read this section</h3>
+<p>Health status figures for Timor-Leste come from three systems that do not agree with each other: the routine <strong>health information system (TLHIS/HMIS)</strong>, periodic <strong>household surveys</strong> (the Demographic and Health Survey, and national nutrition and NCD surveys), and <strong>international modelled estimates</strong> (WHO, World Bank, UN IGME).</p>
+<p>Where they disagree, this document gives all of them. Picking one silently would be the easier and less honest option, and in at least one case below the disagreement is more informative than any single number.</p>
+<p>⚠️ <strong>A note on freshness.</strong> WHO&#39;s Global Health Observatory refreshes <strong>per indicator</strong>, and the spread is wide — life expectancy was last refreshed in August 2024 while workforce data was refreshed in January 2026. A stale indicator looks identical to a fresh one in the data. Where the source&#39;s own refresh stamp is known, it is given.</p>
+<h3 id="s03-the-skilled-birth-attendance-contradiction">⚠️ The skilled birth attendance contradiction</h3>
+<p><strong>This is the single most useful data finding in this document.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Source</th><th>Figure</th><th>Direction</th></tr></thead><tbody><tr><td><strong>HMIS</strong> (routine reporting)</td><td><strong>92% (2020) → 56.7% (2024)</strong></td><td>Falling steeply</td></tr><tr><td><strong>DHS</strong> (household survey)</td><td><strong>60% (2016) → 78% (2025–26)</strong></td><td>Rising steeply</td></tr></tbody></table></div>
+<p>These do not merely differ in level. <strong>They move in opposite directions over an overlapping period.</strong></p>
+<p>Both are cited by WHO. One of them is wrong, or both are measuring something different from what their labels suggest — a plausible explanation is a change in what the routine system counts or how completely facilities report, but <strong>this document does not know, and says so.</strong></p>
+<p><strong>Do not use a single skilled-birth-attendance figure for Timor-Leste</strong> in a proposal, a needs assessment or a baseline. If a funder requires one, cite both and state the discrepancy. For a partner deciding where to put effort, <strong>the fact that the country&#39;s two headline maternal-health data systems contradict each other is worth more than either number</strong> — it is itself a finding about where investment might go.</p>
+<p><em>Sources: WHO CCS 2026–2030 §2.4.1; TLDHS 2025–26 Key Indicators Report.</em></p>
+<h3 id="s03-maternal-newborn-child-and-adolescent-health">Maternal, newborn, child and adolescent health</h3>
+<ul><li><strong>Maternal mortality ratio: 192 per 100,000 live births</strong> (UN IGME, 2023) — described by WHO as <em>&quot;remains highest in the South-East Asia Region&quot;</em>. A later UN IGME figure of <strong>171.5 (2025)</strong> is also in circulation.</li><li><strong>Total fertility rate: 4.2 (2016) → 3.4 (TLDHS 2025–26).</strong> A substantial fall.</li><li><strong>Antenatal care: 46%. Postnatal care: 66%.</strong> (CCS §2.4.1.)</li><li>Skilled birth attendance — see the contradiction above.</li></ul>
+<p>⚠️ <strong>The DHS API will serve you ten-year-old data.</strong> A <strong>new TLDHS 2025–26 exists</strong> and its Key Indicators Report was launched <strong>11 June 2026</strong>, but the DHS Program API still returns <strong>exactly two</strong> Timor-Leste surveys, 2009 and 2016, and the newest fertility figure it will give you is 4.2 from 2016. Anything automated against that API will confidently publish decade-old numbers. The full TLDHS 2025–26 report was due &quot;later in 2026&quot;. <em>Verified live 2026-08-24.</em></p>
+<h3 id="s03-nutrition">Nutrition</h3>
+<p><strong>Malnutrition, and stunting in particular, remains a major public health challenge</strong> (WHO CCS §2.4.3). The most recent comprehensive national picture is the <strong>Food and Nutrition Survey 2020</strong>, only the second such survey in a decade:</p>
+<div class="table-wrap"><table><thead><tr><th>Indicator</th><th>2013</th><th>2020</th></tr></thead><tbody><tr><td>Stunting</td><td>50.2%</td><td><strong>47.1%</strong></td></tr><tr><td>Wasting</td><td>11%</td><td><strong>8.6%</strong></td></tr><tr><td>Underweight</td><td>37.3%</td><td><strong>32.4%</strong></td></tr></tbody></table></div>
+<p>Improvement is real but slow, and roughly <strong>half of Timorese children are still stunted</strong>. TLDHS 2025–26 also flags persistent malnutrition and maternal anaemia.</p>
+<h3 id="s03-communicable-disease">Communicable disease</h3>
+<p><strong>Tuberculosis is the dominant communicable disease burden.</strong></p>
+<ul><li><strong>Incidence 496 per 100,000 (2024)</strong> — approximately <strong>6,900 cases</strong> — <strong>among the highest in the world</strong>.</li><li>A <strong>first national TB prevalence survey was completed in December 2023</strong> (target 20,068 people, 50 clusters, all municipalities, using Xpert Ultra and liquid culture).</li><li>⚠️ <strong>UNVERIFIED: whether the results of that survey have been published.</strong> If they have, they are the most consequential epidemiological release available for this country, and this document should be updated. If you know, please tell us.</li></ul>
+<p><strong>Malaria: Timor-Leste was certified malaria-free by WHO on 24 July 2025</strong>, with the certificate formally received at the Seventy-ninth World Health Assembly on 19 May 2026. This is a genuine and recent achievement. The current Global Fund malaria grant is titled <em>&quot;Prevention of Re-establishment of Malaria in Timor-Leste&quot;</em> — the programme focus has shifted from elimination to preventing return.</p>
+<p><strong>HIV</strong> is addressed through a combined Global Fund grant covering HIV/AIDS and TB, with the Ministry of Health as Principal Recipient. Both current Global Fund grants run to <strong>31 December 2026</strong> — a date worth noting if you are planning anything that assumes their continuation.</p>
+<h3 id="s03-immunisation">Immunisation</h3>
+<ul><li><strong>Child vaccination coverage under 1 year: 83%</strong> (National coverage evaluation survey, 2023), against a CCS target of ≥90%.</li><li>A national supplementary immunisation activity raised coverage from <strong>86% to 95%</strong>, tracked in DHIS2.</li><li><strong>HPV vaccination rolled out from 22 July 2024</strong>, targeting <strong>61,374 girls aged 11–14</strong>.</li><li>A <strong>digital immunisation e-tracker launched 4 June 2026</strong>.</li></ul>
+<p>Immunisation is one of the better-instrumented parts of the system and one of the clearer recent success stories.</p>
+<h3 id="s03-non-communicable-disease">Non-communicable disease</h3>
+<p>NCDs are a stated national priority. The most substantial recent evidence base is the <strong>National Survey on NCDs and NCD Risk Factors Among Adults, and Availability and Readiness of NCD Services in Health Facilities, Timor-Leste 2023</strong> (WHO, published 2026-08-04, 406pp, ISBN 9789290222613 — <a href="https://iris.who.int/handle/10665/386866" target="_blank" rel="noopener noreferrer">record</a>). Field work ran 17 October – 10 December 2023 using a tool adapted from the WHO Harmonized Health Facility Assessment.</p>
+<p><strong>This is also the closest thing Timor-Leste has to a national facility-readiness assessment</strong>, and is therefore worth reading even if NCDs are not your area.</p>
+<p>On the policy side, WHO&#39;s financing work has been on <strong>pro-health taxation</strong>: tobacco tax raised from US$19/kg to <strong>US$50/kg</strong>, and alcohol from US$4.45/litre to <strong>US$8.9/litre</strong> (CCS §2.3.1).</p>
+<h3 id="s03-overall">Overall</h3>
+<ul><li><strong>Life expectancy: 67.9 years</strong> (World Bank, data through 2024). ⚠️ Note WHO&#39;s GHO life-expectancy indicator was last refreshed 2024-08-02 and is the older of the two.</li><li><strong>UHC Service Coverage Index (SDG 3.8.1): 48</strong> (2023, WHO GHED/GHO). ⚠️ WHO&#39;s own CCS gives <strong>52</strong> for the same measure — a second internal WHO inconsistency, alongside the financing one in §5.</li></ul>
+<h3 id="s03-where-the-numbers-come-from-and-how-to-re-pull-them">Where the numbers come from, and how to re-pull them</h3>
+<div class="table-wrap"><table><thead><tr><th>Source</th><th>Endpoint</th><th>Status</th></tr></thead><tbody><tr><td><strong>World Bank WDI/HNP</strong> — primary numeric spine</td><td><code>api.worldbank.org/v2/country/TLS/indicator/&amp;lt;CODE&amp;gt;?format=json</code></td><td>✅ tested live; ~1,500 indicators; data through 2024; no key</td></tr><tr><td><strong>WHO Global Health Observatory</strong></td><td><code>ghoapi.azureedge.net/api/&amp;lt;INDICATOR&amp;gt;?$filter=SpatialDim eq &amp;#39;TLS&amp;#39;</code></td><td>✅ tested live; 3,093 indicators; OData filtering; no key; ⚠️ per-indicator freshness</td></tr><tr><td><strong>UNICEF Data Warehouse</strong> (child mortality, nutrition, WASH, immunisation)</td><td><code>sdmx.data.unicef.org/.../TLS.&amp;lt;IND&amp;gt;.?format=sdmx-json</code></td><td>✅ tested live; SDMX-JSON; no key</td></tr><tr><td><strong>DHS Program</strong></td><td><code>api.dhsprogram.com/rest/dhs/surveys?countryIds=TL</code></td><td>✅ responds, ⚠️ <strong>serves only 2009 and 2016</strong></td></tr><tr><td><strong>Humanitarian Data Exchange</strong></td><td>CKAN API</td><td>✅ 114 Timor-Leste datasets, uniform CSV</td></tr></tbody></table></div>
+<p><em>All endpoints tested live 2026-08-24. See §10 for the full method and the traps.</em></p>
+    </section>
+
+    <section id="sec-04">
+      <h2>Organization and governance</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s04-the-ministry-of-health-and-how-to-find-it">The Ministry of Health, and how to find it</h3>
+<p>The health system is led by the <strong>Ministry of Health (Ministériu Saúde)</strong>. Its legal basis is the <strong>Organic Law of the IX Constitutional Government, Decree-Law No. 46/2023 of 28 July</strong>.</p>
+<p>⚠️ <strong>The Ministry has no functioning public informational website.</strong> This is a verified finding, not an assumption, and it shapes everything about how partners find information here.</p>
+<div class="table-wrap"><table><thead><tr><th>Domain</th><th>Status (verified 2026-08-24)</th></tr></thead><tbody><tr><td><code>moh.gov.tl</code></td><td><strong>Dead.</strong> DNS delegation exists but nameservers are unreachable. Last successful web archive capture <strong>6 December 2020</strong> — gone for over five years.</td></tr><tr><td><code>ms.gov.tl</code></td><td>The real Ministry domain, but returning <strong>502 Bad Gateway</strong>. A rebuild appears to be in progress and unfinished.</td></tr><tr><td><strong><code>apps.ms.gov.tl</code></strong></td><td>✅ <strong>The only live Ministry web presence.</strong></td></tr></tbody></table></div>
+<p>⚠️ <strong>Search engines still surface <code>moh.gov.tl</code> URLs. They are dead. Do not cite them.</strong></p>
+<p><strong>What does work — and it is genuinely valuable — is <code>apps.ms.gov.tl</code></strong>, titled <em>&quot;Ministériu Saúde, Diresaun Nasionál Saúde Públika, Timor-Leste&quot;</em>. It hosts three things:</p>
+<ol><li><strong>SIRUS / HRHIS</strong> — the human resources information system (<code>/hris/</code>, login-gated, v2.0.0 © 2026).</li><li><strong>DNFM / national regulatory authority pages</strong> (<code>/dnfm/</code>, live but empty).</li><li><strong>A bare document directory at <code>apps.ms.gov.tl/hris/mdoc/</code></strong> holding around thirteen files, most dated 20 October 2025.</li></ol>
+<p><strong>That document directory is the single most useful Ministry-authored resource that is actually reachable, and it is undiscoverable by search</strong> — a plain directory index with no inbound links. It holds, in <strong>both English and Tetun</strong>:</p>
+<ul><li><strong>PENSS II</strong> — the national health sector strategic plan</li><li><strong>PENRUSS</strong> — the human resources for health strategic plan</li><li>the Ministry&#39;s <strong>organogram</strong> and <strong>vision</strong> statements</li><li><em>Careiras dos profissionais da saúde</em> — the health professional career structure</li><li>a ministerial diploma, the scholarship management manual, and job-description manuals</li></ul>
+<p>The Ministry&#39;s stated vision, verbatim: <em>&quot;Timor-Leste has a qualified and motivated health workforce, with equitable distribution that guarantees the sustainable delivery of quality health care.&quot;</em></p>
+<p><strong>This is precisely the gap this document sits in.</strong> Core national policy exists, in two languages, on a live government server, and is invisible to anyone who does not already know the URL.</p>
+<h3 id="s04-structure">Structure</h3>
+<p><strong>Directorates-General and senior posts:</strong> Director-General for Corporate Services; Director-General of Hospital Services; Director-General of Primary Health Care; the Cabinet for Health Policy, Planning, Coordination and Development; and the National Health Inspector.</p>
+<p><strong>Named national directorates and departments</strong> include the National Directorate of Human Resources (with departments of HR Planning, HR Provision and Staff Management), the <em>Direção Nacional de Farmácia e Medicamentos</em> (DNFM), and departments for Health Information Systems, Maternal and Child Health, Nutrition, Health Promotion, Monitoring and Evaluation, Environmental Health, and Adolescent Health.</p>
+<p><strong>Sub-nationally</strong>, each of the 14 municipality-level units has a <strong>Municipality Health Service (MHS)</strong> headed by a Municipality Director, with District Primary Health Officers.</p>
+<h3 id="s04-the-four-autonomous-institutions">The four autonomous institutions</h3>
+<p>These sit <strong>outside the ministry line structure</strong> and are the bodies most partners actually deal with. Each has its own line in the national budget.</p>
+<div class="table-wrap"><table><thead><tr><th>Body</th><th>Function</th></tr></thead><tbody><tr><td><strong>HNGV</strong> — Hospital Nacional Guido Valadares</td><td>The national (tertiary) hospital</td></tr><tr><td><strong>INFPM</strong> — Instituto Nacional de Farmácia e Produtos Médicos</td><td>Medicines and medical products: procurement and warehousing</td></tr><tr><td><strong>SNAEM, I.P.</strong></td><td>National Ambulance and Medical Emergency Service</td></tr><tr><td><strong>INSP-TL</strong> — Instituto Nacional de Saúde Pública de Timor-Leste</td><td>National Institute of Public Health</td></tr></tbody></table></div>
+<p>⚠️ <strong>SAMES no longer exists under that name.</strong> The medicines agency is now <strong>INFPM</strong>, confirmed in the 2026 State Budget and in reporting that describes INFPM as <em>&quot;formerly known as SAMES&quot;</em>. Documents, spreadsheets and partner materials still referring to SAMES are out of date — though the underlying content may still be perfectly usable.</p>
+<p>⚠️ <strong>Leadership names change and this document does not track them reliably.</strong> Named office-holders appear in WHO CCS 2026–2030 Annexure 1 and in NHSSP II acknowledgements, but at least one is inconsistent across sources — for INSP-TL, a former president is named in one source while a 2026 web source gives a different Director-General. <strong>UNVERIFIED. Confirm current post-holders directly rather than from this document.</strong></p>
+<h3 id="s04-insp-tl-is-a-regulator-not-only-a-training-institute">⚠️ INSP-TL is a regulator, not only a training institute</h3>
+<p><strong>All clinical research, and all new training longer than three days delivered to health professionals, requires INSP-TL approval.</strong></p>
+<p>For a visiting partner intending to teach or to conduct research, <strong>this is the first gate, not a formality</strong>, and it is the single most operationally important governance fact in this document.</p>
+<p>INSP-TL was established around 2022 under the Ministry of Health, to bring together monitoring, evaluation and analysis of the general health status. It runs active international training partnerships, including with Australia&#39;s National Critical Care and Trauma Response Centre and the Regional Emergency Care Systems Improvement initiative.</p>
+<p>⚠️ <strong>UNVERIFIED: the legal instrument behind the approval requirement.</strong> The rule is documented by an experienced practitioner source (the TL-SG Health Collective site) but no decree-law, INSP-TL regulation or circular establishing it could be located. <strong>Treat the requirement as real and plan for it; do not cite this document as its legal basis.</strong> If you know the instrument, please tell us.</p>
+<p>⚠️ INSP-TL&#39;s most current public channel appears to be <strong>Facebook</strong>, not a website — the same pattern as the Ministry itself.</p>
+<h3 id="s04-planning-framework">Planning framework</h3>
+<ul><li><strong>NHSSP II — National Health Sector Strategic Plan 2020–2030 — is the operative national plan.</strong> Available in full at <code>apps.ms.gov.tl</code>. ⚠️ <strong>WHO&#39;s own planning-cycle database still lists the superseded 2011–2030 plan.</strong> If a partner document cites a 2011–2030 plan, it is out of date.</li><li><strong>WHO Country Cooperation Strategy 2026–2030</strong>, published 26 March 2026 (ISBN 9789290222316, xii+69pp) — <a href="https://iris.who.int/handle/10665/385106" target="_blank" rel="noopener noreferrer">record</a>. The freshest system-wide description available; CCS cycles run about five years, so the next is due around 2031.</li></ul>
+<h3 id="s04-a-planned-tier-that-does-not-yet-exist">A planned tier that does not yet exist</h3>
+<p><strong>NHSSP II sets out a service-delivery structure that includes municipal hospitals</strong> between the regional hospitals and the community health centres:</p>
+<pre class="code"><code>National Hospital / Specialised Centres
+Regional Hospitals
+Municipal Hospitals            &lt;-- planned, not yet built
+Community Health Centres (Levels I, II, III)
+Family Health Posts
+Integrated Community Health Services (outreach, domiciliary, home visits, palliative care)</code></pre>
+<p><strong>Plan against the system as it is today (§7), while knowing where national policy intends to take it.</strong> A proposal that assumes municipal hospitals exist will not survive contact; one that ignores the direction of travel may be planning for a structure that is about to change.</p>
+    </section>
+
+    <section id="sec-05">
+      <h2>Financing</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s05-read-this-before-quoting-any-financing-figure">⚠️ Read this before quoting any financing figure</h3>
+<p><strong>Do not benchmark Timor-Leste on health spending as a share of GDP.</strong> It is the standard move and it will lead you to the wrong conclusion here.</p>
+<div class="table-wrap"><table><thead><tr><th>Year</th><th>CHE as % of GDP</th><th>Total health spend (US$)</th></tr></thead><tbody><tr><td>2021</td><td>4.92%</td><td>~178 million</td></tr><tr><td>2022</td><td>7.46%</td><td>~240 million</td></tr><tr><td>2023</td><td><strong>9.60%</strong></td><td>~200 million</td></tr></tbody></table></div>
+<p>The ratio nearly doubled while spending <em>fell</em> between 2022 and 2023. It moved almost entirely because <strong>petroleum GDP fell by 43% in two years</strong>. The denominator moved, not the numerator.</p>
+<p><strong>Use instead:</strong></p>
+<ul><li><strong>Current health expenditure per capita: US$144.21 (2023).</strong></li><li><strong>Domestic government health spending as a share of general government expenditure: 9.16% (2023)</strong>, up from 6.97% in 2021.</li></ul>
+<p>These describe effort and priority. The GDP ratio, in a petroleum economy with a collapsing denominator, mostly describes the oil price.</p>
+<h3 id="s05-two-documented-inconsistencies-in-the-source-data">⚠️ Two documented inconsistencies in the source data</h3>
+<p><strong>1. A widely-circulated WHO figure cannot be reproduced.</strong> WHO&#39;s own Timor-Leste profile and its 2024 SEARO SDG profile both publish health expenditure at <strong>11.4% of GDP (2021)</strong>. WHO&#39;s own Global Health Observatory API returns <strong>4.92%</strong>, matching the World Bank exactly.</p>
+<p>The 4.92% figure reproduces from primitives — current health expenditure per capita × population ÷ GDP = 4.9192%. The 11.44% figure implies a GDP denominator of about <strong>US$1.56 billion</strong> against an actual <strong>US$3.63 billion</strong> — consistent with someone having used <strong>non-oil GDP</strong>, a known trap in Timorese statistics. <strong>Prefer the API figure; state your denominator explicitly whenever you quote a ratio.</strong></p>
+<p><strong>2. Two WHO products disagree by roughly 60%.</strong> The Country Cooperation Strategy 2026–2030 states that <em>&quot;health expenditure has declined from a pandemic-time peak of 10% of GDP in 2020 to 6% by 2023&quot;</em>, against the Global Health Expenditure Database&#39;s <strong>9.60%</strong> for 2023. The CCS also gives the UHC service coverage index as <strong>52</strong> where the Observatory gives <strong>48</strong>.</p>
+<p><strong>Prefer GHED/GHO</strong> — it is the maintained database, and the CCS cites it as its own source. But note the inconsistency rather than picking silently.</p>
+<h3 id="s05-the-distinctive-feature-this-is-a-free-system">The distinctive feature: this is a free system</h3>
+<div class="table-wrap"><table><thead><tr><th>Indicator</th><th>2021</th><th>2022</th><th>2023</th></tr></thead><tbody><tr><td>Out-of-pocket as % of CHE</td><td>5.89%</td><td>5.48%</td><td><strong>6.99%</strong></td></tr><tr><td>External (donor) as % of CHE</td><td>30.67%</td><td>22.74%</td><td><strong>15.30%</strong></td></tr><tr><td>Government health spend as % of govt expenditure</td><td>6.97%</td><td>8.90%</td><td><strong>9.16%</strong></td></tr><tr><td>CHE per capita (US$)</td><td>132.08</td><td>174.92</td><td><strong>144.21</strong></td></tr><tr><td>UHC service coverage index</td><td>47</td><td>48</td><td><strong>48</strong></td></tr></tbody></table></div>
+<p><strong>Out-of-pocket spending of around 7% is among the lowest in the world.</strong> It is the single most distinctive feature of this health system, and it follows directly from the fact that <strong>Timor-Leste has no social health insurance and public care is free at the point of delivery</strong>, funded from taxation and petroleum revenue.</p>
+<p>That is evidenced rather than asserted: no insurance entity appears anywhere in the 2026 State Budget health envelope, and no social health insurance body appears among the Ministry&#39;s autonomous institutions.</p>
+<p>⚠️ <strong>If your intervention design assumes user fees, co-payments, cost-recovery or insurance reimbursement, it does not fit this country.</strong></p>
+<p><strong>Donor dependence is high but falling fast</strong> — from 30.7% of health spending in 2021 to 15.3% in 2023.</p>
+<h3 id="s05-the-2026-national-health-budget">The 2026 national health budget</h3>
+<p><em>Source: General State Budget 2026, Book 1, IX Constitutional Government, approved version — Ministry of Finance. Portal: <a href="https://www.mof.gov.tl" target="_blank" rel="noopener noreferrer">mof.gov.tl</a> · <a href="https://budgettransparency.gov.tl" target="_blank" rel="noopener noreferrer">budgettransparency.gov.tl</a></em></p>
+<ul><li><strong>Total State Budget 2026: US$2.291 billion</strong> (+5.2% on 2025).</li><li><strong>Total health allocation: US$138.3 million</strong> — <strong>6.04% of the state budget</strong>.</li></ul>
+<div class="table-wrap"><table><thead><tr><th>Entity</th><th>US$</th></tr></thead><tbody><tr><td>Ministry of Health</td><td>76.8 m</td></tr><tr><td>HNGV (national hospital)</td><td>20.9 m</td></tr><tr><td><strong>INFPM</strong> (medicines and medical products)</td><td>17.1 m</td></tr><tr><td>Infrastructure Fund</td><td>6.7 m</td></tr><tr><td>SNAEM (ambulance and emergency)</td><td>3.4 m</td></tr><tr><td>INSP-TL, RAEOA, municipal health services</td><td>remainder</td></tr></tbody></table></div>
+<p><strong>By programme:</strong> secondary and tertiary care <strong>US$58.5m</strong>; primary health care <strong>US$55.9m</strong>. Within primary care, the Comprehensive Primary Health Services Package is <strong>US$27m, of which US$24m is salaries and wages</strong>; nutrition is US$2.4m.</p>
+<h3 id="s05-two-structural-facts-that-should-shape-any-proposal">⚠️ Two structural facts that should shape any proposal</h3>
+<p><strong>1. The budget is dominated by personnel costs</strong> — <em>&quot;over 50% of expenditures&quot;</em> (CCS). Capital investment is residual: WHO&#39;s own assessment is that <em>&quot;investment in new facilities and infrastructure upgrades has been minimal.&quot;</em></p>
+<p><strong>2. The second-largest single line in secondary and tertiary care is money leaving the country.</strong> <strong>US$19.3 million</strong> is budgeted for <strong>overseas medical treatment and repayment of debts for specialised services</strong> — <strong>14% of the entire health budget</strong>, spent treating Timorese patients abroad.</p>
+<p>That figure is the financial expression of the workforce finding in §6: there is no domestic specialist training pipeline of scale, so specialist care is bought overseas. Anyone proposing to build domestic specialist capacity should know that this is the counterfactual cost, and that it is already visible in the national accounts.</p>
+<h3 id="s05-pro-health-taxation">Pro-health taxation</h3>
+<p>WHO&#39;s health-financing work in Timor-Leste has focused on taxation rather than premiums. Tobacco tax rose from <strong>US$19/kg to US$50/kg</strong>, and alcohol from <strong>US$4.45/litre to US$8.9/litre</strong> (CCS §2.3.1).</p>
+<h3 id="s05-sources-and-refreshability">Sources and refreshability</h3>
+<div class="table-wrap"><table><thead><tr><th>Source</th><th>What it gives</th><th>Refreshable?</th></tr></thead><tbody><tr><td><strong>WHO Global Health Expenditure Database / GHO</strong> — <a href="https://apps.who.int/nha/database" target="_blank" rel="noopener noreferrer">database</a> · <a href="https://data.who.int/countries/626" target="_blank" rel="noopener noreferrer">country view</a></td><td>The full financing series above</td><td>✅ Annual release, ~2-year lag</td></tr><tr><td><strong>World Bank WDI</strong> <code>api.worldbank.org/v2/country/TLS/indicator/SH.XPD.*</code></td><td>Independent corroboration; matched GHO exactly</td><td>✅ ~quarterly refresh</td></tr><tr><td><strong>General State Budget 2026</strong> (Ministry of Finance)</td><td>Budget lines, entity allocations, programme splits</td><td>✅ Annual, plus mid-year rectification budgets</td></tr><tr><td>World Bank, <em>Leveling Up: How ASEAN Membership Can Support Timor-Leste&#39;s Economic Transformation</em></td><td>Petroleum Fund and macro-fiscal context</td><td>One-off</td></tr></tbody></table></div>
+<p><em>Financing series queried live 2026-08-24.</em></p>
+    </section>
+
+    <section id="sec-06">
+      <h2>Workforce, education and infrastructure</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s06-workforce-size-and-distribution">Workforce size and distribution</h3>
+<p><strong>Combined doctor, nurse and midwife density is approximately 23 per 10,000 population.</strong> WHO&#39;s Country Cooperation Strategy states <strong>23.2 per 10,000</strong>; an independent calculation from the Global Health Observatory workforce series gives ≈22.9. The two agree.</p>
+<p><strong>Medical doctors: 801 (2014) → 831 (2015) → 1,063 (2023)</strong> (WHO National Health Workforce Accounts, reported as <em>&quot;medical doctors not further defined&quot;</em>). The step change between 2014 and 2015 is the Cuban-trained cohort arriving — see below.</p>
+<p>The public-sector workforce has grown roughly <strong>six-fold in sixteen years</strong>, with the great majority of that growth at municipal level.</p>
+<p>⚠️ <strong>Headcount is not the stated problem. Distribution is.</strong> WHO CCS §2.3.3: <em>&quot;equitable distribution of health workers is a major issue&quot;</em>, with rural and urban staff density varying considerably. A proposal premised on there being too few health workers in the aggregate is arguing against the national assessment; one premised on maldistribution is arguing with it.</p>
+<p>⚠️ <strong>There is no current national HRH plan.</strong> The <strong>National Strategic Plan for Human Resources for Health 2020–2024 has expired and no successor is published.</strong> <em>(UNVERIFIED whether a 2025+ plan exists.)</em> The Ministry&#39;s own HRH strategic plan, <strong>PENRUSS</strong>, is available in English and Tetun at <code>apps.ms.gov.tl/hris/mdoc/</code>.</p>
+<p><strong>The workforce information system works.</strong> <strong>SIRUS</strong> (<em>Sistema Informasaun Rekursu Umanu Saúde</em>), v2.0.0 © 2026, run by the <em>Direção Nacional de Recursos Humanos</em>, is live at <code>apps.ms.gov.tl/hris/</code>. It is login-gated, but its existence is confirmed and WHO records significant work underway to integrate workforce data into the wider health information system. The Ministry&#39;s <strong>HR organogram is published</strong> (<code>apps.ms.gov.tl/hris/mdoc/organogram_eng.pdf</code>, last modified 20 October 2025) — a rare piece of Ministry transparency.</p>
+<h3 id="s06-health-professions-education">Health professions education</h3>
+<p><strong>Six major institutions — one public and five private — collectively produce more than 800 new health-care professionals every year</strong> (WHO CCS 2026–2030 §2.3.3). This is the key current figure.</p>
+<p>⚠️ <strong>The CCS does not name the five private institutions</strong>, and this document has not been able to close that gap authoritatively. Candidate institutions, <strong>UNVERIFIED as to which are among the six and what health programmes they actually run</strong>: Universidade da Paz (UNPAZ), Universidade Católica Timorense (UCT), Universidade Oriental Timor Lorosa&#39;e (UNITAL), Instituto Superior Cristal (ICS), and Universidade Dili (UNDIL). All are in Dili; several have satellite campuses.</p>
+<p>The public institution is the <strong>Universidade Nacional Timor Lorosa&#39;e (UNTL)</strong>. Its health-related fields of study include biomedicine, dietetics, laboratory techniques, medicine, midwifery, nursing, nutrition, pharmacy and tropical medicine. NHSSP II independently confirms sector-wide degrees in <strong>public health, nursing, midwifery, laboratory technician and pharmacy</strong>.</p>
+<p>⚠️ <strong>Allied health specifically is poorly documented.</strong> Beyond laboratory technician, pharmacy, nutrition/dietetics and biomedicine at UNTL, no authoritative enumeration of allied-health training — physiotherapy, radiography, occupational therapy, speech and language therapy — could be found. <strong>This is a gap, and it is stated as one rather than filled by inference from university marketing pages.</strong></p>
+<h3 id="s06-medical-schools-the-authoritative-position">Medical schools — the authoritative position</h3>
+<p><strong>There are exactly three medical schools in Timor-Leste listed in the World Directory of Medical Schools</strong>, the WFME/FAIMER joint registry to which international recognition routes are keyed. <em>Queried live 2026-08-25.</em></p>
+<div class="table-wrap"><table><thead><tr><th>School</th><th>Type</th><th>Teaching since</th><th>Qualification</th><th>Location</th></tr></thead><tbody><tr><td><strong>Universidade Nacional Timor Lorosa&#39;e</strong> — Faculdade de Medicina e Ciências da Saúde</td><td><strong>Public</strong></td><td><strong>2004</strong></td><td>M.B.B.S.</td><td>Campus de Caicoli, Dili</td></tr><tr><td><strong>Universidade Católica Timorense São João Paulo II</strong> — Faculty of Medical Science</td><td>Religious affiliation</td><td><strong>2021</strong></td><td>M.D.</td><td>Rua de 12 de Novembro, Balide, Díli</td></tr><tr><td><strong>Unpaz University</strong> — Faculty of Public Health and Medical Sciences</td><td><strong>Private</strong></td><td><strong>2024</strong></td><td>—</td><td>Av. Osindo 1, Manleuana, Dili</td></tr></tbody></table></div>
+<p>All three are recorded as currently operational.</p>
+<p>⚠️ <strong>Two of the three began teaching in 2021 and 2024 and have therefore not yet graduated anyone.</strong> UNTL is the only medical school in the country with an established graduate output.</p>
+<h3 id="s06-gross-graduate-output-is-a-poor-proxy-for-domestic-workforce-supply">⚠️ Gross graduate output is a poor proxy for domestic workforce supply</h3>
+<p>The &quot;800+ new health professionals a year&quot; figure is <strong>gross output across six institutions and all professions</strong>. It says nothing about how many enter, and remain in, the Timorese health workforce.</p>
+<p>One of the three medical faculties recruits substantially from overseas — a cluster of commercial recruitment sites markets <strong>Unpaz to Indian students</strong> as an English-medium MBBS following an AIIMS Delhi curriculum, claiming recognition by India&#39;s National Medical Commission and eligibility for FMGE/NEXT and ECFMG.</p>
+<p><strong>This document reports the registry facts and nothing more:</strong></p>
+<ul><li>Unpaz&#39;s medical faculty is <strong>WDOMS-listed</strong> and <strong>began instruction in 2024</strong>.</li><li>It therefore <strong>has no graduates</strong>, and cannot have any before roughly 2029.</li><li>⚠️ <strong>WDOMS listing is not NMC recognition.</strong> India&#39;s Foreign Medical Graduate Licentiate Regulations impose their own conditions on course duration, single country of study, internship and medium of instruction. <strong>This document does not state or imply that any Timorese school is NMC-recognised.</strong></li><li>⚠️ <strong>Several competing domains present themselves as UNPAZ.</strong> Which, if any, is the university&#39;s official domain is <strong>UNVERIFIED</strong> — WDOMS records the school&#39;s own website as being <strong>in Indonesian</strong>, which does not obviously correspond to the English-language recruitment domains in circulation. <strong>Anyone considering study there should verify directly with WDOMS and with their own national medical regulator, not with an agent.</strong></li></ul>
+<p><strong>Why this belongs in a landscape scan at all:</strong> a faculty recruiting foreign fee-paying students produces graduates who overwhelmingly leave. <strong>A partner planning a workforce intervention off the gross output figure will over-estimate domestic supply.</strong> The distinction is stated here; it is not quantified, because the numbers needed to quantify it are not published.</p>
+<h3 id="s06-postgraduate-and-overseas-training">Postgraduate and overseas training</h3>
+<p><strong>The Cuban Medical Brigade is the origin of most of Timor-Leste&#39;s doctors.</strong> NHSSP II: <em>&quot;The Cuban Medical Brigade has been playing a determinant role in the education of general doctors that are currently placed at several Community Health Centers and Health Posts across the country, whilst also inspiring the adoption of a new approach to Primary Health Care services, Saúde na Família.&quot;</em></p>
+<p>That is the direct causal link between the Cuban training model and the country&#39;s family-health approach — and it is also why <strong>Spanish is a working language within parts of the medical workforce</strong>.</p>
+<p><strong>Cohort size is UNVERIFIED as a precise figure.</strong> The Government recorded approximately <strong>450 Timorese medical students studying in Cuba in 2010</strong>, plus 100–200 in Indonesia and the Philippines, against only <strong>50 medical specialists trained domestically</strong> at that time. The workforce series (801 → 1,063 doctors) is consistent with the commonly-quoted &quot;800–1,000 Cuban-trained doctors&quot;, but no authoritative published total could be located.</p>
+<p>⚠️ <strong>The binding constraint is postgraduate, not undergraduate.</strong> NHSSP II names <em>&quot;the lack of in-house capacity for basic and specialized training of physicians&quot;</em> as <em>&quot;a serious handicap&quot;</em>. <strong>There is no domestic specialist training pipeline of scale.</strong></p>
+<p>This is the same fact that appears in §5 as <strong>US$19.3 million — 14% of the health budget — spent on overseas medical treatment</strong>. Overseas training remains institutionalised: the Ministry runs its own scholarship management function with a published manual at <code>apps.ms.gov.tl/hris/mdoc/Manual%20Bolsa%20Estudo91118.pdf</code>.</p>
+<h3 id="s06-in-service-training-is-gated-by-insp-tl">⚠️ In-service training is gated by INSP-TL</h3>
+<p><strong>All new training longer than three days delivered to health professionals requires approval from INSP-TL</strong>, the National Institute of Public Health — as does all clinical research. See §4.</p>
+<p>Practitioner experience indicates in-service training is expected to take a particular shape: <strong>five full working days</strong>, with four mandatory components — a <strong>textbook (<em>Matadalan</em>)</strong>, a <strong>trainer&#39;s manual</strong>, a <strong>participant&#39;s manual</strong>, and <strong>job aids</strong> — and with financial provision for trainees (per diem, accommodation, transport, meals).</p>
+<p>⚠️ <strong>This is documented from a practitioner source, not an official one</strong>, and the legal instrument behind the approval requirement could not be located. Treat it as a real and reliable description of practice; verify the current requirements with INSP-TL directly.</p>
+<p>A <strong>First National Training Policy</strong> for in-service training was developed with WHO support (CCS §2.3.3). INSP-TL runs active international training partnerships including with Australia&#39;s <strong>National Critical Care and Trauma Response Centre</strong> and the <strong>Regional Emergency Care Systems Improvement</strong> initiative. WHO has trained <strong>over 1,000 doctors and nurses</strong> in basic emergency and critical care.</p>
+<p><strong>Practical guidance on designing and delivering in-service training in Timor-Leste</strong> — considerably more detailed than anything in official sources — is maintained by the <a href="https://sites.google.com/view/tlsghealth/teaching-training" target="_blank" rel="noopener noreferrer">TL-SG Health Collective</a>. This document does not duplicate it.</p>
+<h3 id="s06-infrastructure">Infrastructure</h3>
+<p>Facility counts and hospital tiers are in <strong>§7</strong>. The financing picture for infrastructure is in <strong>§5</strong>, and is briefly this: capital investment is residual, and WHO&#39;s assessment is that <em>&quot;investment in new facilities and infrastructure upgrades has been minimal.&quot;</em></p>
+<h3 id="s06-sources-for-this-section">Sources for this section</h3>
+<ul><li><strong>World Directory of Medical Schools</strong>, <code>search.wdoms.org</code> — queried live 2026-08-25. Timor-Leste country code 771. ⚠️ No documented public API; the query used is an undocumented form endpoint and is suitable for supervised quarterly refresh only.</li><li><strong>WHO Global Health Observatory / National Health Workforce Accounts</strong> — <code>ghoapi.azureedge.net</code>, country-reported, annual.</li><li><strong>WHO CCS 2026–2030</strong> §2.3.3 — density, the six institutions, the 800+ figure, distribution, the First National Training Policy.</li><li><strong>NHSSP II 2020–2030</strong> — the Cuban Brigade, degree fields, the postgraduate constraint.</li><li><strong><code>apps.ms.gov.tl/hris/mdoc/</code></strong> — PENRUSS, the HR organogram, career structure, scholarship manual (English and Tetun).</li><li><strong>Government of Timor-Leste</strong>, 2010-07-09 — historic overseas training cohorts.</li><li><strong>TL-SG Health Collective</strong> — the INSP-TL approval gate and in-service training format.</li></ul>
+    </section>
+
+    <section id="sec-07">
+      <h2>Service delivery and priority programmes</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s07-the-three-tiers-as-they-exist-today">The three tiers, as they exist today</h3>
+<p><em>Verbatim from WHO CCS 2026–2030 §2.3:</em></p>
+<blockquote><p>&quot;Health services in Timor-Leste are organized at three levels of care – • Primary health care facilities constituting a network of <strong>344 health posts (HPs)</strong> and <strong>61 community health-care centres (level I &amp; II)</strong> at sub-municipal levels; • Secondary health-care facilities constituting <strong>level-III CHCs (10 in number)</strong>, <strong>one regional hospital (Baucau)</strong> and <strong>four referral hospitals (at Maubisse, Suai, Maliana and Oecusse)</strong> at municipal levels; • Tertiary level of care, which at present is limited to <strong>one national hospital HNGV</strong>, located in Dili.&quot;</p></blockquote>
+<p><strong>In summary: 6 hospitals · about 71 community health centres · 344 health posts.</strong></p>
+<p>⚠️ <strong>One discrepancy worth knowing.</strong> The CCS says 10 level-III CHCs; WHO&#39;s own 2023 NCD facility survey sampling frame says 9. Both are WHO, about 2.5 years apart. <strong>Treat &quot;9–10&quot; as the honest range</strong> — and treat this as a small illustration of a general rule for Timorese facility data.</p>
+<p><strong>Facility counts differ substantially between sources and over time</strong>, which is normal for a growing network but catches people out:</p>
+<div class="table-wrap"><table><thead><tr><th>Count</th><th>Source</th><th>Date</th></tr></thead><tbody><tr><td>306 HPs fully functioning; 71% with water supply</td><td>NHSSP II 2020–2030</td><td>~2020</td></tr><tr><td>71 CHCs, 318 HPs, 7 treatment posts, 600 SISCa outposts</td><td>commonly cited</td><td>2021</td></tr><tr><td>71 CHCs, ~440 village HPs, 5 referral hospitals, 1 national</td><td>medRxiv protocol supplement</td><td>2023</td></tr><tr><td><strong>344 HPs, 71 CHCs, 5 hospitals + HNGV</strong></td><td><strong>WHO CCS 2026–2030</strong></td><td><strong>2026</strong></td></tr></tbody></table></div>
+<p>The network has slightly overshot its own decade-old PENSS target of 313 health posts and 70 CHCs.</p>
+<h3 id="s07-hospitals">Hospitals</h3>
+<h4 id="s07-hospital-nacional-guido-valadares-hngv-dili">Hospital Nacional Guido Valadares (HNGV), Dili</h4>
+<p>The country&#39;s <strong>sole tertiary facility</strong>, and an <strong>autonomous institution</strong> rather than a line directorate.</p>
+<ul><li><strong>Beds: 260–340.</strong> ⚠️ This comes from a single published study (Salendo et al., <em>Medicine</em> 101(50), December 2022, DOI 10.1097/md.0000000000032113). <strong>It is the only published bed figure found — the Ministry publishes none.</strong></li><li>Handles most of the country&#39;s <strong>haemodialysis</strong>.</li><li>Timor-Leste&#39;s <strong>first indigenous medical oxygen plant</strong> was installed here in 2025 and began functioning in <strong>February 2026</strong>.</li><li>A new <strong>paediatric and intensive coronary care building</strong>, valued at over <strong>US$2.4 million</strong>, is under construction (General State Budget 2026).</li><li>Complex interventions are still <strong>referred overseas</strong> — see §5 on the US$19.3 million overseas treatment line.</li></ul>
+<h4 id="s07-regional-and-referral-hospitals">Regional and referral hospitals</h4>
+<div class="table-wrap"><table><thead><tr><th>Hospital</th><th>Municipality</th><th>Tier</th></tr></thead><tbody><tr><td><strong>Eduardo Ximenes Regional Hospital</strong></td><td>Baucau</td><td><strong>Regional</strong></td></tr><tr><td><strong>Maliana Referral Hospital</strong></td><td>Bobonaro</td><td>Referral</td></tr><tr><td><strong>Maubisse Referral Hospital</strong></td><td>Ainaro</td><td>Referral</td></tr><tr><td><strong>Suai Referral Hospital</strong></td><td>Cova Lima</td><td>Referral</td></tr><tr><td><strong>Oecusse Referral Hospital</strong> (Pante Macassar)</td><td>RAEOA</td><td>Referral</td></tr></tbody></table></div>
+<p>⚠️ <strong>Baucau is a regional hospital, not a referral hospital.</strong> The flat five-item list that most documents repeat flattens a real distinction in the referral chain.</p>
+<p>All five have out-patient, emergency and in-patient departments, staffed with general practitioners and specialists in <strong>four clinical areas: surgery, paediatrics, obstetrics and gynaecology, and internal medicine</strong>. Each is separately managed with its own executive director.</p>
+<p><strong>Critical care units have been established across all five</strong>, with WHO having trained <strong>over 1,000 doctors and nurses</strong> in basic emergency and critical care. A <strong>newborn birth-defect online database</strong> now runs in all five.</p>
+<h3 id="s07-primary-care-and-community-delivery">Primary care and community delivery</h3>
+<p><strong>Community health centres (CHCs, <em>Sentru Saúde Komunitáriu</em> — SSK)</strong> operate at three levels; levels I and II are sub-municipal, level III is a secondary facility.</p>
+<p><strong>Health posts (<em>Postu Saúde</em> — PS)</strong> are the front line, 344 of them.</p>
+<p><strong>SISCa</strong> — <em>Serbisu Integradu Saúde Komunitária</em> — is the integrated community outreach service, the mechanism by which services reach populations that cannot reach facilities. Around <strong>600 SISCa outposts</strong> have been cited.</p>
+<p><strong>PSF — community health volunteers</strong> — are registered nationally, with <strong>600+</strong> reported. They are a significant part of how primary care actually reaches households, and are worth understanding before designing any community-level intervention.</p>
+<p><strong>Saúde na Família</strong> is the national family-health approach to primary care. Its adoption was directly inspired by the Cuban training model (§6) — the connection between how Timorese doctors were trained and how primary care is organised is not incidental.</p>
+<h3 id="s07-priority-programmes">Priority programmes</h3>
+<p>The four stated national priority areas are <strong>reproductive, maternal, newborn and child health</strong>; <strong>malnutrition</strong>; <strong>communicable disease, particularly TB and HIV</strong>; and <strong>non-communicable disease</strong>. Epidemiology for each is in §3.</p>
+<p>Programme-level notes:</p>
+<ul><li><strong>TB</strong> carries the largest communicable-disease burden (496/100,000, 2024) and is covered by a Global Fund grant with the Ministry as Principal Recipient, <strong>running to 31 December 2026</strong>.</li><li><strong>Malaria</strong> has moved from elimination to <strong>prevention of re-establishment</strong> following certification in July 2025 — the Global Fund grant is named accordingly, also <strong>ending 31 December 2026</strong>.</li><li><strong>Immunisation</strong> is comparatively well instrumented: DHIS2-tracked, HPV rolled out from July 2024, and a digital e-tracker launched June 2026.</li><li><strong>NCD services readiness</strong> was assessed nationally in the 2023 facility survey (§3) — the closest thing the country has to a facility-readiness baseline.</li></ul>
+<p>⚠️ <strong>Both current Global Fund grants end on 31 December 2026.</strong> If your planning assumes their continuation, check the position rather than assuming it.</p>
+<h3 id="s07-health-information-system">Health information system</h3>
+<p><strong>TLHIS, the Timor-Leste Health Information System, is DHIS2-based.</strong> WHO records that it <em>&quot;was upgraded to the latest version and revamped to include indicators from key programmatic areas such as immunization, reproductive-maternal-newborn-child and adolescent health, school health, nutrition, NCDs and communicable disease&quot;</em>.</p>
+<p>Significant work is underway to <strong>integrate health workforce data (SIRUS) into the HMIS</strong>.</p>
+<p>⚠️ <strong>The routine system is also one side of the skilled-birth-attendance contradiction in §3.</strong> A functioning DHIS2 instance does not by itself resolve data-quality questions, and the honest reading of §3 is that at least one of the country&#39;s two headline maternal-health data streams is not measuring what its label says.</p>
+<h3 id="s07-sources-for-this-section">Sources for this section</h3>
+<ul><li><strong>WHO CCS 2026–2030</strong> §2.3 — the tier structure and facility counts (verbatim above).</li><li><strong>WHO</strong>, <em>National Survey on NCDs &amp; NCD Risk Factors Among Adults &amp; Availability &amp; Readiness of NCD Services in Health Facilities, Timor-Leste 2023</em>, published 2026-08-04, 406pp, ISBN 9789290222613 — <a href="https://iris.who.int/handle/10665/386866" target="_blank" rel="noopener noreferrer">record</a>. Sampling frame corroborates facility totals.</li><li><strong>NHSSP II 2020–2030</strong> — hospital service configuration, the planned municipal hospital tier (§4).</li><li><strong>General State Budget 2026</strong> — HNGV construction, overseas treatment line.</li><li>Salendo J et al., <em>Medicine</em> 101(50), 2022 — the HNGV bed figure.</li><li><a href="https://dhis2.org/timor-leste-immunization/" target="_blank" rel="noopener noreferrer">dhis2.org Timor-Leste immunisation case study</a>.</li></ul>
+    </section>
+
+    <section id="sec-08">
+      <h2>Who is doing what</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s08-how-to-read-this-section">⚠️ How to read this section</h3>
+<p><strong>This is the least complete and most valuable part of this document, and it goes stale fastest.</strong></p>
+<p><strong>There is no &quot;who does what where&quot; (3W) dataset for Timor-Leste, and no health-cluster partner list.</strong> This was confirmed with a positive control — the sibling query on the same platform returns 114 Timor-Leste datasets, so the absence is real, not a broken search. Timor-Leste is not an active humanitarian-cluster operation, so the shortcut that produces a partner map in most countries does not exist here.</p>
+<p><strong>This map was therefore built by hand and is maintained by hand.</strong> Treat every entry as a <strong>starting point for enquiry</strong>, not a verified current fact. Contact details in particular decay quickly.</p>
+<p><strong>If you are listed here and something is wrong — or you would rather not be listed — please use the correction link in the footer.</strong> That is the intended way this section stays current between editions.</p>
+<h3 id="s08-two-traps-that-will-mislead-an-automated-link-check">⚠️ Two traps that will mislead an automated link check</h3>
+<p><strong>1. &quot;Dead website, live Facebook&quot; is the norm here</strong>, and it now affects well-funded, mid-sized organisations. Confirmed dead, lapsed or hijacked in this scan: <code>redefeto.tl</code>, <code>pradet.online</code>, <code>rhto.tl</code>, <code>casavida.org</code>, <code>hamnasa.org</code>, <code>alfela.tl</code>, <code>adtl.tl</code>, <code>codiva.tl</code>, <code>cct.tl</code>. <strong>A dead domain here does not mean a dead organisation.</strong> Check Facebook before concluding anything.</p>
+<p><strong>2. Two domains actively lie to a status-code checker:</strong></p>
+<ul><li><strong><code>casavida.org</code> returns HTTP 200 and is NOT Casa Vida.</strong> It is an expired domain, now parked &quot;for sale&quot;, previously serving spam. The real organisation is at <strong><code>casavidatimorleste.org</code></strong>.</li><li><strong><code>pradet.org</code> looks dead to any HTTPS-forcing tool but is alive over plain HTTP</strong> — an old Drupal install with no TLS.</li><li><strong><code>acbit.org</code> is an unrelated third-party gaming site.</strong> Do not cite it for ACbit.</li></ul>
+<p><strong>Check content, not status codes.</strong> This document&#39;s refresh pipeline fetches and fingerprints cited pages for exactly this reason (§10).</p>
+<h3 id="s08-best-entry-points">Best entry points</h3>
+<p>If you are new to Timor-Leste and want one door rather than twenty, start here.</p>
+<p><strong>REBAS TL — <em>Rede ba Saúde Timor-Leste</em></strong> — the civil-society <strong>health-sector network</strong>, and the single best entry point to the Timorese health-CSO sector. In February 2024 its Coordinator and the FONGTIL Director jointly met the Vice-Minister of Health on hospital operationalisation, medical workforce training, reducing overseas-treatment costs, and strengthening the Ministry–civil-society partnership. ⚠️ <strong>No independent website or contact found (UNVERIFIED) — reach it through FONGTIL.</strong></p>
+<p><strong>FONGTIL — <em>Forum ONG Timor-Leste</em></strong> — the national NGO umbrella, with <strong>259 registered local and national NGO members</strong> as of its 2025 AGM. It also manages <strong>Hamutuk</strong>, the multi-sector nutrition/food-security platform (100+ organisations). <a href="https://fongtil.org.tl/" target="_blank" rel="noopener noreferrer">fongtil.org.tl</a> · Rua do Mercadu Municipal, Dili · +670 7807 4743 · forumong.tl@gmail.com ⚠️ <code>fongtil.org</code> and <code>fongtil.tl</code> do <strong>not</strong> resolve — the <code>.org.tl</code> domain is the live one.</p>
+<h3 id="s08-timorese-health-organisations-the-ones-that-must-be-on-any-map">Timorese health organisations — the ones that must be on any map</h3>
+<h4 id="s08-hamnasa-hamutuk-nasaun-saudvel">HAMNASA — <em>Hamutuk Nasaun Saudável</em></h4>
+<p><strong>The largest purely Timorese primary-health-systems NGO in the country</strong>, and the institutional successor to <strong>Health Alliance International</strong>, which transferred all its global operations and Timor-Leste programmes to HAMNASA in <strong>October 2021</strong>.</p>
+<p>⚠️ <strong>HAI did not close — it localised.</strong> Documents describing HAI as defunct are wrong.</p>
+<p>Work spans maternal and child health, <strong>tuberculosis</strong>, nutrition (including a mobile diagnostic van), <em>Learning Labs</em> for MNCH, <strong>Prontu</strong> emergency obstetric and newborn care training delivered at HNGV, <em>Harmonia</em> GBV prevention, positive parenting and implementation research. Municipalities: Aileu, Viqueque, Lautem, Ermera, Dili. The <strong>Liga Inan</strong> mobile maternal-health programme, scaled nationwide by 2019, is in this lineage.</p>
+<p><strong>Systemic weight worth knowing:</strong> the <strong>GBV clinical-care training materials used nationally were originally developed by HAMNASA</strong>, later adapted with INSP-TL to WHO guidance.</p>
+<p>Recent: launched a TB programme in Dili and published a Biannual Report 2024–25 in March 2026.</p>
+<p>🔴 <strong><code>hamnasa.org</code> was down as of 2026-08-24</strong> (hosting suspended, not a 404; healthy in archive on 10 June 2026). Live surface: <a href="https://www.facebook.com/HamutukNasaunSaudavel/" target="_blank" rel="noopener noreferrer">facebook.com/HamutukNasaunSaudavel</a> ⚠️ Archived contact, <strong>possibly stale</strong>: info@hamnasa.org · +670 332 2608 · Lecidere, Dili</p>
+<h4 id="s08-pradet-psychosocial-recovery-and-development-in-east-timor">PRADET — Psychosocial Recovery and Development in East Timor</h4>
+<p><strong>The most important Timorese mental-health and forensic civil-society organisation.</strong> A national NGO since 2002.</p>
+<p>Its <strong>Fatin Hakmatek (&quot;Safe Room&quot;)</strong> is the national one-stop crisis service for survivors of sexual assault, domestic violence and child abuse — including <strong>medical treatment and medico-forensic documentation</strong> — sited <strong>inside hospitals</strong> at Dili (HNGV), Baucau (2017) and Oecusse (2012).</p>
+<p><strong>PRADET wrote Timor-Leste&#39;s Medical Forensic Protocol (2004)</strong> and built the accredited curriculum for forensic examiners (2009). It also runs <strong>PAMM</strong> (community mental illness response), <strong>PDAJJ</strong> (juvenile justice and alcohol education — it states it is the only organisation doing this nationally), <strong>Tau Matan</strong> (counter-trafficking shelter), and a psychosocial rehabilitation centre at HNGV.</p>
+<p>Recent (April 2026): a mobile rehabilitation centre in Dili; <strong>~1,000 violence survivors supported in 2025</strong>; <strong>58 people with mental health conditions reunited with families in 2025</strong>; expansion to Atauro planned.</p>
+<p>⚠️ <strong><code>pradet.org</code> is live but HTTP-only</strong> — https fails. Site content is stale (newest news 2020) and its &quot;© 2026&quot; is a dynamic date, not a freshness signal. <code>pradet.online</code> is dead. Rua DIT, Efacas, Manleuana, Dili · +670 332 1562 · info@pradet.org · <a href="https://www.facebook.com/PradetTimorLeste/" target="_blank" rel="noopener noreferrer">facebook.com/PradetTimorLeste</a></p>
+<h4 id="s08-kp-associao-komunidade-progresu">KP+ — <em>Associação Komunidade Progresu</em></h4>
+<p><strong>Probably the most operationally important HIV civil-society organisation in the country, and absent from most partner lists.</strong></p>
+<p>Works with <strong>men who have sex with men, transgender people, and female and male sex workers</strong> across the five priority municipalities — <strong>Dili, Baucau, Bobonaro, Covalima, Oecusse</strong>. Distributes the basic prevention package and delivers <strong>HIV testing</strong>; trains peer educators jointly with the PNTL clinic, the Ministry of Health and Estrela+. <strong>A sub-recipient of the Global Fund grant to the Ministry of Health.</strong></p>
+<p>UNFPA&#39;s contribution to reaching key populations <em>&quot;would not have been possible without&quot;</em> this partnership, per the National AIDS Control Programme Manager.</p>
+<p>⚠️ <strong>No website or organisational contact found — UNVERIFIED.</strong> Route via INCSIDA or the Global Fund Country Coordinating Mechanism.</p>
+<h4 id="s08-fundasaun-alola-alola-foundation">Fundasaun Alola (Alola Foundation)</h4>
+<p>A major maternal and child health provider, running facility- and community-based MCH programmes, women&#39;s cancer awareness, nutrition education, <strong>child growth monitoring and nutritional screening</strong>, infant and young child feeding education, counselling and referral. Also a key partner for GBV psychosocial recovery and shelters.</p>
+<p>Evidence of current activity is strong — an actively hiring MCH field programme for <strong>Ermera and RAEOA (Oecusse)</strong> as of August 2026.</p>
+<p><a href="https://www.alolafoundation.org/" target="_blank" rel="noopener noreferrer">alolafoundation.org</a> · Timor Plaza CBD 10, Dili · +670 3323855 · info@alolafoundation.org</p>
+<h4 id="s08-casa-vida-timor-leste">Casa Vida Timor-Leste</h4>
+<p>Founded 2008. Shelter and family-strengthening for <strong>child and women survivors of sexual abuse and gender-based violence</strong>, with services explicitly including <strong>healthcare, professional counselling, case management, education, vocational training and reintegration</strong>. Health facilities refer GBV survivors here after clinical care.</p>
+<p>Recent: August 2026, the US Navy Pacific Partnership trained the care team in mental health and self-care; May 2026, contributions of essential medicines and clinic supplies.</p>
+<p>🔴 <strong>Use <a href="https://casavidatimorleste.org/" target="_blank" rel="noopener noreferrer">casavidatimorleste.org</a> — <code>casavida.org</code> is not theirs.</strong> Rua Filomena da Camara, Bidau Lecidere, Dili · +670 7735 2345 · contact@casavidatimorleste.org</p>
+<h4 id="s08-fokupers-forum-komunikasaun-ba-feto-timor-lorosae">FOKUPERS — <em>Forum Komunikasaun ba Feto Timor Lorosa&#39;e</em></h4>
+<p>Founded 1997. GBV and women&#39;s and children&#39;s rights. Health-relevant work includes <strong>shelters, trauma healing, legal support</strong>, and <strong>community training on reproductive health</strong>. A core national GBV action plan partner and a health-facility referral counterpart.</p>
+<p><a href="https://www.fokupers.org/" target="_blank" rel="noopener noreferrer">fokupers.org</a> · +670 3321534 · fokupers2003@yahoo.com</p>
+<h4 id="s08-estrela-network-of-people-living-with-hiv">Estrela+ — network of people living with HIV</h4>
+<p>Stigma reduction, prevention, testing and referral to treatment. Documented reach 2021–23: 699 community leaders, 433 health personnel, 744 young people aged 15–29, and <strong>393 people living with HIV</strong> reached with prevention, care and rights education.</p>
+<p>⚠️ No website (<code>estrelaplus.org</code> does not resolve); contact UNVERIFIED. Live: <a href="https://www.facebook.com/EstrelaPlus/" target="_blank" rel="noopener noreferrer">facebook.com/EstrelaPlus</a></p>
+<h3 id="s08-other-verified-health-providers">Other verified health providers</h3>
+<ul><li><strong>Klibur Domin</strong> — <a href="https://kliburdomin.tl/" target="_blank" rel="noopener noreferrer">kliburdomin.tl</a> ⚠️ note <code>.tl</code>, not <code>.org</code></li><li><strong>HIAM Health</strong> — <a href="https://hiamhealth.org/" target="_blank" rel="noopener noreferrer">hiamhealth.org</a></li><li><strong>Marie Stopes Timor-Leste</strong> — <a href="https://www.mariestopes.tl/" target="_blank" rel="noopener noreferrer">mariestopes.tl</a>. An MSI affiliate rather than a local NGO, but a major sexual and reproductive health provider that <strong>supports public facilities with implant and IUCD insertion where no skilled provider exists</strong>, co-delivers family planning provider training, and has helped the Ministry refine FP indicators including HIV/STI screening and referral.</li><li><strong>Rede Feto Timor-Leste</strong> — an advocacy peak body, <strong>not a service provider</strong>. Founded 10 March 2000. ⚠️ <code>redefeto.tl</code> is dead (lapsed after September 2025; Wikipedia still cites it). Live: <a href="https://www.facebook.com/RedeFetoTimorLeste/" target="_blank" rel="noopener noreferrer">facebook.com/RedeFetoTimorLeste</a></li></ul>
+<p>⚠️ <strong>Cooperativa Café Timor (CCT)</strong> — the cooperative is definitely active, but <strong>the status of its clinic network is UNVERIFIED for 2023–2026.</strong> The best CCT-sourced figures (December 2022) are <strong>8 permanent and 3 mobile clinics serving over 10,000 rural residents a year with 90+ staff</strong>, with about <strong>90% of medicines and equipment supplied by the Ministry of Health</strong>. Secondary sources give conflicting counts. <strong>No evidence dated 2023–2026 was found that the clinics still operate.</strong> If CCT&#39;s clinics matter to your planning, verify directly — this is the highest-value open question in this section.</p>
+<p>⚠️ <strong>Fundasaun Timor Hari&#39;i</strong> — HIV/AIDS, VCCT and STI testing. Site loads but the newest post is from <strong>December 2015</strong>. <strong>Likely defunct — do not list or approach without direct confirmation.</strong></p>
+<h3 id="s08-disability-and-gbv-organisations-adjacent-to-the-health-system">Disability and GBV organisations adjacent to the health system</h3>
+<p>All were confirmed active in 2024, but <strong>none has a live website or a verifiable published organisational contact.</strong> Route via FONGTIL, UNFPA or UN Women Timor-Leste, INCSIDA, or the MSSI-coordinated GBV referral network.</p>
+<ul><li><strong>CBRN-TL</strong> — Community Based Rehabilitation Network Timor-Leste; persons living with disability; monitored inclusive-health work in Ermera; facilitates GBV response for survivors with disabilities.</li><li><strong>ADTL</strong> — Association for People of Disability Timor-Leste.</li><li><strong>RHTO — <em>Ra&#39;es Hadomi Timor Oan</em></strong> — disability association.</li><li><strong>AlFeLa</strong> — <em>Asistensia Legal ba Feto no Labarik</em>.</li><li><strong>MHVF — <em>Mane Ho Vizaun Foun</em></strong> — male engagement for GBV prevention.</li><li><strong>ACbit — <em>Asosiasaun Chega! Ba Ita</em></strong> — survivors of past conflict; psychosocial and trauma work.</li><li><strong>Fundasaun CODIVA</strong> — national network for community organisations working with MSM and transgender people; HIV/STI prevention, behaviour-change training, advocacy.</li></ul>
+<h3 id="s08-organisations-often-listed-as-health-partners-that-are-not">Organisations often listed as health partners that are not</h3>
+<p>Saying so plainly saves everyone time.</p>
+<ul><li><strong>Ba Futuru</strong> — child protection, peacebuilding, arts-based education, teacher training across all municipalities. GBV prevention/referral and early childhood development are the only health-adjacent edges; <strong>no health programme</strong>. <a href="https://www.bafuturu.org/" target="_blank" rel="noopener noreferrer">bafuturu.org</a></li><li><strong>Belun</strong> — conflict prevention and early warning. <strong>But</strong> repeatedly named as a UNFPA implementing partner for <strong>GBV prevention and response</strong>, doing community-level prevention and referral <em>into</em> health services. <a href="https://www.belun.tl/" target="_blank" rel="noopener noreferrer">belun.tl</a></li><li><strong>JU,S Jurídico Social</strong> — legal, not health; useful for health law, GBV law and disability rights. <a href="https://www.jus.tl/" target="_blank" rel="noopener noreferrer">jus.tl</a></li><li><strong>Empreza Di&#39;ak</strong> — livelihoods and economic empowerment; a social-determinants partner at most.</li><li><strong>Haburas Foundation</strong> — environment and land, not health.</li></ul>
+<h3 id="s08-false-leads-organisations-that-do-not-exist">⚠️ False leads — organisations that do not exist</h3>
+<p>These circulate in partner lists and briefing notes. Each was checked against a 253-page authoritative CSO roster and found to have <strong>zero</strong> mentions.</p>
+<ul><li><strong>&quot;Kmanek&quot;</strong> — no Timorese health NGO of this name exists. <em>Kmanek</em> is a common Tetun word meaning &quot;good&quot;; the search hits are a Dili supermarket chain, a political party, and a radio station.</li><li><strong>&quot;Instituto Alberto Ricardo&quot;</strong> — no health institute of this name is verifiable. The attested figure is <strong>Dom Alberto Ricardo da Silva (1943–2015), Roman Catholic Bishop of Dili</strong>.</li><li><strong>&quot;Hadomi Timor Foundation&quot;</strong> — could not be confirmed to exist; most likely a garbling of <strong>RHTO — <em>Ra&#39;es Hadomi Timor Oan</em></strong>.</li><li><strong>&quot;Fundasaun Ita Nia Rai&quot;</strong> — <em>Ita Nia Rai</em> (&quot;Our Land&quot;) is best attested as a <strong>land and property rights</strong> programme, not a health body.</li></ul>
+<h3 id="s08-international-and-external-actors">International and external actors</h3>
+<p><strong>WHO</strong> (SEARO region — not WPRO) is the principal technical partner; the Country Cooperation Strategy 2026–2030 is the governing framework for its engagement.</p>
+<p><strong>The Global Fund</strong> holds two grants with the <strong>Ministry of Health as Principal Recipient</strong> — <em>Prevention of Re-establishment of Malaria in Timor-Leste</em> and <em>Expanded Comprehensive Response to HIV/AIDS and Reducing the Burden of Tuberculosis</em>. ⚠️ <strong>Both end 31 December 2026.</strong></p>
+<p><strong>UNICEF</strong> works on nutrition, immunisation, health-system strengthening and WASH, co-funded the TLDHS 2025–26, and has outputs running to 2030. UN House, Caicoli Street, Dili · PO Box 212 · +670 331 3535.</p>
+<p><strong>UNFPA</strong> works on sexual and reproductive health and GBV, and its <strong>4th Country Programme Evaluation (2021–2025) annexes</strong> are the single best published roster of active Timorese health and GBV civil society — <a href="https://www.unfpa.org/sites/default/files/2025-03/Annexes-UNFPA%20Timor-Leste%204th%20Country%20Programme%20Evaluation%20(2021-2025" target="_blank" rel="noopener noreferrer">PDF, 253pp</a>.pdf).</p>
+<p><strong>Australia&#39;s National Critical Care and Trauma Response Centre</strong> partners with INSP-TL on critical care training, alongside the Regional Emergency Care Systems Improvement initiative.</p>
+<p>⚠️ <strong>USAID country health pages are gone</strong> following the agency&#39;s restructuring; every country and Global Health URL now returns 404. See §10 for why this matters more than a broken link normally would.</p>
+<p>⚠️ <strong>IATI returns zero rows for every Timorese national NGO</strong> — it sees donors and international NGOs only. La&#39;o Hamutuk covers the donor-flows layer but stopped updating in 2021. <strong>Neither source alone is sufficient</strong>, which is a large part of why this section had to be assembled by hand.</p>
+<h3 id="s08-method-for-this-section">Method for this section</h3>
+<p>Compiled 2026-08-24 by direct URL and domain probing, web-archive history, site-internal search, and full-text extraction of the UNFPA 4th Country Programme Evaluation annexes.</p>
+<p>⚠️ <strong>Read a negative carefully.</strong> Automated web search was substantially blocked during compilation, so <strong>&quot;no website found&quot; means &quot;not found by domain probing and site search&quot; — not &quot;proven absent&quot;.</strong></p>
+<p><strong>Contacts policy applied throughout: organisational contacts only.</strong> Where an organisation published a named individual&#39;s personal mobile number or personal email address, it has been deliberately omitted.</p>
+    </section>
+
+    <section id="sec-10">
+      <h2>Sources and method</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s10-how-this-document-is-produced">How this document is produced</h3>
+<pre class="code"><code>quarterly trigger (scheduled script, no AI)
+  1. AI agent session   -&gt; re-verifies and updates content/*.md   (research, drafting, judgement)
+  2. node build.js      -&gt; renders one self-contained HTML page, stamps the dates
+  3. node publish.js    -&gt; git commit and push          (the ONLY publisher; the AI never pushes)
+  4. node archive.js    -&gt; new Zenodo version + web archive snapshot
+  5. liveness stamp     -&gt; so a silently-dead pipeline is detectable</code></pre>
+<p>The split is deliberate: <strong>judgement is done by an AI agent, publication is done by a deterministic script.</strong> The agent can propose text; it cannot publish. That boundary is what makes the review model in §0 meaningful rather than decorative.</p>
+<p><strong>The numeric spine is re-pulled from source APIs each cycle rather than recalled.</strong> This is not fastidiousness — see the two documented cases below where a recalled or copied number was wrong.</p>
+<h3 id="s10-primary-sources">Primary sources</h3>
+<div class="table-wrap"><table><thead><tr><th>Source</th><th>Role</th><th>Freshness</th></tr></thead><tbody><tr><td><strong>WHO Country Cooperation Strategy for Timor-Leste 2026–2030</strong> — <a href="https://iris.who.int/handle/10665/385106" target="_blank" rel="noopener noreferrer">record</a>, ISBN 9789290222316, xii+69pp</td><td>The best single current description of the system</td><td>Published 2026-03-26; CCS cycles ~5 years, next ~2031</td></tr><tr><td><strong>National Health Sector Strategic Plan II (2020–2030)</strong> — full text at <code>apps.ms.gov.tl/hris/mdoc/</code></td><td>The operative national plan</td><td>Current ⚠️ WHO&#39;s own planning database still lists the superseded 2011–2030 plan</td></tr><tr><td><strong>General State Budget 2026</strong> — Ministry of Finance, <a href="https://www.mof.gov.tl" target="_blank" rel="noopener noreferrer">mof.gov.tl</a></td><td>Budget lines and entity allocations</td><td>Annual + mid-year rectification</td></tr><tr><td><strong>WHO National Survey on NCDs and NCD Risk Factors / facility readiness, Timor-Leste 2023</strong> — <a href="https://iris.who.int/handle/10665/386866" target="_blank" rel="noopener noreferrer">record</a>, 406pp</td><td>The closest thing to a national facility-readiness assessment</td><td>Published 2026-08-04; fieldwork Oct–Dec 2023</td></tr><tr><td><strong>TLDHS 2025–26 Key Indicators Report</strong></td><td>Household-survey headline indicators</td><td>Launched 2026-06-11; full report due later in 2026</td></tr><tr><td><strong>UNFPA 4th Country Programme Evaluation (2021–2025), annexes</strong> — <a href="https://www.unfpa.org/sites/default/files/2025-03/Annexes-UNFPA%20Timor-Leste%204th%20Country%20Programme%20Evaluation%20(2021-2025" target="_blank" rel="noopener noreferrer">PDF, 253pp</a>.pdf)</td><td>Best published roster of active Timorese health and GBV civil society</td><td>March 2025</td></tr></tbody></table></div>
+<h3 id="s10-machine-readable-sources-tested-live">Machine-readable sources, tested live</h3>
+<p>All were tested with live calls on <strong>2026-08-24</strong> and all work <strong>without an API key</strong>.</p>
+<div class="table-wrap"><table><thead><tr><th>Source</th><th>Endpoint</th><th>Notes</th></tr></thead><tbody><tr><td><strong>World Bank WDI / HNP</strong></td><td><code>api.worldbank.org/v2/country/TLS/indicator/&amp;lt;CODE&amp;gt;?format=json</code></td><td>~1,500 indicators; data through 2024; refreshes ~quarterly. <strong>The primary numeric spine.</strong></td></tr><tr><td><strong>WHO Global Health Observatory</strong></td><td><code>ghoapi.azureedge.net/api/&amp;lt;INDICATOR&amp;gt;?$filter=SpatialDim eq &amp;#39;TLS&amp;#39;</code></td><td>3,093 indicators; full OData filtering</td></tr><tr><td><strong>UNICEF Data Warehouse</strong></td><td><code>sdmx.data.unicef.org/.../TLS.&amp;lt;IND&amp;gt;.?format=sdmx-json</code></td><td>Child mortality, nutrition, WASH, immunisation</td></tr><tr><td><strong>DHS Program</strong></td><td><code>api.dhsprogram.com/rest/dhs/surveys?countryIds=TL</code></td><td>⚠️ see trap 3</td></tr><tr><td><strong>Humanitarian Data Exchange</strong></td><td>CKAN API</td><td>114 Timor-Leste datasets; aggregates WHO, DHS and World Bank into uniform CSV; includes an OSM-derived health-facility layer as GeoJSON</td></tr><tr><td><strong>d-portal.org</strong></td><td>unauthenticated</td><td>968 Timor-Leste health activities. ⚠️ Use instead of ReliefWeb (now requires a registered <code>appname</code>) and the official IATI Datastore (requires a key)</td></tr><tr><td><strong>World Directory of Medical Schools</strong></td><td><code>search.wdoms.org</code> — country code <strong>771</strong></td><td>⚠️ No documented public API; the query used is an undocumented form endpoint. Supervised refresh only</td></tr></tbody></table></div>
+<h3 id="s10-five-traps-documented-because-each-one-produced-a-wrong-answer">⚠️ Five traps, documented because each one produced a wrong answer</h3>
+<p><strong>1. Link rot here is a reputational hazard, not a cosmetic one.</strong> USAID&#39;s country health pages are gone following the agency&#39;s restructuring. Worse: <strong><code>healthpolicyplus.com</code>, a former USAID-funded project domain, has been re-registered and now serves a Bitcoin-casino affiliate site.</strong> A refresh job that copies citations forward and only checks status codes would cheerfully republish that link under a USAID label.</p>
+<p><strong>So this document&#39;s pipeline fetches and fingerprints cited pages rather than pinging them.</strong> The same pattern appears in-country — see the two misleading domains in §8.</p>
+<p><strong>2. A model recalling a number gets it wrong, and there is a concrete instance.</strong> WHO&#39;s own Timor-Leste profile publishes health expenditure at 11.4% of GDP (2021); WHO&#39;s own API returns 4.92%. The API figure reproduces from primitives; the profile figure implies a non-oil-GDP denominator. <strong>Pull from the API, cite the endpoint, and state the denominator.</strong> §5.</p>
+<p><strong>3. The DHS API silently serves ten-year-old data.</strong> A new TLDHS 2025–26 exists, but the API returns only the 2009 and 2016 surveys. <strong>Anything automated against it will publish decade-old figures with full confidence.</strong> Current figures are hard-coded from the Key Indicators Report and the API is re-tested each cycle.</p>
+<p><strong>4. Global Health Observatory freshness is per-indicator and varies by about 18 months</strong> — life expectancy last refreshed August 2024, workforce data January 2026. <strong>A stale indicator looks identical to a fresh one in the payload.</strong> The per-observation refresh stamp is logged.</p>
+<p><strong>5. <code>nslookup</code> gives false NXDOMAIN results for <code>.tl</code> domains.</strong> Use <code>curl</code>. <code>redcross.tl</code> reports NXDOMAIN on two public resolvers and returns HTTP 200 via curl. More generally: <strong>check content, not status codes</strong> — §8 documents a domain that returns 200 and is not the organisation it appears to be, and another that looks dead over HTTPS and is alive over HTTP.</p>
+<h3 id="s10-on-negative-findings">On negative findings</h3>
+<p>Where this document says something does not exist, that claim was tested against a <strong>positive control</strong> wherever possible — a query known to return results, run against the same source. The finding that <strong>there is no 3W dataset for Timor-Leste</strong> is stated only because the sibling query on the same platform returned 114 Timor-Leste datasets.</p>
+<p>⚠️ <strong>One negative is weaker than the others and is flagged where it appears:</strong> in §8, automated web search was substantially blocked during compilation, so &quot;no website found&quot; means &quot;not found by domain probing and site search&quot;, <strong>not &quot;proven absent&quot;</strong>.</p>
+<h3 id="s10-document-repository">Document repository</h3>
+<p>Source documents referenced here — national plans, guidelines, survey reports — are collected in a shared document library where redistribution is permitted. The link is in the footer once the library&#39;s owner has confirmed it may be published.</p>
+<p>⚠️ <strong>Where redistribution is doubtful, this document links out rather than rehosting.</strong> Rehosting a PDF is republication, and licences vary: WHO material is generally CC BY-NC-SA 3.0 IGO, while government and NGO documents differ and some are all-rights-reserved.</p>
+<h3 id="s10-on-ai-generation-and-this-documents-own-status">On AI generation and this document&#39;s own status</h3>
+<p>The text is <strong>drafted and updated by an AI agent</strong> and <strong>reviewed by a named human editor</strong>, who takes editorial responsibility for reviewed editions. The banner at the top of the page states which of those is true of the edition you are reading, and <strong>flags in words when the text has changed since the last human review</strong> — which, by design, is a normal state for this document rather than an exceptional one.</p>
+<p>This is stated for two reasons. The first is that it is the honest thing to do, and the genre&#39;s real convention is not a chapter list but that a document tells you how much to trust it. The second is that the <strong>EU AI Act&#39;s Article 50(4) transparency obligation became applicable on 2 August 2026</strong>, covering AI-generated text that informs the public on matters of public interest, with an exemption route via human review and editorial responsibility. Whether it binds this document is not settled — it is written from Singapore about Timor-Leste — but EU-funded programmes and European organisations are a real part of the audience, and it is the most concrete published standard that exists.</p>
+<p>⚠️ <strong>The disclosure is generated automatically from the document&#39;s own metadata, not written by hand.</strong> A sentence a human has to remember to update is a sentence that will eventually be false, and on this document a false disclosure would discredit everything else.</p>
+    </section>
+
+    <section id="sec-11">
+      <h2>Limitations</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s11-what-this-document-cannot-do">What this document cannot do</h3>
+<p><strong>It has no official standing.</strong> Nothing here is endorsed by the Ministry of Health, WHO, or any government or institution. It is a private compilation of public sources.</p>
+<p><strong>It is a desk review.</strong> No fieldwork, no interviews, no primary data collection. It reports what published sources say and where they disagree. It cannot tell you what a particular municipality needs this year, and it is no substitute for talking to Timorese counterparts.</p>
+<p><strong>It contains no assessment of where partners are most needed.</strong> That section has been deliberately omitted from this edition, because it would be the only part that is judgement rather than sourced description. Its absence is disclosed on the page rather than passed over silently.</p>
+<h3 id="s11-known-gaps-things-that-simply-are-not-published">Known gaps — things that simply are not published</h3>
+<p>These are not oversights in this document. They are gaps in the public record for Timor-Leste.</p>
+<ol><li><strong>No 3W (&quot;who does what where&quot;) dataset and no health-cluster partner list.</strong> Confirmed with a positive control. The actor map in §8 exists only because it was assembled by hand.</li><li><strong>No current national HRH plan.</strong> The 2020–2024 plan has expired with no published successor.</li><li><strong>No published bed counts</strong> for any hospital. The HNGV figure in §7 comes from a single academic paper, and is the only one found.</li><li><strong>Graduate output by profession, and retention in the Timorese health workforce, is not published.</strong> Only gross output across all six training institutions is available — see §6 on why that is a poor proxy.</li><li><strong>Allied health training is essentially undocumented</strong> in authoritative sources.</li><li><strong>Whether the December 2023 national TB prevalence survey results have been published is UNVERIFIED.</strong> For a country with among the world&#39;s highest TB incidence, this would be the most consequential epidemiological release available.</li><li><strong>The legal instrument behind the INSP-TL training and research approval requirement is untraced.</strong> The requirement is real and well attested by practitioners; its statutory basis is not established here.</li><li><strong>The five private health-training institutions counted by WHO are not named by WHO</strong>, and this document could not close that gap authoritatively.</li><li><strong>Several significant organisations have no verifiable published contact</strong> — including KP+, arguably the most operationally important HIV civil-society organisation in the country.</li></ol>
+<h3 id="s11-known-contradictions-left-unresolved-on-purpose">Known contradictions, left unresolved on purpose</h3>
+<p>Where authoritative sources disagree, this document reports the disagreement rather than choosing.</p>
+<ul><li><strong>Skilled birth attendance moves in opposite directions</strong> depending on whether you use the routine information system or the household survey (§3). Unresolved, and arguably the most useful thing here.</li><li><strong>Two WHO products disagree on health expenditure by roughly 60%</strong>, and a third widely-circulated WHO figure cannot be reproduced from any published primitive (§5).</li><li><strong>WHO&#39;s own UHC service coverage index differs between products</strong> — 48 in the Observatory, 52 in the Country Cooperation Strategy (§3).</li><li><strong>Level-III community health centre counts differ between two WHO sources</strong> — 9 or 10 (§7).</li><li><strong>Facility counts vary substantially across sources and years</strong> (§7). Some of this is real network growth; some is inconsistent definition.</li></ul>
+<h3 id="s11-what-ages-fastest">What ages fastest</h3>
+<p><strong>In order of decay:</strong></p>
+<ol><li><strong>Contact details and organisational status in §8.</strong> A meaningful share of Timorese health organisations have no working website, several domains have lapsed, and at least two actively mislead an automated checker. <strong>Assume anything in §8 may be out of date and verify before relying on it.</strong></li><li><strong>Named office-holders.</strong> Leadership names appear in WHO and national documents, and at least one is already inconsistent across sources. Confirm current post-holders directly.</li><li><strong>Programme and grant status.</strong> Both current Global Fund grants end <strong>31 December 2026</strong>.</li><li><strong>Budget figures</strong>, which change annually.</li><li><strong>The structural description of the system</strong>, which is the most stable material here — though note the planned municipal hospital tier in §4 that does not yet exist.</li></ol>
+<h3 id="s11-on-the-translation">On the translation</h3>
+<p>The executive summary is provided in <strong>Tetun by machine translation</strong> and is labelled as such. The named editor reviews the English text and <strong>does not certify the Tetun</strong>. Where precision matters, use the English and consult a human translator.</p>
+<h3 id="s11-on-the-review-status">On the review status</h3>
+<p>Read the banner at the top of the page. It states whether this edition has been reviewed by the named editor, and <strong>flags in words when the text has changed since that review</strong> — which is a normal state for this document, not an exceptional one, because updates are permitted to land between reviews.</p>
+<p>⚠️ <strong>If that banner says no human has reviewed this edition, then the honest description of what you are reading is an automated compilation of cited sources — and the document says so itself rather than continuing to call itself a landscape scan.</strong></p>
+<h3 id="s11-corrections">Corrections</h3>
+<p><strong>Errors are expected, particularly in §8.</strong> If something here is wrong — especially about your own organisation — or you would rather not be listed, use the correction link in the footer. Corrections are the intended mechanism for keeping this current between quarterly editions, and requests not to be listed are honoured.</p>
+    </section>
+
+    <section id="sec-12">
+      <h2>What changed this edition</h2>
+      <p class="sec-stamp">Text updated 2026-08-25 &middot; not yet reviewed<span class="flag">not yet reviewed</span></p>
+      <h3 id="s12-this-edition">This edition</h3>
+<p><strong>2026-Q3 — prototype. Not yet reviewed by the named editor. Not yet published.</strong></p>
+<p>The first assembled edition. Everything in it is new, so a &quot;what changed&quot; list would be the whole document. From the next edition onward this section lists what actually changed, section by section, so a returning reader does not have to re-read the whole thing.</p>
+<p><strong>Compiled from desk research carried out 2026-08-24 and 2026-08-25</strong>, with all data endpoints tested live on those dates.</p>
+<h3 id="s12-corrections-made-to-widely-repeated-errors">Corrections made to widely-repeated errors</h3>
+<p>These are recorded because each appears in circulating partner documents, and a reader who has seen them elsewhere should know they have been checked.</p>
+<div class="table-wrap"><table><thead><tr><th>Commonly stated</th><th>Actual position</th></tr></thead><tbody><tr><td>12 municipalities plus RAEOA</td><td><strong>13 municipalities plus RAEOA = 14 municipality-level units.</strong> Atauro separated from Dili on 1 January 2022</td></tr><tr><td>SAMES is the medicines agency</td><td><strong>SAMES no longer exists under that name</strong> — it is now <strong>INFPM</strong></td></tr><tr><td>Referral hospitals: Baucau, Maliana, Maubisse, Suai, Oecusse</td><td>Correct list, wrong tiering — <strong>Baucau is a <em>regional</em> hospital</strong>; the other four are referral hospitals</td></tr><tr><td>Timor-Leste is in WHO&#39;s Western Pacific Region</td><td><strong>It is in the South-East Asia Region (SEARO)</strong> — verified three ways</td></tr><tr><td>Health Alliance International closed</td><td><strong>It localised into HAMNASA</strong> in October 2021 and the successor organisation is the country&#39;s largest Timorese primary-health-systems NGO</td></tr><tr><td>The national plan is NHSSP 2011–2030</td><td><strong>The operative plan is NHSSP II 2020–2030.</strong> WHO&#39;s own planning database still lists the superseded one</td></tr><tr><td>Health expenditure is 11.4% of GDP (2021)</td><td><strong>4.92%.</strong> The 11.4% figure implies a non-oil-GDP denominator and cannot be reproduced from published primitives — and the GDP ratio is the wrong indicator for this country anyway (§5)</td></tr><tr><td><code>moh.gov.tl</code> is the Ministry website</td><td><strong>Dead since 2020.</strong> The live Ministry surface is <code>apps.ms.gov.tl</code></td></tr></tbody></table></div>
+<h3 id="s12-organisations-checked-and-found-not-to-exist">Organisations checked and found not to exist</h3>
+<p><strong>Kmanek</strong> · <strong>Instituto Alberto Ricardo</strong> · <strong>Hadomi Timor Foundation</strong> · <strong>Fundasaun Ita Nia Rai</strong></p>
+<p>Each circulates in partner lists. Each was checked against a 253-page authoritative civil-society roster and found to have zero mentions. See §8 for what each is actually a garbling of.</p>
+<h3 id="s12-planned-for-the-next-edition">Planned for the next edition</h3>
+<ul><li>Resolve whether the <strong>December 2023 national TB prevalence survey</strong> results have been published.</li><li>Trace the <strong>legal instrument</strong> behind the INSP-TL training and research approval requirement.</li><li><strong>Name the five private health-training institutions</strong> counted by WHO.</li><li>Confirm the current status of the <strong>Cooperativa Café Timor clinic network</strong> — the highest-value open question in §8.</li><li>Re-test the <strong>DHS Program API</strong> for the 2025–26 survey, and replace hard-coded figures if it has updated.</li><li>Read the <strong>WDOMS sponsor notes</strong> for all three medical schools before saying anything about international recognition.</li><li>Ingest the <strong>full TLDHS 2025–26 report</strong> when published.</li><li>Add <strong>Portuguese and Tetun source material</strong> currently untranslated, per this document&#39;s stated purpose of surfacing what is not available in English.</li></ul>
+<h3 id="s12-version-history">Version history</h3>
+<p>Each edition is a tagged commit in the source repository, and each is archived under a permanent DOI that always resolves to the latest version while keeping superseded editions retrievable. Both links are in the footer once published.</p>
+    </section>
+
+<footer>
+  <p><b>Practical guidance for visiting teams</b> &mdash; planning a visit, delivering teaching, Tetun language help &mdash; is maintained separately at <a href="https://sites.google.com/view/tlsghealth/">TL-SG Health Collective</a>. This document does not duplicate it.</p>
+  
+  <p><b>Corrections:</b> the correction form is not yet published for this prototype edition.</p>
+  <p><b>How this document is made.</b> The text is drafted and updated by an AI agent from the
+  sources cited in each section, and published by a deterministic script. Dr Natarajan Rajaraman is the named editor and takes editorial responsibility for reviewed editions. See the sources and method section above for exactly what was pulled, from where, and when.</p>
+  <p>Edition 2026-Q3-draft &middot; built 2026-08-25.</p>
+</footer>
+
+</div>
+<script type="application/json" id="annex">{"title":"Timor-Leste Health Landscape Scan","edition":"2026-Q3-draft","status":"prototype","documentLanguage":"en","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"reviewState":"never-reviewed","selfDescription":"automated compilation of cited sources","conceptDoi":null,"canonicalUrl":null,"refresh":{"cadenceDays":90,"stalenessWarnDays":120,"stalenessAlarmDays":180,"$comment":"The page renders its own staleness banner client-side from lastUpdatedByAI, so it keeps telling the truth after every piece of automation has died."},"sections":[{"id":"00","title":"What this is","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"01","title":"Executive summary","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"01b","title":"Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"02","title":"Country context","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"03","title":"Health status","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"04","title":"Organization and governance","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"05","title":"Financing","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"06","title":"Workforce, education and infrastructure","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"07","title":"Service delivery and priority programmes","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"08","title":"Who is doing what","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"10","title":"Sources and method","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"11","title":"Limitations","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"},{"id":"12","title":"What changed this edition","lastUpdatedByAI":"2026-08-25","lastReviewedByHuman":null,"state":"never-reviewed"}],"omittedSections":[{"id":"09","title":"Gaps and opportunities","reason":"Deliberately omitted from v1 (Raj, 2026-08-25). It is the only section that would be analysis rather than sourced description, and it is what a critical reader would use to dismiss the document. Adding it requires a named human to own the judgement.","renderNotice":true}],"generator":"tl-health-scan build.js","builtOn":"2026-08-25"}</script>
+<script>(function(){
+  var updated="2026-08-25";
+  var warn=120, alarm=180;
+  var cadence=90;
+  var el=document.getElementById('staleness');
+  if(!el||!updated) return;
+  var days=Math.floor((Date.now()-Date.parse(updated+'T00:00:00Z'))/86400000);
+  if(days<warn){ el.style.display='none'; return; }
+  var sev=days>=alarm?'sev-high':'sev-medium';
+  el.className='notice '+sev;
+  el.innerHTML='<p class="n-head">This page is '+days+' days old.</p>'+
+    '<p>It is meant to be refreshed about every '+cadence+' days. It has not been, so treat the '+
+    'figures and especially the contact details as out of date, and follow the citation to the '+
+    'source before relying on anything here.</p>';
+})();</script>
+</body>
+</html>
