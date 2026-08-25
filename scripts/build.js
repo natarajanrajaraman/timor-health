@@ -204,13 +204,40 @@ code{overflow-wrap:anywhere}
   padding:.55rem .4rem;margin:0;list-style:none;min-width:290px;max-width:min(92vw,24rem);
   max-height:min(70vh,30rem);overflow:auto;font-size:.9rem}
 .tb-list li{margin:0}
-.tb-list a{display:block;padding:.28rem .6rem;border-radius:5px;text-decoration:none;color:var(--fg)}
+.tb-list a{display:block;padding:.28rem .6rem .28rem 3.2em;text-indent:-2.6em;border-radius:5px;
+  text-decoration:none;color:var(--fg)}
 .tb-list a:hover{background:var(--card)}
 .tnum{display:inline-block;min-width:2.6em;color:var(--muted);font-weight:600}
-.toc-omitted{color:var(--muted);padding:.28rem .6rem}
+.toc-omitted{color:var(--muted);padding:.28rem .6rem .28rem 3.2em;text-indent:-2.6em}
 nav.toc ol{list-style:none;padding-left:.2rem}
 .secnum{color:var(--muted);font-weight:600;margin-right:.55rem;font-size:.92em}
 a.xref{text-decoration:none;border-bottom:1px dotted var(--accent)}
+
+/* ---- left outline navigator (desktop only) ----
+   Shown ONLY where the empty left gutter can hold it without touching the content column:
+   content is 52rem centred, sidebar is 15rem, so the break-even viewport is ~85rem. Below that
+   the sticky topbar's Contents dropdown remains the navigator. Widths are load-bearing - at
+   exactly 85rem the clamped left edge (.75rem) plus 15rem leaves a 12px gap to the column;
+   widen the sidebar and it collides. */
+.sidenav{display:none}
+@media (min-width:85rem){
+  .sidenav{display:block;position:fixed;z-index:15;
+    left:max(.75rem, calc(50% - 42.5rem));width:15rem;
+    top:4.2rem;bottom:1rem;overflow-y:auto;
+    padding:.4rem .5rem .8rem;font-size:.84rem}
+  /* the sidebar replaces the dropdown at this width - two visible navigators is one too many */
+  .tb-menu{display:none}
+}
+.sn-head{margin:.2rem .5rem .45rem;font-size:.72rem;font-weight:650;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted)}
+.sn-list{list-style:none;margin:0;padding:0}
+.sn-list li{margin:0}
+.sn-list a{display:block;padding:.26rem .55rem .26rem 3.1em;text-indent:-2.55em;border-radius:5px;
+  color:var(--muted);text-decoration:none;line-height:1.35}
+.sn-list a:hover{background:var(--card);color:var(--fg)}
+.sn-list a.sn-active{background:var(--card);color:var(--accent);font-weight:650}
+.sn-list .tnum{min-width:2.2em}
+.sn-list .toc-omitted{padding:.26rem .55rem}
 
 .fig-scroll{overflow-x:auto}
 .fig-scroll svg.chart{min-width:560px}
@@ -623,6 +650,30 @@ function navEntries(m, sections) {
   return items.sort((a, b) => a.key - b.key).map(i => i.html).join('\n      ');
 }
 
+/** Scroll-tracking for the left outline: the section under the reading line gets highlighted.
+ *  Pure enhancement - with JS off (or no IntersectionObserver) the outline is still a working
+ *  list of links. The rootMargin band puts the trigger line ~a fifth down the viewport, which
+ *  matches where a reader's eye actually is, rather than the viewport edge. */
+function scrollspyScript() {
+  return `
+(function(){
+  var nav=document.querySelector('.sidenav');
+  if(!nav||!('IntersectionObserver' in window)) return;
+  var links={};
+  nav.querySelectorAll('a[href^="#"]').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+  var current=null;
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var a=links[e.target.id]; if(!a||a===current) return;
+      if(current) current.classList.remove('sn-active');
+      current=a; current.classList.add('sn-active');
+    });
+  },{rootMargin:'-18% 0px -72% 0px'});
+  document.querySelectorAll('section[id^="sec-"], div[id^="omitted-"]').forEach(function(el){ obs.observe(el); });
+})();`.trim();
+}
+
 /** Closes the Contents dropdown when a destination is picked, and on any click outside it.
  *  Pure enhancement: with JS off the details element still opens and every link still works. */
 function menuScript() {
@@ -722,6 +773,12 @@ ${seoHead(m, disc)}
     </details>
   </div>
 </nav>
+<nav class="sidenav" aria-label="Outline">
+  <p class="sn-head">Outline</p>
+  <ol class="sn-list">
+      ${toc}
+  </ol>
+</nav>
 <div class="wrap">
 
 <header id="top">
@@ -773,6 +830,7 @@ ${body}
 <script>${stalenessScript(m)}</script>
 <script>${tooltipScript()}</script>
 <script>${menuScript()}</script>
+<script>${scrollspyScript()}</script>
 </body>
 </html>
 `;
@@ -1154,6 +1212,25 @@ if (require.main === module && process.argv.includes('--self-test')) {
     for (const r of j.aseanPosition.indicators) {
       if (!r.year || !r.rankHighToLow) throw new Error(r.indicator + ' missing year or rank');
     }
+  });
+  t('NAV: left outline exists, shares the same entries as the other navigators', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, 'class="sidenav"');
+    const sn = h.slice(h.indexOf('class="sidenav"'), h.indexOf('<div class="wrap">'));
+    has(sn, 'href="#sec-08b"', 'sidenav must reach every section');
+    has(sn, 'href="#omitted-09"', 'sidenav must list the omitted section too');
+  });
+  t('NAV: outline is desktop-only and replaces the dropdown at that width', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, '.sidenav{display:none}', 'hidden by default - phones keep the dropdown');
+    has(h, '@media (min-width:85rem)', 'shown only where the gutter fits it');
+    const wide = h.slice(h.indexOf('@media (min-width:85rem)'), h.indexOf('.sn-head'));
+    has(wide, '.tb-menu{display:none}', 'two visible navigators is one too many');
+  });
+  t('NAV: scrollspy is a pure enhancement - guarded, and the links work without it', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, "'IntersectionObserver' in window", 'must feature-detect');
+    has(h, 'sn-active');
   });
   t('AI: llms.txt tells an assistant the document is UNOFFICIAL and policy-not-practice', () => {
     const f = path.join(DOCS, 'llms.txt');
