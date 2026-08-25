@@ -239,6 +239,17 @@ a.xref{text-decoration:none;border-bottom:1px dotted var(--accent)}
 .sn-list .tnum{min-width:2.2em}
 .sn-list .toc-omitted{padding:.26rem .55rem}
 
+/* ---- share line in the header ---- */
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.7rem 0 0;font-size:.85rem}
+.share .sh-label{color:var(--muted)}
+.share code{font-size:.92em;padding:.18em .5em}
+.share button{font:inherit;font-size:.82rem;font-weight:650;color:var(--accent);
+  background:var(--card);border:1px solid var(--rule);border-radius:5px;
+  padding:.22rem .65rem;cursor:pointer}
+.share button:hover{filter:brightness(1.05)}
+.share button.copied{color:var(--ok-fg);background:var(--ok-bg);border-color:var(--ok-rule)}
+@media print{.share button{display:none}}
+
 .fig-scroll{overflow-x:auto}
 .fig-scroll svg.chart{min-width:560px}
 .fig-panel{font-size:.85rem;font-weight:650;color:var(--muted);margin:.9rem 0 .2rem}
@@ -650,6 +661,35 @@ function navEntries(m, sections) {
   return items.sort((a, b) => a.key - b.key).map(i => i.html).join('\n      ');
 }
 
+/** Copy-the-short-link button. Enhancement only: without JS the short link is still printed in
+ *  full and is selectable - nothing is lost, only the one-click convenience. Clipboard API first;
+ *  the execCommand fallback covers older mobile browsers, which are common in Timor-Leste. */
+function copyLinkScript() {
+  return `
+(function(){
+  var b=document.getElementById('copylink'); if(!b) return;
+  b.addEventListener('click',function(){
+    var url=b.getAttribute('data-url');
+    function done(ok){
+      if(!ok) return;
+      var t=b.textContent; b.textContent='Copied \u2713'; b.classList.add('copied');
+      setTimeout(function(){ b.textContent=t; b.classList.remove('copied'); },1800);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){done(true);},function(){done(fallback());});
+    } else { done(fallback()); }
+    function fallback(){
+      try{
+        var ta=document.createElement('textarea'); ta.value=url;
+        ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        var ok=document.execCommand('copy'); document.body.removeChild(ta); return ok;
+      }catch(e){ return false; }
+    }
+  });
+})();`.trim();
+}
+
 /** Scroll-tracking for the left outline: the section under the reading line gets highlighted.
  *  Pure enhancement - with JS off (or no IntersectionObserver) the outline is still a working
  *  list of links. The rootMargin band puts the trigger line ~a fifth down the viewport, which
@@ -793,6 +833,11 @@ ${seoHead(m, disc)}
     <span class="stamp">Last reviewed by a human: <b>${esc(m.lastReviewedByHuman || 'never')}</b></span>
     <span class="stamp">Document language: <b>English</b></span>
   </div>
+  ${m.shortUrl ? `<div class="share">
+    <span class="sh-label">Share this page:</span>
+    <a href="${esc(m.shortUrl)}"><code>${esc(m.shortUrl.replace(/^https?:\/\//, ''))}</code></a>
+    <button type="button" id="copylink" data-url="${esc(m.shortUrl)}">Copy link</button>
+  </div>` : ''}
 </header>
 
 <div class="notice sev-${esc(disc.severity)}">
@@ -831,6 +876,7 @@ ${body}
 <script>${tooltipScript()}</script>
 <script>${menuScript()}</script>
 <script>${scrollspyScript()}</script>
+<script>${copyLinkScript()}</script>
 </body>
 </html>
 `;
@@ -1231,6 +1277,24 @@ if (require.main === module && process.argv.includes('--self-test')) {
     const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
     has(h, "'IntersectionObserver' in window", 'must feature-detect');
     has(h, 'sn-active');
+  });
+  t('SHARE: the short link renders in the header with a copy button', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, 'class="share"');
+    has(h, 'tinyurl.com/timorhealth');
+    has(h, 'id="copylink"');
+    has(h, 'data-url="https://tinyurl.com/timorhealth"');
+  });
+  t('SHARE: copying is an enhancement - the link itself is a plain working anchor', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, '<a href="https://tinyurl.com/timorhealth">');
+    has(h, 'navigator.clipboard', 'clipboard API path');
+    has(h, 'execCommand', 'older-browser fallback - common in Timor-Leste');
+  });
+  t('SHARE: no shortUrl, no share row - never an empty shell', () => {
+    const m2 = M(); delete m2.shortUrl;
+    const h = buildHtml(m2, S(), { today: '2026-08-25' });
+    hasnt(h, 'class="share"');
   });
   t('AI: llms.txt tells an assistant the document is UNOFFICIAL and policy-not-practice', () => {
     const f = path.join(DOCS, 'llms.txt');

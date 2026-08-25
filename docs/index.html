@@ -225,6 +225,17 @@ a.xref{text-decoration:none;border-bottom:1px dotted var(--accent)}
 .sn-list .tnum{min-width:2.2em}
 .sn-list .toc-omitted{padding:.26rem .55rem}
 
+/* ---- share line in the header ---- */
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.7rem 0 0;font-size:.85rem}
+.share .sh-label{color:var(--muted)}
+.share code{font-size:.92em;padding:.18em .5em}
+.share button{font:inherit;font-size:.82rem;font-weight:650;color:var(--accent);
+  background:var(--card);border:1px solid var(--rule);border-radius:5px;
+  padding:.22rem .65rem;cursor:pointer}
+.share button:hover{filter:brightness(1.05)}
+.share button.copied{color:var(--ok-fg);background:var(--ok-bg);border-color:var(--ok-rule)}
+@media print{.share button{display:none}}
+
 .fig-scroll{overflow-x:auto}
 .fig-scroll svg.chart{min-width:560px}
 .fig-panel{font-size:.85rem;font-weight:650;color:var(--muted);margin:.9rem 0 .2rem}
@@ -292,6 +303,11 @@ a.xref{text-decoration:none;border-bottom:1px dotted var(--accent)}
     <span class="stamp">Text last updated by AI: <b>2026-08-25</b></span>
     <span class="stamp">Last reviewed by a human: <b>2026-08-25</b></span>
     <span class="stamp">Document language: <b>English</b></span>
+  </div>
+  <div class="share">
+    <span class="sh-label">Share this page:</span>
+    <a href="https://tinyurl.com/timorhealth"><code>tinyurl.com/timorhealth</code></a>
+    <button type="button" id="copylink" data-url="https://tinyurl.com/timorhealth">Copy link</button>
   </div>
 </header>
 
@@ -1127,6 +1143,28 @@ Integrated Community Health Services (outreach, domiciliary, home visits, pallia
     });
   },{rootMargin:'-18% 0px -72% 0px'});
   document.querySelectorAll('section[id^="sec-"], div[id^="omitted-"]').forEach(function(el){ obs.observe(el); });
+})();</script>
+<script>(function(){
+  var b=document.getElementById('copylink'); if(!b) return;
+  b.addEventListener('click',function(){
+    var url=b.getAttribute('data-url');
+    function done(ok){
+      if(!ok) return;
+      var t=b.textContent; b.textContent='Copied ✓'; b.classList.add('copied');
+      setTimeout(function(){ b.textContent=t; b.classList.remove('copied'); },1800);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){done(true);},function(){done(fallback());});
+    } else { done(fallback()); }
+    function fallback(){
+      try{
+        var ta=document.createElement('textarea'); ta.value=url;
+        ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        var ok=document.execCommand('copy'); document.body.removeChild(ta); return ok;
+      }catch(e){ return false; }
+    }
+  });
 })();</script>
 </body>
 </html>
