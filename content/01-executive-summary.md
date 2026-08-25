@@ -36,7 +36,8 @@ attendance is reported by the routine health information system as **92% (2020) 
 (2024)**, and by the Demographic and Health Survey as **60% (2016) rising to 78% (2025–26)**. These do
 not merely differ — **they move in opposite directions**. Do not pick a number. §3.
 
-**6. The Ministry of Health has no working website — its real public channel is Facebook.** The
+**6. The Ministry of Health has no working website — its real public channel is Facebook:
+[facebook.com/MinisteriodaSaudeTL](https://www.facebook.com/MinisteriodaSaudeTL).** The
 ministry page has **139,000 followers and posts near-daily**, and is by a wide margin the most current
 published source on Timorese health policy. The website returns 502; a separate live systems portal at
 `apps.ms.gov.tl`, linked from nowhere, hosts the full national strategic plan. **Absence of a website
