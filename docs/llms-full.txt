@@ -1,8 +1,8 @@
 # Start Here — Health in Timor-Leste
 
-Edition 2026-Q3-draft | text updated by AI 2026-08-25 | human review none | never-reviewed
+Edition 2026-Q3-draft | text updated by AI 2026-08-25 | human review 2026-08-25 | reviewed
 
-This edition has not yet been reviewed by a human. It was compiled by an AI agent from the cited sources and is awaiting review by Dr Natarajan Rajaraman. Treat every statement as unverified and follow the citation.
+Reviewed by Dr Natarajan Rajaraman on 2026-08-25. The text is drafted and updated by an AI agent from the cited sources, and reviewed by the named editor, who takes editorial responsibility for this edition.
 
 UNOFFICIAL. Not endorsed by the Ministry of Health of Timor-Leste, WHO, or any government.
 
@@ -10,7 +10,7 @@ UNOFFICIAL. Not endorsed by the Ministry of Health of Timor-Leste, WHO, or any g
 
 ## Section 00 — What this is
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # What this is
 
@@ -88,7 +88,7 @@ relying on the summary here.
 
 ## Section 01 — Executive summary
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # At a glance
 
@@ -178,7 +178,7 @@ working website at all. Treat §8 as a starting point for enquiry, and tell us w
 
 ## Section 01b — Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # ⚠️ Tradusaun makina / Machine translation
 
@@ -251,7 +251,7 @@ ita-boot lakohi nia naran iha lista ne'e, favór ida uza ligasaun korresaun iha 
 
 ## Section 02 — Country context
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # The country in brief
 
@@ -337,7 +337,7 @@ citation says so.
 
 ## Section 03 — Health status
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # How to read this section
 
@@ -492,7 +492,7 @@ indicator here.
 
 ## Section 04 — Organization and governance
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # The Ministry of Health, and how to find it
 
@@ -671,7 +671,7 @@ direction of travel may be planning for a structure that is about to change.
 
 ## Section 05 — Financing
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # ⚠️ Read this before quoting any financing figure
 
@@ -794,7 +794,7 @@ rose from **US$19/kg to US$50/kg**, and alcohol from **US$4.45/litre to US$8.9/l
 
 ## Section 06 — Workforce, education and infrastructure
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # Workforce size and distribution
 
@@ -977,7 +977,7 @@ facilities and infrastructure upgrades has been minimal."*
 
 ## Section 07 — Service delivery and priority programmes
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # The three tiers, as they exist today
 
@@ -1290,7 +1290,7 @@ functioning DHIS2 instance does not by itself resolve data-quality questions.
 
 ## Section 08 — Who is doing what
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # ⚠️ How to read this section
 
@@ -1678,7 +1678,7 @@ correction this document particularly wants to receive.
 
 ## Section 08b — National guidelines, policies and key documents
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # ⚠️ The national documents exist, and almost nobody can find them
 
@@ -1810,7 +1810,7 @@ most valuable correction anyone could send this document.
 
 ## Section 10 — Sources and method
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # How this document is produced
 
@@ -1955,7 +1955,7 @@ document a false disclosure would discredit everything else.
 
 ## Section 11 — Limitations
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # What this document cannot do
 
@@ -2049,7 +2049,7 @@ listed are honoured.
 
 ## Section 12 — What changed this edition
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # This edition
 
@@ -2129,7 +2129,7 @@ in the footer once published.
 
 ## Section 13 — Suggest an addition or correction
 
-(text updated 2026-08-25; NOT yet reviewed by a human)
+(text updated 2026-08-25; reviewed 2026-08-25)
 
 # Tell us what we have missed or got wrong
 

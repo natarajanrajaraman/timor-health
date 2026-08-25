@@ -5,9 +5,9 @@
     "status": "published",
     "official": false,
     "lastUpdatedByAI": "2026-08-25",
-    "lastReviewedByHuman": null,
-    "reviewState": "never-reviewed",
-    "selfDescription": "automated compilation of cited sources",
+    "lastReviewedByHuman": "2026-08-25",
+    "reviewState": "reviewed",
+    "selfDescription": "landscape scan",
     "url": "https://natarajanrajaraman.github.io/timor-health/",
     "conceptDoi": null,
     "caveat": "Describes published policy, which can differ substantially from practice. Check locally."
@@ -17,91 +17,91 @@
       "id": "00",
       "title": "What this is",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "01",
       "title": "Executive summary",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "01b",
       "title": "Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "02",
       "title": "Country context",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "03",
       "title": "Health status",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "04",
       "title": "Organization and governance",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "05",
       "title": "Financing",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "06",
       "title": "Workforce, education and infrastructure",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "07",
       "title": "Service delivery and priority programmes",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "08",
       "title": "Who is doing what",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "08b",
       "title": "National guidelines, policies and key documents",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "10",
       "title": "Sources and method",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "11",
       "title": "Limitations",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "12",
       "title": "What changed this edition",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     },
     {
       "id": "13",
       "title": "Suggest an addition or correction",
       "lastUpdatedByAI": "2026-08-25",
-      "lastReviewedByHuman": null
+      "lastReviewedByHuman": "2026-08-25"
     }
   ],
   "contestedFigures": [
