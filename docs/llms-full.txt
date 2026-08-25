@@ -1392,6 +1392,50 @@ identified. If palliative care is your area, this is the entry point.
 [saudebaemahotu.org](https://saudebaemahotu.org/) · **info@saudebaemahotu.org** ·
 Bidau, Santana, Dili
 
+## Equitech Collective
+
+⚠️ **Conflict of interest: the named editor of this document is involved with this organisation. See
+the disclosure at the end of this section.**
+
+A **Singapore-based health-technology nonprofit** building human-centred tools for health systems —
+clinical decision support, electronic health records, digital identity and coding education — working
+across several countries including Thailand and Timor-Leste.
+
+Its Timor-Leste initiative is **MediBot**, described as *"a clinical decision support AI chatbot that
+enables primary care providers to query in their native language Tetun for medical decision support"*.
+It runs over **WhatsApp and Telegram** — which matters in a country where those are the working
+channels — and is stated to be trained on local clinical care documents and **national guidelines and
+standards approved by the Ministry of Health and WHO**.
+
+Works with **SABEH**, the **Ministry of Health** and **WHO**.
+
+⚠️ Worth reading alongside §8b: the national clinical guidelines a tool like this would draw on are
+largely from **2004–2010**, while the essential medicines list was refreshed in 2025. Any clinical
+decision support built on the national corpus inherits the currency of that corpus.
+
+[equity.tech](https://www.equity.tech) · contact via the form on their site · LinkedIn
+[@equitechcollective](https://www.linkedin.com/company/equitechcollective)
+⚠️ No general organisational email or office address is published on the site.
+
+## Catalpa International
+
+A development organisation working across the Asia-Pacific on **digital and data systems for public
+service delivery** — mobile learning platforms, referral systems, public finance tools and dashboards
+— with 18+ years of work across some 20 countries. Partners include USAID, WHO, UNDP and the EU.
+
+In Timor-Leste health specifically:
+
+- **Liga Inan** — the mobile maternal-health programme connecting mothers to midwives, scaled
+  nationwide by 2019 (§7). ⚠️ Note the lineage: it **originated with Health Alliance International**,
+  whose Timor-Leste operations transferred to **HAMNASA** in 2021, and Catalpa lists it among its own
+  current health projects. **If you need to know who operates it today, ask — this document can see
+  both organisations' claims but not the current division of responsibility.**
+- **Jerasaun Foun** — a social protection programme covering child health, nutrition and learning.
+- **Technical support to Hamutuk**, the multi-sector nutrition and food-security platform managed by
+  FONGTIL (100+ organisations, Australian-funded).
+
+[catalpa.io](https://catalpa.io) · contact via [catalpa.io/contact](https://catalpa.io/contact/)
+
 ## PRADET — Psychosocial Recovery and Development in East Timor
 
 **The most important Timorese mental-health and forensic civil-society organisation.** A national NGO
@@ -1590,6 +1634,26 @@ eye and oral health, and mental health outside the GBV pathway.** Tell us who.
 
 **Contacts policy applied throughout: organisational contacts only.** Where an organisation published a
 named individual's personal mobile number or personal email address, it has been deliberately omitted.
+
+# ⚠️ Conflict of interest
+
+**The named editor of this document is involved with Equitech Collective**, which is listed above as an
+actor in Timorese health.
+
+It is listed because it is genuinely relevant — it works with SABEH, the Ministry of Health and WHO on
+clinical decision support for primary care, and a reader mapping who does what in Timorese health
+would want to know that. **Omitting it to avoid the appearance of self-interest would make the map
+less accurate, which is the wrong trade.**
+
+But a document whose entire claim is epistemic honesty cannot list its own editor's organisation
+silently. So: **the entry is written to the same standard as every other — what the organisation says
+about itself, with its source — and it carries no assessment of quality, reach or effectiveness that
+is not applied equally to the others.** §9, which would rank where partners are most needed, remains
+deliberately absent from this edition, and this is one more reason it should stay absent until it can
+carry a named author who is independent of the actors being ranked.
+
+**If you think this entry reads as promotional, say so** using the suggestions box. That is a
+correction this document particularly wants to receive.
 
 ---
 

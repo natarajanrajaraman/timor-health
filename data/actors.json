@@ -206,6 +206,35 @@
       "contactStatus": "verified",
       "notifiable": true,
       "note": "donation@saudebaemahotu.org is also published but is not the right address for a listing query."
+    },
+    {
+      "id": "equitech-collective",
+      "name": "Equitech Collective",
+      "section": "08",
+      "email": null,
+      "phone": null,
+      "address": "Singapore",
+      "web": "https://www.equity.tech",
+      "sourceUrl": "https://www.equity.tech",
+      "verifiedOn": "2026-08-25",
+      "contactStatus": "verified",
+      "notifiable": false,
+      "conflictOfInterest": true,
+      "note": "CONFLICT OF INTEREST: the named editor of this document is involved with this organisation. Disclosed on the page in section 8. Notifiable is false because no general organisational email is published (contact form + LinkedIn only) AND because the notification exists to tell organisations they are listed - which does not apply here."
+    },
+    {
+      "id": "catalpa",
+      "name": "Catalpa International",
+      "section": "08",
+      "email": null,
+      "phone": null,
+      "address": null,
+      "web": "https://catalpa.io",
+      "sourceUrl": "https://catalpa.io/contact/",
+      "verifiedOn": "2026-08-25",
+      "contactStatus": "verified",
+      "notifiable": false,
+      "note": "No general organisational email published; contact form only. Liga Inan lineage overlaps HAMNASA - see the note in section 8."
     }
   ]
 }
