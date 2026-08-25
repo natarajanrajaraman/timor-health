@@ -69,10 +69,9 @@ citation says so.
 
 # Sources for this section
 
-- WHO **Country Cooperation Strategy for Timor-Leste 2026–2030**, WHO SEARO, published 2026-03-26,
-  ISBN 9789290222316 — [record](https://iris.who.int/handle/10665/385106). The best single current
-  description of the country and system.
+- WHO **[Country Cooperation Strategy for Timor-Leste 2026–2030](https://iris.who.int/handle/10665/385106)**, WHO SEARO, published
+  2026-03-26, ISBN 9789290222316. The best single current description of the country and system.
 - **National Health Sector Strategic Plan II (2020–2030)** — the operative national plan, hosted in
-  full at `apps.ms.gov.tl` (see §4 and §10).
+  full in the [Ministry of Health document directory](https://apps.ms.gov.tl/hris/mdoc/) (see §4 and §10).
 - World Bank, *Leveling Up: How ASEAN Membership Can Support Timor-Leste's Economic Transformation*.
 - Constitution of the Democratic Republic of Timor-Leste (language provisions).

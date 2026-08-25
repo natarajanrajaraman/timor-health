@@ -18,6 +18,8 @@ refresh stamp is known, it is given.
 
 **This is the single most useful data finding in this document.**
 
+{{chart:sba-contradiction}}
+
 | Source | Figure | Direction |
 |---|---|---|
 | **HMIS** (routine reporting) | **92% (2020) → 56.7% (2024)** | Falling steeply |
@@ -35,7 +37,7 @@ deciding where to put effort, **the fact that the country's two headline materna
 contradict each other is worth more than either number** — it is itself a finding about where
 investment might go.
 
-*Sources: WHO CCS 2026–2030 §2.4.1; TLDHS 2025–26 Key Indicators Report.*
+*Sources: [WHO CCS 2026–2030](https://iris.who.int/handle/10665/385106) §2.4.1; TLDHS 2025–26 Key Indicators Report.*
 
 # Maternal, newborn, child and adolescent health
 
@@ -63,6 +65,8 @@ the second such survey in a decade:
 | Stunting | 50.2% | **47.1%** |
 | Wasting | 11% | **8.6%** |
 | Underweight | 37.3% | **32.4%** |
+
+{{chart:nutrition-slope}}
 
 Improvement is real but slow, and roughly **half of Timorese children are still stunted**. TLDHS
 2025–26 also flags persistent malnutrition and maternal anaemia.

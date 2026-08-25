@@ -74,6 +74,49 @@ Recent: launched a TB programme in Dili and published a Biannual Report 2024–2
 June 2026). Live surface: [facebook.com/HamutukNasaunSaudavel](https://www.facebook.com/HamutukNasaunSaudavel/)
 ⚠️ Archived contact, **possibly stale**: info@hamnasa.org · +670 332 2608 · Lecidere, Dili
 
+## Maluk Timor
+
+**One of the largest health NGOs working in Timor-Leste, and a systemic actor in workforce training.**
+A non-religious not-for-profit with **two entities** — *Associação Maluk Timor* (Timorese board) and
+**Maluk Timor Australia** — working to advance primary health care.
+
+Programmes: **Health Professionals Development**, maternal and child health, nutrition,
+**tuberculosis**, **oral health**, **rheumatic heart disease**, and HIV.
+
+**Systemic weight worth knowing:** Maluk Timor developed an **integrated primary health care training
+curriculum that the Ministry of Health accepted for implementation across 2024–2026**, and its
+**ASTEROID** programme (Advancing Surveillance and Training to Enhance Recognition of Infectious
+Diseases) trained **540 health professionals across 37 facilities**. Since 2019 it reports training
+**over 185 doctors and 395 nurses and allied health professionals** — which makes it one of the few
+documented sources of **allied health** training in the country (see the gap noted in §6).
+
+Publishes **annual reports**, including a 2025 Annual Impact Report — a level of public reporting rare
+among organisations working here.
+
+[maluktimor.org](https://maluktimor.org/) · General enquiries **help@maluktimor.org** ·
+Australian postal address: Level 14, 60 Martin Place, Sydney 2000
+
+## SABEH — *Saúde Ba Ema Hotu* ("Healthcare For All")
+
+**The first health volunteer organisation to provide family and community palliative care in
+Timor-Leste** — and, as far as this document can establish, still the only organisation doing it.
+
+Founded **2017**. Delivers free holistic medical care across **around 100 remote areas**, with staff
+and volunteers living in villages for short periods to provide care and to link families to services
+addressing the socio-economic determinants of health — water, sanitation, housing, nutrition,
+education, income. Also runs school health work on tobacco and alcohol.
+
+Currently partnering with the **Ministry of Health** and the **Asia Pacific Hospice and Palliative Care
+Network (APHN)** through the **Lien Collaborative** to develop and train a national palliative care
+programme. **WHO Timor-Leste** has publicly supported its medical team.
+
+⚠️ **Palliative care is otherwise almost absent from the national picture** — it appears in NHSSP II's
+service-delivery diagram as part of integrated community health services, but no other provider was
+identified. If palliative care is your area, this is the entry point.
+
+[saudebaemahotu.org](https://saudebaemahotu.org/) · **info@saudebaemahotu.org** ·
+Bidau, Santana, Dili
+
 ## PRADET — Psychosocial Recovery and Development in East Timor
 
 **The most important Timorese mental-health and forensic civil-society organisation.** A national NGO
@@ -258,6 +301,17 @@ full-text extraction of the UNFPA 4th Country Programme Evaluation annexes.
 
 ⚠️ **Read a negative carefully.** Automated web search was substantially blocked during compilation, so
 **"no website found" means "not found by domain probing and site search" — not "proven absent".**
+
+⚠️ **This section has a known sourcing bias, and it has already produced one miss.** The single richest
+roster used was the **UNFPA country programme evaluation**, which is excellent but is scoped to
+**sexual and reproductive health and gender-based violence**. Organisations whose work sits outside
+that frame are systematically under-represented by it. **Maluk Timor** — one of the largest health NGOs
+in the country, whose primary-care training curriculum the Ministry adopted — and **SABEH**, the only
+identified provider of community palliative care, were both missing from the first edition of this
+section for exactly that reason, and were added on 2026-08-25 after a targeted sweep.
+
+**Assume others are still missing, particularly in primary care, rehabilitation, disability services,
+eye and oral health, and mental health outside the GBV pathway.** Tell us who.
 
 **Contacts policy applied throughout: organisational contacts only.** Where an organisation published a
 named individual's personal mobile number or personal email address, it has been deliberately omitted.

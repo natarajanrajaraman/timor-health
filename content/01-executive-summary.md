@@ -61,10 +61,8 @@ levels. Plan against the system as it is, while knowing where it intends to go. 
 # What this document does not tell you
 
 It does not assess what is working, rank where help is most needed, or recommend what you should do.
-That section — *gaps and opportunities* — has been **deliberately left out of this edition**, because
-it would be the only part that is judgement rather than sourced description, and it is exactly what a
-critical reader would use to dismiss everything else. If and when it appears, it will carry a named
-author.
+That section — *gaps and opportunities* — is **deliberately left out of this edition**: it would be
+judgement rather than sourced description. If it appears, it will carry a named author.
 
 It is also weakest exactly where it is most valuable: the **actor map and contact details in §8** go
 stale faster than anything else here, and a meaningful share of Timorese health organisations have no

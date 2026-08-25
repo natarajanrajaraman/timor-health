@@ -7,9 +7,9 @@ government or institution. It is a private compilation of public sources.
 published sources say and where they disagree. It cannot tell you what a particular municipality needs
 this year, and it is no substitute for talking to Timorese counterparts.
 
-**It contains no assessment of where partners are most needed.** That section has been deliberately
-omitted from this edition, because it would be the only part that is judgement rather than sourced
-description. Its absence is disclosed on the page rather than passed over silently.
+**It contains no assessment of where partners are most needed.** That section is deliberately omitted
+from this edition — it would be judgement rather than sourced description — and its absence is
+disclosed on the page rather than passed over silently.
 
 # Known gaps — things that simply are not published
 

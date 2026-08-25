@@ -155,13 +155,21 @@
       "required": true,
       "lastUpdatedByAI": "2026-08-25",
       "lastReviewedByHuman": null
+    },
+    {
+      "id": "13",
+      "file": "13-suggestions.md",
+      "title": "Suggest an addition or correction",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
     }
   ],
   "omittedSections": [
     {
       "id": "09",
       "title": "Gaps and opportunities",
-      "reason": "Deliberately omitted from v1 (Raj, 2026-08-25). It is the only section that would be analysis rather than sourced description, and it is what a critical reader would use to dismiss the document. Adding it requires a named human to own the judgement.",
+      "reason": "Omitted from this edition. Assessing where partners are most needed is judgement rather than sourced description, and will carry a named author when it appears. Everything in this edition traces to a citable source.",
       "renderNotice": true
     }
   ],
@@ -170,5 +178,74 @@
     "method": "machine translation",
     "reviewedByNativeSpeaker": false,
     "$comment": "Raj reviews the ENGLISH only and does not certify the Tetun. Must be checked by a Tetun speaker before publication - see the note in the build output."
+  },
+  "seo": {
+    "$comment": "Search terms the intended audience actually types. Used for the description, the JSON-LD keywords and the about[] topics - NEVER stuffed into visible body text, which Google penalises and which would wreck the prose. The real SEO here is a specific title, an honest description, structured data and a crawlable page.",
+    "titleFull": "Timor-Leste Health Landscape Scan - health system, primary care and partner directory",
+    "description": "An independent, sourced guide to health and the health system of Timor-Leste (East Timor): how primary health care and the national programmes actually work, what the data says, and a directory of NGOs and partners working in Timorese health. For clinicians, volunteers, medical missions, NGOs, funders and researchers.",
+    "keywords": [
+      "Timor-Leste health",
+      "East Timor health",
+      "Timor health system",
+      "Timor-Leste healthcare",
+      "Dili health",
+      "Timor-Leste primary health care",
+      "PHC Timor-Leste",
+      "primary care Timor-Leste",
+      "SISCa",
+      "Saude na Familia",
+      "Timor-Leste medical mission",
+      "medical missions Timor-Leste",
+      "short-term medical mission",
+      "mission hospital Timor",
+      "volunteer Timor-Leste",
+      "medical volunteer Timor-Leste",
+      "health volunteering Timor-Leste",
+      "global health elective Timor",
+      "Timor-Leste NGO",
+      "health NGOs Timor-Leste",
+      "Timor-Leste health partners",
+      "who does what Timor-Leste health",
+      "Timor-Leste global health",
+      "LMIC health system",
+      "low income country health system",
+      "health systems strengthening",
+      "Timor-Leste development aid",
+      "international development Timor-Leste",
+      "Timor-Leste donors",
+      "Timor-Leste funding health",
+      "Timor-Leste tuberculosis",
+      "TB Timor-Leste",
+      "Timor-Leste maternal health",
+      "Timor-Leste child health",
+      "Timor-Leste malnutrition",
+      "stunting Timor-Leste",
+      "Timor-Leste HIV",
+      "Timor-Leste immunisation",
+      "Timor-Leste malaria free",
+      "Timor-Leste health workforce",
+      "Timor-Leste medical school",
+      "Timor-Leste nursing",
+      "INSP-TL",
+      "Ministry of Health Timor-Leste",
+      "Timor-Leste health data",
+      "Timor-Leste health statistics",
+      "Timor-Leste health policy",
+      "NHSSP II",
+      "WHO Timor-Leste",
+      "Timor-Leste country profile health",
+      "health landscape analysis",
+      "health situation analysis",
+      "Southeast Asia health",
+      "ASEAN health"
+    ],
+    "audience": [
+      "clinicians and health professionals",
+      "visiting medical teams and missions",
+      "NGOs and implementing partners",
+      "funders, donors and grantmakers",
+      "researchers and students",
+      "government and development partners"
+    ]
   }
 }

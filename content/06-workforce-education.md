@@ -64,6 +64,8 @@ Schools**, the WFME/FAIMER joint registry to which international recognition rou
 
 All three are recorded as currently operational.
 
+{{chart:medical-schools}}
+
 ⚠️ **Two of the three began teaching in 2021 and 2024 and have therefore not yet graduated anyone.**
 UNTL is the only medical school in the country with an established graduate output.
 
@@ -157,10 +159,10 @@ facilities and infrastructure upgrades has been minimal."*
   suitable for supervised quarterly refresh only.
 - **WHO Global Health Observatory / National Health Workforce Accounts** — `ghoapi.azureedge.net`,
   country-reported, annual.
-- **WHO CCS 2026–2030** §2.3.3 — density, the six institutions, the 800+ figure, distribution, the
-  First National Training Policy.
+- **[WHO CCS 2026–2030](https://iris.who.int/handle/10665/385106)** §2.3.3 — density, the six institutions, the 800+ figure, distribution,
+  the First National Training Policy.
 - **NHSSP II 2020–2030** — the Cuban Brigade, degree fields, the postgraduate constraint.
-- **`apps.ms.gov.tl/hris/mdoc/`** — PENRUSS, the HR organogram, career structure, scholarship manual
-  (English and Tetun).
+- **[Ministry of Health document directory](https://apps.ms.gov.tl/hris/mdoc/)** — PENRUSS, the HR organogram, career structure,
+  scholarship manual (English and Tetun).
 - **Government of Timor-Leste**, 2010-07-09 — historic overseas training cohorts.
 - **TL-SG Health Collective** — the INSP-TL approval gate and in-service training format.

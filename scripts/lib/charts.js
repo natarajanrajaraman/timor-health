@@ -1,0 +1,463 @@
+'use strict';
+/**
+ * charts.js - inline SVG figures, generated at build time.
+ *
+ * WHY SVG GENERATED AT BUILD TIME
+ * ----------------------------------------------------------------------------
+ * Same reason the rest of this repo has no dependencies: a chart library is a thing that rots. These
+ * are plain SVG strings baked into the page, so every figure still renders in 2031 with no runtime,
+ * no CDN and no build toolchain. The optional hover layer is ~20 lines of vanilla JS; with JS off,
+ * every figure is still fully readable because every series is DIRECTLY LABELLED.
+ *
+ * COLOR
+ * ----------------------------------------------------------------------------
+ * Slots come from the validated reference palette and were checked with the validator against THIS
+ * page's actual surfaces (#ffffff light, #14161a dark), not eyeballed:
+ *   light  #2a78d6 #eb6834 #1baf7a   dark  #3987e5 #d95926 #199e70
+ * All hard gates pass in both modes. The one WARN - aqua at 2.82:1 on white - is covered by the
+ * relief rule: every series carries a visible direct label, and every figure is paired with its
+ * source table in the surrounding text.
+ *
+ * RULES OBEYED (see anti-patterns.md)
+ * ----------------------------------------------------------------------------
+ * - Never a dual y-axis. Where two measures of different scale must be compared, they become SMALL
+ *   MULTIPLES sharing an x-axis - which is exactly the financing figure, whose whole point is that
+ *   the ratio and the dollars move in opposite directions.
+ * - Categorical hues in fixed order, never cycled.
+ * - Colour follows the entity, not its rank.
+ * - Recessive grid and axes; thin marks; text in ink tokens, never the series colour.
+ * - Every figure carries its source. Raj's instruction, 2026-08-25: cited and sourced if external.
+ */
+
+const esc = s => String(s)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+const N = n => (Math.round(n * 100) / 100);
+
+/** figure wrapper: title, the svg, an optional note, and a mandatory source line */
+function figure(opts) {
+  const { id, title, desc, svg, source, note } = opts;
+  return `<figure class="fig" id="fig-${esc(id)}">
+  <figcaption class="fig-title">${esc(title)}</figcaption>
+  ${svg}
+  ${note ? `<p class="fig-note">${note}</p>` : ''}
+  <p class="fig-src">Source: ${source}</p>
+</figure>`;
+}
+
+function legend(items) {
+  return `<div class="fig-legend">` + items.map(it =>
+    `<span class="lg"><span class="sw" style="background:var(--series-${it.slot})"></span>${esc(it.label)}</span>`
+  ).join('') + `</div>`;
+}
+
+/* ------------------------------------------------------------------ line / slope */
+
+/**
+ * Multi-series line chart on a numeric x axis. Points are direct-labelled at the ends, which is what
+ * makes the figure readable with JS off and satisfies the relief rule for the low-contrast slot.
+ */
+function lineChart(o) {
+  const W = 720, H = o.height || 300;
+  const M = { t: 18, r: 116, b: 40, l: 48 };
+  const iw = W - M.l - M.r, ih = H - M.t - M.b;
+  const [x0, x1] = o.xDomain, [y0, y1] = o.yDomain;
+  const sx = v => M.l + ((v - x0) / (x1 - x0)) * iw;
+  const sy = v => M.t + ih - ((v - y0) / (y1 - y0)) * ih;
+
+  const yTicks = o.yTicks || 5;
+  let grid = '';
+  for (let i = 0; i <= yTicks; i++) {
+    const v = y0 + (i / yTicks) * (y1 - y0), y = sy(v);
+    grid += `<line class="grid" x1="${M.l}" y1="${N(y)}" x2="${M.l + iw}" y2="${N(y)}"/>`;
+    grid += `<text class="tick" x="${M.l - 8}" y="${N(y + 4)}" text-anchor="end">${esc(o.yFmt ? o.yFmt(v) : N(v))}</text>`;
+  }
+  let xg = '';
+  for (const t of (o.xTicks || [])) {
+    xg += `<text class="tick" x="${N(sx(t))}" y="${M.t + ih + 22}" text-anchor="middle">${esc(String(t))}</text>`;
+  }
+
+  let marks = '';
+  o.series.forEach(s => {
+    const pts = s.points.map(p => `${N(sx(p[0]))},${N(sy(p[1]))}`).join(' ');
+    marks += `<polyline class="ln" points="${pts}" style="stroke:var(--series-${s.slot})"/>`;
+    s.points.forEach(p => {
+      marks += `<circle class="pt" cx="${N(sx(p[0]))}" cy="${N(sy(p[1]))}" r="5" style="fill:var(--series-${s.slot})"` +
+        ` data-tip="${esc(s.label + ' - ' + (o.tipFmt ? o.tipFmt(p) : p[0] + ': ' + p[1]))}"><title>${esc(s.label + ', ' + p[0] + ': ' + p[1])}</title></circle>`;
+      if (o.labelPoints !== false) {
+        marks += `<text class="ptlab" x="${N(sx(p[0]))}" y="${N(sy(p[1]) - 12)}" text-anchor="middle">${esc(o.ptFmt ? o.ptFmt(p[1]) : String(p[1]))}</text>`;
+      }
+    });
+    // direct label at the series end - identity is never colour-alone
+    const last = s.points[s.points.length - 1];
+    marks += `<text class="slab" x="${N(sx(last[0]) + 12)}" y="${N(sy(last[1]) + 4)}">${esc(s.label)}</text>`;
+  });
+
+  const svg = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t-${esc(o.id)}">
+  <title id="t-${esc(o.id)}">${esc(o.aria || o.title || '')}</title>
+  ${grid}${xg}
+  <line class="axis" x1="${M.l}" y1="${M.t + ih}" x2="${M.l + iw}" y2="${M.t + ih}"/>
+  ${marks}
+</svg>`;
+  return svg;
+}
+
+/* ------------------------------------------------------------------ horizontal bars */
+
+function barChartH(o) {
+  const rows = o.rows;
+  const rowH = o.rowH || 34, padT = 8, padB = 26;
+  const W = 720, labelW = o.labelW || 210, valW = 74;
+  const H = padT + rows.length * rowH + padB;
+  const iw = W - labelW - valW - 16;
+  const max = o.max || Math.max(...rows.map(r => r.value));
+
+  let bars = '';
+  rows.forEach((r, i) => {
+    const y = padT + i * rowH;
+    const w = Math.max(2, (r.value / max) * iw);
+    const slot = r.slot || 1;
+    bars += `<text class="blab" x="${labelW - 10}" y="${y + rowH / 2 + 4}" text-anchor="end">${esc(r.label)}</text>`;
+    // 4px rounded data-end, anchored to the baseline at x=labelW
+    bars += `<rect class="bar" x="${labelW}" y="${y + 6}" width="${N(w)}" height="${rowH - 14}" rx="4"` +
+      ` style="fill:var(--series-${slot})" data-tip="${esc(r.label + ': ' + (o.fmt ? o.fmt(r.value) : r.value))}">` +
+      `<title>${esc(r.label + ': ' + (o.fmt ? o.fmt(r.value) : r.value))}</title></rect>`;
+    bars += `<text class="bval" x="${N(labelW + w + 8)}" y="${y + rowH / 2 + 4}">${esc(o.fmt ? o.fmt(r.value) : String(r.value))}</text>`;
+  });
+
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t-${esc(o.id)}">
+  <title id="t-${esc(o.id)}">${esc(o.aria || o.title || '')}</title>
+  <line class="axis" x1="${labelW}" y1="${padT}" x2="${labelW}" y2="${padT + rows.length * rowH}"/>
+  ${bars}
+</svg>`;
+}
+
+/* ------------------------------------------------------------------ small multiples */
+
+/**
+ * Small multiples sharing an x axis. This is the correct answer to "two measures of different
+ * scale", and NEVER a second y-axis. Each panel keeps its own y scale, which is legitimate precisely
+ * because they are separate panels rather than overlaid lines.
+ */
+function smallMultiples(o) {
+  const panels = o.panels;
+  const pw = 232, gap = 12, H = o.height || 190;
+  const W = panels.length * pw + (panels.length - 1) * gap;
+  const M = { t: 30, r: 10, b: 34, l: 44 };
+  const iw = pw - M.l - M.r, ih = H - M.t - M.b;
+
+  let out = '';
+  panels.forEach((p, pi) => {
+    const ox = pi * (pw + gap);
+    const ys = p.values.map(v => v[1]);
+    const y0 = p.yMin !== undefined ? p.yMin : 0;
+    const y1 = p.yMax !== undefined ? p.yMax : Math.max(...ys) * 1.25;
+    const xs = p.values.map(v => v[0]);
+    const xmin = Math.min(...xs), xmax = Math.max(...xs);
+    const sx = v => ox + M.l + ((v - xmin) / (xmax - xmin || 1)) * iw;
+    const sy = v => M.t + ih - ((v - y0) / (y1 - y0 || 1)) * ih;
+
+    out += `<text class="pnl" x="${ox + M.l}" y="16">${esc(p.title)}</text>`;
+    for (let i = 0; i <= 2; i++) {
+      const v = y0 + (i / 2) * (y1 - y0), y = sy(v);
+      out += `<line class="grid" x1="${ox + M.l}" y1="${N(y)}" x2="${ox + M.l + iw}" y2="${N(y)}"/>`;
+      out += `<text class="tick" x="${ox + M.l - 6}" y="${N(y + 4)}" text-anchor="end">${esc(p.fmt ? p.fmt(v) : N(v))}</text>`;
+    }
+    const pts = p.values.map(v => `${N(sx(v[0]))},${N(sy(v[1]))}`).join(' ');
+    out += `<polyline class="ln" points="${pts}" style="stroke:var(--series-${o.slot || 1})"/>`;
+    p.values.forEach(v => {
+      out += `<circle class="pt" cx="${N(sx(v[0]))}" cy="${N(sy(v[1]))}" r="4.5" style="fill:var(--series-${o.slot || 1})"` +
+        ` data-tip="${esc(p.title + ' ' + v[0] + ': ' + (p.fmt ? p.fmt(v[1]) : v[1]))}"><title>${esc(p.title + ' ' + v[0] + ': ' + v[1])}</title></circle>`;
+      out += `<text class="ptlab" x="${N(sx(v[0]))}" y="${N(sy(v[1]) - 10)}" text-anchor="middle">${esc(p.fmt ? p.fmt(v[1]) : String(v[1]))}</text>`;
+      out += `<text class="tick" x="${N(sx(v[0]))}" y="${M.t + ih + 20}" text-anchor="middle">${esc(String(v[0]))}</text>`;
+    });
+    out += `<line class="axis" x1="${ox + M.l}" y1="${M.t + ih}" x2="${ox + M.l + iw}" y2="${M.t + ih}"/>`;
+  });
+
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t-${esc(o.id)}">
+  <title id="t-${esc(o.id)}">${esc(o.aria || '')}</title>${out}</svg>`;
+}
+
+/* ------------------------------------------------------------------ slope */
+
+function slopeChart(o) {
+  const W = 720, H = o.height || 300;
+  const M = { t: 34, r: 150, b: 30, l: 150 };
+  const iw = W - M.l - M.r, ih = H - M.t - M.b;
+  const all = o.series.flatMap(s => [s.from, s.to]);
+  const y0 = 0, y1 = Math.max(...all) * 1.15;
+  const sy = v => M.t + ih - ((v - y0) / (y1 - y0)) * ih;
+
+  let out = `<text class="pnl" x="${M.l}" y="18" text-anchor="middle">${esc(o.fromLabel)}</text>`;
+  out += `<text class="pnl" x="${M.l + iw}" y="18" text-anchor="middle">${esc(o.toLabel)}</text>`;
+  out += `<line class="axis" x1="${M.l}" y1="${M.t}" x2="${M.l}" y2="${M.t + ih}"/>`;
+  out += `<line class="axis" x1="${M.l + iw}" y1="${M.t}" x2="${M.l + iw}" y2="${M.t + ih}"/>`;
+
+  o.series.forEach(s => {
+    const ya = sy(s.from), yb = sy(s.to);
+    out += `<line class="ln" x1="${M.l}" y1="${N(ya)}" x2="${M.l + iw}" y2="${N(yb)}" style="stroke:var(--series-${s.slot})"/>`;
+    out += `<circle class="pt" cx="${M.l}" cy="${N(ya)}" r="5" style="fill:var(--series-${s.slot})" data-tip="${esc(s.label + ' ' + o.fromLabel + ': ' + s.from + '%')}"><title>${esc(s.label + ' ' + o.fromLabel + ': ' + s.from)}</title></circle>`;
+    out += `<circle class="pt" cx="${M.l + iw}" cy="${N(yb)}" r="5" style="fill:var(--series-${s.slot})" data-tip="${esc(s.label + ' ' + o.toLabel + ': ' + s.to + '%')}"><title>${esc(s.label + ' ' + o.toLabel + ': ' + s.to)}</title></circle>`;
+    out += `<text class="slab" x="${M.l - 12}" y="${N(ya + 4)}" text-anchor="end">${esc(s.label)} ${esc(String(s.from))}%</text>`;
+    out += `<text class="slab" x="${M.l + iw + 12}" y="${N(yb + 4)}">${esc(String(s.to))}%</text>`;
+  });
+
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t-${esc(o.id)}">
+  <title id="t-${esc(o.id)}">${esc(o.aria || '')}</title>${out}</svg>`;
+}
+
+/* ------------------------------------------------------------------ tier diagram */
+
+/** Not a chart. The facility network's job here is STRUCTURE, not magnitude - 344 health posts
+ *  against 1 national hospital on a linear bar would say nothing except "344 is bigger". */
+function tierDiagram(o) {
+  const W = 720, rowH = 46, padT = 6;
+  const H = padT + o.tiers.length * rowH + 10;
+  let out = '';
+  o.tiers.forEach((t, i) => {
+    const y = padT + i * rowH;
+    const inset = i * 34;
+    const w = W - 200 - inset * 2;
+    out += `<rect class="tier" x="${inset}" y="${y + 4}" width="${w}" height="${rowH - 12}" rx="5"/>`;
+    out += `<text class="tierlab" x="${inset + 14}" y="${y + rowH / 2 + 3}">${esc(t.label)}</text>`;
+    out += `<text class="tiercount" x="${W - 186}" y="${y + rowH / 2 + 3}">${esc(t.count)}</text>`;
+    if (t.note) out += `<text class="tiernote" x="${W - 120}" y="${y + rowH / 2 + 3}">${esc(t.note)}</text>`;
+  });
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t-${esc(o.id)}">
+  <title id="t-${esc(o.id)}">${esc(o.aria || '')}</title>${out}</svg>`;
+}
+
+/* ------------------------------------------------------------------ timeline */
+
+function timeline(o) {
+  const W = 720, H = 40 + o.items.length * 46 + 34;
+  const x0 = 150, x1 = W - 150;
+  const [a, b] = o.domain;
+  const sx = v => x0 + ((v - a) / (b - a)) * (x1 - x0);
+  let out = '';
+  for (let yr = Math.ceil(a); yr <= b; yr++) {
+    if ((yr - Math.ceil(a)) % o.tickEvery !== 0) continue;
+    out += `<line class="grid" x1="${N(sx(yr))}" y1="26" x2="${N(sx(yr))}" y2="${H - 30}"/>`;
+    out += `<text class="tick" x="${N(sx(yr))}" y="${H - 12}" text-anchor="middle">${yr}</text>`;
+  }
+  if (o.now !== undefined) {
+    out += `<line class="nowline" x1="${N(sx(o.now))}" y1="20" x2="${N(sx(o.now))}" y2="${H - 30}"/>`;
+    out += `<text class="nowlab" x="${N(sx(o.now))}" y="14" text-anchor="middle">today</text>`;
+  }
+  o.items.forEach((it, i) => {
+    const y = 40 + i * 46;
+    out += `<text class="blab" x="${x0 - 14}" y="${y + 4}" text-anchor="end">${esc(it.label)}</text>`;
+    const xs = sx(it.start), xe = sx(it.end);
+    out += `<rect class="tlbar" x="${N(xs)}" y="${y - 11}" width="${N(Math.max(3, xe - xs))}" height="16" rx="4"` +
+      ` style="fill:var(--series-${it.slot || 1})" data-tip="${esc(it.tip || '')}"><title>${esc(it.tip || it.label)}</title></rect>`;
+    if (it.after) out += `<text class="tlafter" x="${N(xe + 8)}" y="${y + 3}">${esc(it.after)}</text>`;
+  });
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t-${esc(o.id)}">
+  <title id="t-${esc(o.id)}">${esc(o.aria || '')}</title>${out}</svg>`;
+}
+
+/* ------------------------------------------------------------------ the registry */
+
+const CHARTS = {
+
+  /** THE headline finding: two authoritative sources moving in opposite directions. */
+  'sba-contradiction': () => figure({
+    id: 'sba-contradiction',
+    title: 'Skilled birth attendance: the two national data systems disagree, and move in opposite directions',
+    svg: legend([{ slot: 1, label: 'DHS (household survey)' }, { slot: 2, label: 'HMIS (routine reporting)' }]) +
+      lineChart({
+        id: 'sba', aria: 'Line chart. The household survey series rises from 60 percent in 2016 to 78 percent in 2025-26. The routine reporting series falls from 92 percent in 2020 to 56.7 percent in 2024.',
+        xDomain: [2015.5, 2026.5], yDomain: [40, 100], yTicks: 3,
+        xTicks: [2016, 2018, 2020, 2022, 2024, 2026],
+        yFmt: v => N(v) + '%', ptFmt: v => v + '%',
+        series: [
+          { slot: 1, label: 'DHS', points: [[2016, 60], [2025.5, 78]] },
+          { slot: 2, label: 'HMIS', points: [[2020, 92], [2024, 56.7]] },
+        ],
+      }),
+    note: '<b>Do not pick a number.</b> These do not merely differ in level - they contradict each other in direction over an overlapping period. Both are cited by WHO. Presenting this as a data-quality finding is worth more to a partner than either figure.',
+    source: 'WHO Country Cooperation Strategy 2026-2030 §2.4.1; TLDHS 2025-26 Key Indicators Report.',
+  }),
+
+  /** The denominator problem, as small multiples - never a dual axis. */
+  'financing-denominator': () => figure({
+    id: 'financing-denominator',
+    title: 'Why "health spending as a share of GDP" misleads for Timor-Leste',
+    svg: smallMultiples({
+      id: 'fin', slot: 1,
+      aria: 'Three panels sharing 2021 to 2023. Health spending as a share of GDP rises from 4.92 to 9.60 percent. Spending per capita rises then falls. Total health spending rises then falls. The ratio rises while the dollars fall.',
+      panels: [
+        { title: 'CHE as % of GDP', values: [[2021, 4.92], [2022, 7.46], [2023, 9.6]], yMin: 0, yMax: 12, fmt: v => N(v) + '%' },
+        { title: 'CHE per capita (US$)', values: [[2021, 132], [2022, 175], [2023, 144]], yMin: 0, yMax: 220, fmt: v => '$' + Math.round(v) },
+        { title: 'Total health spend (US$m)', values: [[2021, 178], [2022, 240], [2023, 200]], yMin: 0, yMax: 300, fmt: v => Math.round(v) },
+      ],
+    }),
+    note: 'The ratio nearly doubled while total spending <em>fell</em>. It moved because <b>petroleum GDP fell 43% in two years</b> - the denominator moved, not the numerator. Benchmark on <b>US$ per capita</b> and on <b>health as a share of government expenditure</b> instead.',
+    source: 'WHO Global Health Expenditure Database, queried 2026-08-24; corroborated by <a href="https://api.worldbank.org/v2/country/TLS/indicator/SH.XPD.CHEX.GD.ZS?format=json">World Bank WDI</a>.',
+  }),
+
+  'financing-shares': () => figure({
+    id: 'financing-shares',
+    title: 'Donor dependence is falling fast; out-of-pocket spending is among the lowest in the world',
+    svg: legend([{ slot: 1, label: 'External (donor) share of health spending' }, { slot: 2, label: 'Out-of-pocket share' }]) +
+      lineChart({
+        id: 'shares', height: 260,
+        aria: 'Donor share of health spending falls from 30.7 percent in 2021 to 15.3 percent in 2023, while out-of-pocket spending stays near 6 to 7 percent.',
+        xDomain: [2020.8, 2023.2], yDomain: [0, 35], yTicks: 3, xTicks: [2021, 2022, 2023],
+        yFmt: v => N(v) + '%', ptFmt: v => v + '%',
+        series: [
+          { slot: 1, label: 'Donor', points: [[2021, 30.67], [2022, 22.74], [2023, 15.3]] },
+          { slot: 2, label: 'Out-of-pocket', points: [[2021, 5.89], [2022, 5.48], [2023, 6.99]] },
+        ],
+      }),
+    note: 'Out-of-pocket spending near <b>7%</b> is the single most distinctive feature of this system, and follows directly from there being <b>no social health insurance</b> and public care being free at the point of use. <b>If your design assumes user fees, co-payments or reimbursement, it does not fit this country.</b>',
+    source: 'WHO Global Health Expenditure Database, queried 2026-08-24.',
+  }),
+
+  'budget-2026': () => figure({
+    id: 'budget-2026',
+    title: 'The 2026 health budget: US$138.3 million, 6.04% of the state budget',
+    svg: barChartH({
+      id: 'budget', labelW: 260, fmt: v => 'US$' + N(v) + 'm',
+      aria: 'Horizontal bars. Ministry of Health 76.8 million, national hospital 20.9, medicines agency 17.1, infrastructure fund 6.7, ambulance service 3.4 million.',
+      rows: [
+        { label: 'Ministry of Health', value: 76.8 },
+        { label: 'HNGV (national hospital)', value: 20.9 },
+        { label: 'INFPM (medicines)', value: 17.1 },
+        { label: 'Infrastructure Fund', value: 6.7 },
+        { label: 'SNAEM (ambulance)', value: 3.4 },
+        { label: 'Overseas treatment (within the above)', value: 19.3, slot: 2 },
+      ],
+    }),
+    note: 'The highlighted line is not an institution - it is <b>US$19.3m, 14% of the entire health budget, spent treating Timorese patients abroad</b>, and it is the second-largest single line in secondary and tertiary care. It is the financial expression of the workforce finding in §6: there is no domestic specialist pipeline of scale, so specialist care is bought overseas.',
+    source: 'General State Budget 2026, Book 1, IX Constitutional Government (approved version), ¶2.35-2.37 - <a href="https://www.mof.gov.tl">Ministry of Finance</a>.',
+  }),
+
+  'facility-tiers': () => figure({
+    id: 'facility-tiers',
+    title: 'The service delivery network',
+    svg: tierDiagram({
+      id: 'tiers',
+      aria: 'Five tiers: one national hospital, one regional hospital, four referral hospitals, about 71 community health centres, 344 health posts, plus community outreach.',
+      tiers: [
+        { label: 'National (tertiary) hospital - HNGV, Dili', count: '1' },
+        { label: 'Regional hospital - Baucau', count: '1' },
+        { label: 'Referral hospitals - Maliana, Maubisse, Suai, Oecusse', count: '4' },
+        { label: 'Community health centres (SSK, levels I-III)', count: '~71', note: '9-10 are level III' },
+        { label: 'Health posts (PS)', count: '344' },
+        { label: 'SISCa community outreach', count: '~600', note: 'outposts' },
+      ],
+    }),
+    note: '<b>Baucau is a <em>regional</em> hospital, not a referral hospital</b> - the flat five-item list most documents repeat flattens a real distinction in the referral chain. A further tier of <b>municipal hospitals is planned in NHSSP II but does not yet exist</b> (§4).',
+    source: 'WHO Country Cooperation Strategy 2026-2030 §2.3, verbatim; facility totals corroborated by the <a href="https://iris.who.int/handle/10665/386866">WHO NCD and facility-readiness survey 2023</a>.',
+  }),
+
+  'nutrition-slope': () => figure({
+    id: 'nutrition-slope',
+    title: 'Child undernutrition: real improvement, but roughly half of children are still stunted',
+    svg: slopeChart({
+      id: 'nutr', fromLabel: '2013', toLabel: '2020', height: 280,
+      aria: 'Slope chart. Stunting falls from 50.2 to 47.1 percent, underweight from 37.3 to 32.4, wasting from 11 to 8.6.',
+      series: [
+        { slot: 1, label: 'Stunting', from: 50.2, to: 47.1 },
+        { slot: 2, label: 'Underweight', from: 37.3, to: 32.4 },
+        { slot: 3, label: 'Wasting', from: 11, to: 8.6 },
+      ],
+    }),
+    note: 'Seven years apart, and stunting moved 3.1 points. <b>Malnutrition, and stunting in particular, remains the stated national priority</b>, and TLDHS 2025-26 also flags persistent malnutrition and maternal anaemia.',
+    source: 'Timor-Leste Food and Nutrition Survey 2020, via WHO Country Cooperation Strategy 2026-2030 §2.4.3.',
+  }),
+
+  'medical-schools': () => figure({
+    id: 'medical-schools',
+    title: 'All three medical schools, and when each can first produce a graduate',
+    svg: timeline({
+      id: 'medschools', domain: [2004, 2032], tickEvery: 4, now: 2026.65,
+      items: [
+        { slot: 1, label: "UNTL (public)", start: 2004, end: 2026.65, tip: 'Teaching since 2004. The only school with an established graduate output.', after: 'graduating since ~2010' },
+        { slot: 2, label: 'Universidade Catolica Timorense', start: 2021, end: 2027.5, tip: 'Teaching since 2021. No graduates yet.', after: 'first graduates ~2027' },
+        { slot: 3, label: 'Unpaz University', start: 2024, end: 2029.5, tip: 'Teaching since 2024. No graduates yet; first cohort no earlier than about 2029.', after: 'first graduates ~2029' },
+      ],
+    }),
+    note: '<b>Two of the three began teaching in 2021 and 2024 and have graduated nobody.</b> Bars run from the year instruction began to the earliest plausible first graduation; the projections are arithmetic on a 4.5-to-6-year programme, not announcements. This matters because WHO\'s headline figure of <b>800+ new health professionals a year</b> is <em>gross output across all six training institutions and all professions</em> - it says nothing about how many enter, and stay in, the Timorese health workforce.',
+    source: '<a href="https://search.wdoms.org/">World Directory of Medical Schools</a> (WFME/FAIMER), country code 771, queried 2026-08-25. Graduation years are this document\'s arithmetic and are <b>not</b> from the registry.',
+  }),
+};
+
+function render(id) {
+  const fn = CHARTS[id];
+  if (!fn) throw new Error(`unknown chart id: ${id}`);
+  return fn();
+}
+
+function ids() { return Object.keys(CHARTS); }
+
+module.exports = { render, ids, figure, lineChart, barChartH, smallMultiples, slopeChart, tierDiagram, timeline, CHARTS };
+
+/* ------------------------------------------------------------------ self-test */
+if (require.main === module && process.argv.includes('--self-test')) {
+  let pass = 0, fail = 0;
+  const t = (n, f) => { try { f(); pass++; } catch (e) { fail++; console.error('FAIL: ' + n + '\n      ' + e.message); } };
+  const eq = (a, b, m) => { if (a !== b) throw new Error((m || '') + ' expected ' + JSON.stringify(b) + ' got ' + JSON.stringify(a)); };
+  const has = (h, n, m) => { if (!h.includes(n)) throw new Error((m || '') + ' expected to contain ' + JSON.stringify(n)); };
+
+  t('every registered chart renders without throwing', () => {
+    for (const id of ids()) { const s = render(id); if (!s || s.length < 200) throw new Error(id + ' produced nothing'); }
+  });
+  t('EVERY figure carries a source line - Raj 2026-08-25', () => {
+    for (const id of ids()) has(render(id), '<p class="fig-src">Source:', id + ' is missing its source');
+  });
+  t('every figure has an accessible name', () => {
+    for (const id of ids()) has(render(id), 'role="img"', id);
+  });
+  t('every svg scales via viewBox rather than a fixed width', () => {
+    for (const id of ids()) {
+      const s = render(id);
+      has(s, 'viewBox=', id);
+      if (/<svg[^>]*\swidth="\d/.test(s)) throw new Error(id + ' has a hard-coded pixel width');
+    }
+  });
+  t('NO dual y-axis anywhere - the financing comparison uses small multiples', () => {
+    const s = render('financing-denominator');
+    has(s, 'class="pnl"', 'expected small-multiple panel titles');
+    eq((s.match(/CHE as % of GDP|CHE per capita|Total health spend/g) || []).length >= 3, true, 'expected three separate panels');
+  });
+  t('multi-series figures carry a legend AND direct labels - identity is never colour-alone', () => {
+    for (const id of ['sba-contradiction', 'financing-shares']) {
+      const s = render(id);
+      has(s, 'fig-legend', id + ' needs a legend');
+      has(s, 'class="slab"', id + ' needs direct series labels');
+    }
+  });
+  t('series colours come from the fixed palette slots, never inline hex', () => {
+    for (const id of ids()) {
+      const s = render(id);
+      const inline = s.match(/(?:fill|stroke):\s*#[0-9a-f]{3,6}/gi);
+      if (inline) throw new Error(id + ' hard-codes a colour: ' + inline[0]);
+    }
+  });
+  t('slots used stay within the three validated categorical slots', () => {
+    for (const id of ids()) {
+      const s = render(id);
+      const used = [...s.matchAll(/--series-(\d+)/g)].map(m => +m[1]);
+      for (const u of used) if (u > 3) throw new Error(id + ' uses slot ' + u + ', beyond the 3 validated for all-pairs');
+    }
+  });
+  t('projected dates are labelled as this document arithmetic, not as source data', () => {
+    has(render('medical-schools'), 'not</b> from the registry');
+  });
+  t('text content is escaped so a label cannot inject markup', () => {
+    const s = barChartH({ id: 'x', rows: [{ label: '<script>alert(1)</script>', value: 1 }] });
+    if (s.includes('<script>')) throw new Error('label was not escaped');
+    has(s, '&lt;script&gt;');
+  });
+  t('unknown chart id throws rather than rendering an empty figure', () => {
+    let threw = false;
+    try { render('nope'); } catch (e) { threw = true; }
+    eq(threw, true);
+  });
+
+  console.log(`charts: ${pass} passed, ${fail} failed`);
+  process.exit(fail ? 1 : 0);
+}

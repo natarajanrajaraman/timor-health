@@ -1,68 +1,71 @@
-# What this document is
+# What this is
 
 A concise, sourced orientation to health and the health system of **Timor-Leste**, for anyone —
 Timorese or foreign, government, NGO, clinical, academic or funder — deciding whether and how to act.
 
-Its job is narrow and worth stating plainly: to help you **act in line with national priorities**, and
-to stop you **duplicating work that someone is already doing**. Timor-Leste is a small country with a
-large number of visiting actors, and the commonest failure is not bad intent but arriving without
-knowing what already exists.
+Its job is narrow: to help you **act in line with national priorities** and avoid **duplicating work
+already under way**. Timor-Leste is a small country with a large number of visiting actors, and the
+commonest failure is not bad intent but arriving without knowing what already exists.
 
 # What it is not
 
-**It carries no official sanction.** It is not published, endorsed, reviewed or checked by the
-Ministry of Health of Timor-Leste, by WHO, or by any government or institution. It is a private
-compilation of public sources.
+**Not official.** Not endorsed or checked by the Ministry of Health, WHO, or any government or
+institution. It is a private compilation of public sources.
 
-**It is not a health system profile or a health system review.** Those terms belong to
-institutional series — WHO's country profiles, and the European Observatory's *Health Systems in
-Transition* (HiT) — which carry an expectation of institutional authorship, peer review and
-completeness that this document cannot meet and does not claim. This is a **landscape scan**: shorter,
-faster, current, and explicit about its limits.
+**Not a health system profile or review.** Those terms belong to institutional series — WHO's country
+profiles, and the European Observatory's *Health Systems in Transition* — which imply peer review and
+completeness this cannot claim. This is a **landscape scan**: shorter, current, and explicit about its
+limits.
 
-**It is not a substitute for talking to Timorese counterparts.** Nothing here tells you what a
-particular municipality needs this year. It tells you enough to ask better questions.
+**Not a substitute for talking to Timorese counterparts.** It tells you enough to ask better
+questions, not what a particular municipality needs this year.
+
+# ⚠️ This describes policy as published, which is not the same as practice
+
+Everything here is drawn from **official and published sources**. Real practice can differ from them
+substantially, and in Timor-Leste it often does.
+
+**Always check with your local contact which "requirements" are genuinely required, which are
+enforced loosely or inconsistently, and which have quietly lapsed.** A rule that appears in a decree
+may not be applied; a step that appears nowhere in writing may be essential. Documents cannot tell you
+which is which — people in-country can.
+
+This is the single most important caveat in the document, and it applies to every section, most
+sharply to governance (§4) and to the approval requirements in §6.
 
 # How it is made
 
 The text is **drafted and updated by an AI agent** from the sources cited in each section, then
-**reviewed by a named human editor** who takes editorial responsibility for reviewed editions. The
-banner at the top of this page tells you which state this edition is in — including, honestly, when
-the text has changed since the last human review.
+**reviewed by a named human editor**. The banner above tells you which state this edition is in —
+including, honestly, when the text has changed since the last review.
 
-The document is refreshed roughly **every 90 days**. Numeric indicators are re-pulled from source APIs
-each cycle rather than recalled, because a model recalling a number gets it wrong. Cited pages are
-re-fetched and compared, not merely pinged for a status code — see §10 for why that distinction turned
-out to matter.
+Refreshed roughly **every 90 days**. Numeric indicators are re-pulled from source APIs each cycle
+rather than recalled; cited pages are re-fetched and compared rather than pinged. §10 explains why
+both distinctions turned out to matter.
 
-**Every substantive claim carries its source.** Where a claim could not be verified, it is marked
-**UNVERIFIED** rather than quietly dropped or quietly asserted. Where two authoritative sources
-disagree, both are given and the disagreement is reported as a finding — this happens more often in
-Timor-Leste than you might expect, and in at least one case (§3) the disagreement is more useful than
-either number.
+**Every substantive claim carries its source.** Unverifiable claims are marked **UNVERIFIED** rather
+than quietly asserted or dropped. Where two authoritative sources disagree, both are given and the
+disagreement is reported as a finding — which happens more often here than you would expect, and in
+one case (§3) is more useful than either number.
 
 # Language
 
-The document is written in **English**. The executive summary is also provided in **Tetun**, by
-**machine translation**, and is labelled as such. The named editor reviews the English text only and
-does not certify the Tetun.
+Written in **English**, with the executive summary also in **Tetun by machine translation**, labelled
+as such. The named editor reviews the English only.
 
-Where a source exists only in **Tetun, Portuguese or Indonesian**, that is stated in the citation.
-Surfacing material that is not available in English is one of the things this document is for: a large
-part of the Timorese policy record is published in Portuguese and Tetun only, and is effectively
-invisible to English-speaking partners.
+Where a source exists only in **Tetun, Portuguese or Indonesian**, the citation says so. Surfacing
+material unavailable in English is part of the point: much of the Timorese policy record is published
+in Portuguese and Tetun only, and is effectively invisible to English-speaking partners.
 
-# Contacts policy
+# Contacts
 
-Organisational contact details listed here are **published by the organisations themselves** and are
-reproduced only in that form — a switchboard, an office address, a general enquiries address.
+Only **organisational** contact details appear here, as published by the organisations themselves.
+**No named individual's personal mobile or private email**, even where publicly findable.
 
-**No named individual's personal mobile number or private email address appears in this document**,
-even where it is publicly findable. If you are listed and would rather not be, or your details are
-wrong, use the correction link in the footer and it will be changed in the next edition or sooner.
+If you are listed and something is wrong, or you would rather not be listed, use the suggestions box
+at the foot of the page.
 
 # Reuse
 
-Cite the edition and the DOI. Sources belong to their publishers; where this document quotes or
-tabulates them, the citation is the authority and you should follow it rather than relying on the
-summary here.
+Cite the edition and the DOI. Sources belong to their publishers; follow the citation rather than
+relying on the summary here.

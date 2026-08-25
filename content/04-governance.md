@@ -99,11 +99,11 @@ as the Ministry itself.
 # Planning framework
 
 - **NHSSP II — National Health Sector Strategic Plan 2020–2030 — is the operative national plan.**
-  Available in full at `apps.ms.gov.tl`.
+  Available in full in the [Ministry of Health document directory](https://apps.ms.gov.tl/hris/mdoc/).
   ⚠️ **WHO's own planning-cycle database still lists the superseded 2011–2030 plan.** If a partner
   document cites a 2011–2030 plan, it is out of date.
-- **WHO Country Cooperation Strategy 2026–2030**, published 26 March 2026 (ISBN 9789290222316, xii+69pp)
-  — [record](https://iris.who.int/handle/10665/385106). The freshest system-wide description available;
+- **[WHO Country Cooperation Strategy 2026–2030](https://iris.who.int/handle/10665/385106)**, published 26 March 2026 (ISBN 9789290222316,
+  xii+69pp). The freshest system-wide description available;
   CCS cycles run about five years, so the next is due around 2031.
 
 # A planned tier that does not yet exist

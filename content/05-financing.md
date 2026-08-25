@@ -9,6 +9,8 @@ will lead you to the wrong conclusion here.
 | 2022 | 7.46% | ~240 million |
 | 2023 | **9.60%** | ~200 million |
 
+{{chart:financing-denominator}}
+
 The ratio nearly doubled while spending *fell* between 2022 and 2023. It moved almost entirely because
 **petroleum GDP fell by 43% in two years**. The denominator moved, not the numerator.
 
@@ -50,6 +52,8 @@ the inconsistency rather than picking silently.
 | CHE per capita (US$) | 132.08 | 174.92 | **144.21** |
 | UHC service coverage index | 47 | 48 | **48** |
 
+{{chart:financing-shares}}
+
 **Out-of-pocket spending of around 7% is among the lowest in the world.** It is the single most
 distinctive feature of this health system, and it follows directly from the fact that
 **Timor-Leste has no social health insurance and public care is free at the point of delivery**,
@@ -80,6 +84,8 @@ Finance. Portal: [mof.gov.tl](https://www.mof.gov.tl) · [budgettransparency.gov
 | Infrastructure Fund | 6.7 m |
 | SNAEM (ambulance and emergency) | 3.4 m |
 | INSP-TL, RAEOA, municipal health services | remainder |
+
+{{chart:budget-2026}}
 
 **By programme:** secondary and tertiary care **US$58.5m**; primary health care **US$55.9m**. Within
 primary care, the Comprehensive Primary Health Services Package is **US$27m, of which US$24m is

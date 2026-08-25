@@ -21,6 +21,7 @@ const fs = require('fs');
 const path = require('path');
 const meta = require('./lib/meta');
 const md = require('./lib/md');
+const charts = require('./lib/charts');
 
 const ROOT = path.join(__dirname, '..');
 const CONTENT = path.join(ROOT, 'content');
@@ -112,9 +113,67 @@ nav.toc li{margin:.22rem 0}
 footer{margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--rule); font-size:.88rem; color:var(--muted)}
 .tetun{background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:.2rem 1rem 1rem; margin:1.4rem 0}
 
+/* ---- figures ----
+   Palette slots come from the validated reference palette, checked with the validator against THIS
+   page's real surfaces (#ffffff / #14161a) in both modes. Do not substitute a hex here without
+   re-running scripts/validate_palette.js - "it looks fine" is not the test. */
+:root{ --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a;
+       --grid:#e6e9ed; --axis:#c2c8d0; --tier:#eef1f5; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --series-1:#3987e5; --series-2:#d95926; --series-3:#199e70;
+       --grid:#262b33; --axis:#39404a; --tier:#1e232b; }
+}
+:root[data-theme="dark"]{ --series-1:#3987e5; --series-2:#d95926; --series-3:#199e70;
+       --grid:#262b33; --axis:#39404a; --tier:#1e232b; }
+
+figure.fig{margin:1.8rem 0; padding:0}
+.fig-title{font-weight:650; font-size:.98rem; margin:0 0 .5rem; line-height:1.4}
+.fig-note{font-size:.86rem; color:var(--muted); margin:.5rem 0 .2rem}
+.fig-src{font-size:.78rem; color:var(--muted); margin:.25rem 0 0}
+.fig-legend{display:flex; flex-wrap:wrap; gap:.3rem 1rem; font-size:.82rem; color:var(--muted); margin:0 0 .3rem}
+.fig-legend .lg{display:inline-flex; align-items:center; gap:.35rem}
+.fig-legend .sw{width:11px; height:11px; border-radius:3px; display:inline-block}
+svg.chart{width:100%; height:auto; overflow:visible; display:block}
+svg.chart .grid{stroke:var(--grid); stroke-width:1}
+svg.chart .axis{stroke:var(--axis); stroke-width:1}
+svg.chart .ln{fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+svg.chart .pt{stroke:var(--bg); stroke-width:2}
+svg.chart .bar,svg.chart .tlbar{stroke:var(--bg); stroke-width:2}
+svg.chart .tier{fill:var(--tier); stroke:var(--axis); stroke-width:1}
+svg.chart text{fill:var(--fg); font-family:inherit}
+svg.chart .tick{font-size:11px; fill:var(--muted)}
+svg.chart .pnl{font-size:12px; font-weight:650; fill:var(--fg)}
+svg.chart .ptlab,svg.chart .bval,svg.chart .tiercount{font-size:11.5px; font-weight:600; fill:var(--fg)}
+svg.chart .slab,svg.chart .blab,svg.chart .tierlab{font-size:12px; fill:var(--fg)}
+svg.chart .tiernote,svg.chart .tlafter{font-size:11px; fill:var(--muted)}
+svg.chart .nowline{stroke:var(--muted); stroke-width:1; stroke-dasharray:3 3}
+svg.chart .nowlab{font-size:10px; fill:var(--muted)}
+#tip{position:fixed; z-index:9; pointer-events:none; background:var(--fg); color:var(--bg);
+  padding:.3rem .5rem; border-radius:4px; font-size:.78rem; max-width:20rem; display:none}
+
+/* ---- reader suggestions ---- */
+.cta{margin:1.4rem 0 .2rem}
+.btn{display:inline-block; background:var(--accent); color:var(--bg); text-decoration:none;
+  padding:.6rem 1.1rem; border-radius:6px; font-weight:650; font-size:.95rem}
+.btn:hover{filter:brightness(1.1)}
+.cta-sub{font-size:.82rem; color:var(--muted); margin:.35rem 0 0}
+ul.sugg{list-style:none; padding:0; margin:1rem 0}
+.sg{border:1px solid var(--rule); border-radius:6px; padding:.8rem 1rem; margin:.7rem 0; background:var(--card)}
+.sg-meta{display:flex; flex-wrap:wrap; gap:.4rem .8rem; align-items:center; font-size:.8rem;
+  color:var(--muted); margin:0 0 .4rem}
+.sg-status{padding:.1rem .45rem; border-radius:3px; font-weight:650; border:1px solid var(--rule)}
+.st-new{background:var(--warn-bg); color:var(--warn-fg); border-color:var(--warn-rule)}
+.st-verified,.st-incorporated{background:var(--ok-bg); color:var(--ok-fg); border-color:var(--ok-rule)}
+.st-disputed{background:var(--alarm-bg); color:var(--alarm-fg); border-color:var(--alarm-rule)}
+.sg-who{font-weight:600; color:var(--fg)}
+.sg-text{margin:.2rem 0}
+.sg-resp{margin:.5rem 0 0; padding-left:.8rem; border-left:3px solid var(--rule); font-size:.9rem; color:var(--muted)}
+.sg-empty{color:var(--muted); font-style:italic}
+
 @media print{
   .notice{border-left-width:2px}
   nav.toc{break-inside:avoid}
+  figure.fig{break-inside:avoid}
   h2{break-after:avoid}
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:.75em; color:#555; word-break:break-all}
   body{font-size:11pt}
@@ -146,6 +205,174 @@ function stalenessScript(m) {
     '<p>It is meant to be refreshed about every '+cadence+' days. It has not been, so treat the '+
     'figures and especially the contact details as out of date, and follow the citation to the '+
     'source before relying on anything here.</p>';
+})();`.trim();
+}
+
+/**
+ * SEO head block.
+ *
+ * WHAT THIS DOES AND DELIBERATELY DOES NOT DO
+ * ----------------------------------------------------------------------------
+ * It supplies a specific title, an honest description, social-card tags, a canonical URL and
+ * schema.org structured data. It does NOT stuff keywords into the visible prose. Search engines have
+ * penalised that for a decade, and on a document whose entire value is credibility, prose bent around
+ * search terms would cost more than it earned. The keyword list lives in structured data and in the
+ * <meta name="keywords"> tag, where it is machine-facing and harmless.
+ *
+ * The strongest SEO signal this page has is that it genuinely answers questions nobody else answers
+ * about Timorese health - which is a content property, not a markup one.
+ *
+ * ROBOTS: index,follow is set explicitly. That single line is the reason a Claude Artifact was
+ * disqualified for this document - artifacts serve X-Robots-Tag: none, so the page would be invisible
+ * to exactly the people it is written for.
+ */
+function seoHead(m, disc) {
+  const seo = m.seo || {};
+  const url = m.canonicalUrl || null;
+  const title = seo.titleFull || m.title;
+  const desc = seo.description || `An independent, sourced ${disc.selfDescription} of health and the health system of Timor-Leste.`;
+  const kw = (seo.keywords || []).join(', ');
+
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'Report',
+    name: m.title,
+    alternateName: ['East Timor Health Landscape Scan', 'Timor-Leste health system guide'],
+    headline: title,
+    description: desc,
+    inLanguage: ['en', 'tet'],
+    datePublished: m.lastUpdatedByAI,
+    dateModified: m.lastUpdatedByAI,
+    version: m.edition,
+    isAccessibleForFree: true,
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+    keywords: seo.keywords || [],
+    spatialCoverage: { '@type': 'Country', name: 'Timor-Leste', alternateName: 'East Timor' },
+    about: [
+      { '@type': 'Thing', name: 'Health system' },
+      { '@type': 'Thing', name: 'Primary health care' },
+      { '@type': 'Thing', name: 'Global health' },
+      { '@type': 'Thing', name: 'International development' },
+      { '@type': 'Thing', name: 'Non-governmental organizations' },
+    ],
+    audience: (seo.audience || []).map(a => ({ '@type': 'Audience', audienceType: a })),
+    creator: { '@type': 'Organization', name: 'TL Health Landscape Scan' },
+  };
+  if (m.reviewer && m.reviewer.named) {
+    ld.editor = { '@type': 'Person', name: m.reviewer.name };
+  }
+  if (url) { ld.url = url; ld.mainEntityOfPage = url; }
+  if (m.conceptDoi) ld.identifier = 'https://doi.org/' + m.conceptDoi;
+
+  return `
+<meta name="description" content="${esc(desc)}">
+<meta name="keywords" content="${esc(kw)}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+${url ? `<link rel="canonical" href="${esc(url)}">` : '<!-- canonical URL not set: publish location unknown -->'}
+<meta property="og:type" content="article">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:locale" content="en">
+<meta property="og:locale:alternate" content="tet">
+${url ? `<meta property="og:url" content="${esc(url)}">` : ''}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc)}">
+<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`.trim();
+}
+
+/** robots.txt + sitemap.xml, so the page is actually crawlable rather than merely indexable. */
+function writeCrawlFiles(m) {
+  const url = m.canonicalUrl;
+  const lines = ['User-agent: *', 'Allow: /', ''];
+  if (url) {
+    const base = url.replace(/\/[^/]*$/, '/');
+    lines.push('Sitemap: ' + base + 'sitemap.xml', '');
+    fs.writeFileSync(path.join(DOCS, 'sitemap.xml'),
+      `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${esc(url)}</loc>
+    <lastmod>${esc(m.lastUpdatedByAI)}</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+`);
+  } else {
+    lines.push('# Sitemap omitted: canonicalUrl is not set in content/_meta.json yet.', '');
+  }
+  fs.writeFileSync(path.join(DOCS, 'robots.txt'), lines.join('\n'));
+}
+
+/**
+ * The reader-suggestions block: the call-to-action, and the published suggestions themselves.
+ *
+ * Publishing reader submissions on a page that names real organisations is the reason there is a
+ * moderation step at all - see content/13-suggestions.md. Note every field below is escaped: this is
+ * the ONLY place on the page where text written by a stranger is rendered, so it is the one place an
+ * injection could land.
+ */
+function suggestionsBlock(m) {
+  let list = { suggestions: [] };
+  const p = path.join(DATA, 'suggestions.json');
+  if (fs.existsSync(p)) list = JSON.parse(fs.readFileSync(p, 'utf8'));
+  const items = (list.suggestions || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+
+  const formUrl = m.corrections && m.corrections.formUrl;
+  const cta = formUrl
+    ? `<p class="cta"><a class="btn" href="${esc(formUrl)}">Suggest an addition or correction</a></p>
+       <p class="cta-sub">No account needed. Takes a minute.</p>`
+    : `<div class="notice sev-medium"><p class="n-head">The suggestions form is not yet live.</p>
+       <p>This is a prototype edition. The form will be linked here before publication.</p></div>`;
+
+  const LABEL = { new: 'New - not yet checked', verified: 'Verified', incorporated: 'Incorporated into the text', disputed: 'Disputed' };
+
+  const body = items.length
+    ? `<ul class="sugg">` + items.map(s => {
+        const who = s.from ? esc(s.from) + (s.org ? ', ' + esc(s.org) : '') : 'Anonymous';
+        const st = String(s.status || 'new').toLowerCase();
+        return `<li class="sg">
+        <p class="sg-meta"><span class="sg-status st-${esc(st)}">${esc(LABEL[st] || st)}</span>
+          <span class="sg-who">${who}</span>
+          <span class="sg-date">${esc(s.date || '')}</span>
+          ${s.section ? `<span class="sg-sec">on &sect;${esc(s.section)}</span>` : ''}</p>
+        <p class="sg-text">${esc(s.text || '')}</p>
+        ${s.response ? `<p class="sg-resp"><b>Editor:</b> ${esc(s.response)}</p>` : ''}
+      </li>`;
+      }).join('') + `</ul>`
+    : `<p class="sg-empty">No suggestions have been published yet. Yours would be the first.</p>`;
+
+  return { cta, body, count: items.length };
+}
+
+/**
+ * The figure hover layer. Deliberately tiny and deliberately OPTIONAL: every series in every figure
+ * is direct-labelled, and every figure sits beside its source table in the text, so with JavaScript
+ * off nothing is lost except convenience. Each mark also carries an SVG <title>, which gives native
+ * tooltips and an accessible name even without this script.
+ */
+function tooltipScript() {
+  return `
+(function(){
+  var tip=document.getElementById('tip'); if(!tip) return;
+  function show(e,t){ tip.textContent=t; tip.style.display='block';
+    var x=e.clientX+14, y=e.clientY+14;
+    var r=tip.getBoundingClientRect();
+    if(x+r.width>window.innerWidth-8) x=e.clientX-r.width-14;
+    if(y+r.height>window.innerHeight-8) y=e.clientY-r.height-14;
+    tip.style.left=x+'px'; tip.style.top=y+'px'; }
+  function hide(){ tip.style.display='none'; }
+  document.addEventListener('mouseover',function(e){
+    var el=e.target.closest&&e.target.closest('[data-tip]');
+    if(el) show(e,el.getAttribute('data-tip'));
+  });
+  document.addEventListener('mousemove',function(e){
+    var el=e.target.closest&&e.target.closest('[data-tip]');
+    if(el) show(e,el.getAttribute('data-tip')); else hide();
+  });
+  document.addEventListener('mouseout',hide);
+  window.addEventListener('scroll',hide,{passive:true});
 })();`.trim();
 }
 
@@ -216,9 +443,8 @@ function buildHtml(m, sections, opts) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(m.title)}</title>
-<meta name="description" content="An unofficial, AI-compiled, source-cited ${esc(disc.selfDescription)} of health and the health system of Timor-Leste. Edition ${esc(m.edition)}.">
-<meta name="robots" content="index, follow">
+<title>${esc((m.seo && m.seo.titleFull) || m.title)}</title>
+${seoHead(m, disc)}
 <style>${css()}</style>
 </head>
 <body>
@@ -244,6 +470,7 @@ function buildHtml(m, sections, opts) {
 </div>
 
 <div id="staleness" class="notice" style="display:none"></div>
+<div id="tip" role="status" aria-live="polite"></div>
 
 ${omitted}
 
@@ -272,6 +499,7 @@ ${body}
 </div>
 <script type="application/json" id="annex">${JSON.stringify(annex).replace(/</g, '\\u003c')}</script>
 <script>${stalenessScript(m)}</script>
+<script>${tooltipScript()}</script>
 </body>
 </html>
 `;
@@ -292,8 +520,64 @@ function loadSections(m) {
     }
     // section files start their own headings at h3 - the h2 is the section title we emit
     const r = md.render(raw, { headingOffset: 2, slugPrefix: 's' + s.id });
-    return Object.assign({}, s, { html: r.html, headings: r.headings });
+
+    // {{chart:id}} -> the rendered figure. Substituted AFTER markdown so the SVG is never mangled
+    // by the inline formatter, and an unknown id THROWS rather than leaving a placeholder visible
+    // on the published page.
+    // The placeholder sits alone in its own paragraph, so markdown wraps it as <p>{{chart:x}}</p>.
+    // Absorb that wrapper: a <figure> inside a <p> is invalid HTML and browsers silently close the
+    // paragraph early, which breaks the surrounding layout in ways that are tedious to trace back.
+    const sg = suggestionsBlock(m);
+    const html = r.html
+      .replace(/<p>\s*\{\{chart:([a-z0-9-]+)\}\}\s*<\/p>/g, (m0, id) => charts.render(id))
+      .replace(/\{\{chart:([a-z0-9-]+)\}\}/g, (m0, id) => charts.render(id))
+      .replace(/<p>\s*\{\{suggestions-form\}\}\s*<\/p>/g, () => sg.cta)
+      .replace(/<p>\s*\{\{suggestions-list\}\}\s*<\/p>/g, () => sg.body);
+    if (/\{\{chart:/.test(html)) throw new Error(`${s.file}: a malformed chart placeholder survived rendering`);
+
+    return Object.assign({}, s, { html, headings: r.headings });
   }).filter(Boolean);
+}
+
+/**
+ * The suppression guard. THIS IS WHY A REMOVAL REQUEST ACTUALLY STICKS.
+ *
+ * The obvious failure mode, if this did not exist: an organisation asks to be removed, someone
+ * deletes the paragraph, and three months later a refresh re-scrapes the same public web page and
+ * puts them straight back. That would be worse than never offering removal, because it turns a
+ * promise into a broken one - and nobody would notice, since the page would look correct.
+ *
+ * So the check sits at the point where the harm occurs: RENDERING. It THROWS. A build that would
+ * publish a suppressed organisation does not produce a page at all.
+ *
+ * Deliberately matched against the FINAL rendered HTML rather than the source markdown, because that
+ * is what a reader actually receives - a name reintroduced by a chart label, a data file or a
+ * generated block is caught just the same as one typed into the prose.
+ */
+function assertSuppressionHonoured(html) {
+  const p = path.join(DATA, 'suppression.json');
+  if (!fs.existsSync(p)) return [];
+  const supp = JSON.parse(fs.readFileSync(p, 'utf8')).suppressed || [];
+  const hay = html.toLowerCase();
+  const violations = [];
+
+  for (const s of supp) {
+    const scope = String(s.scope || '');
+    if (scope === 'none' || scope === 'contact-only') continue;  // may still be listed
+
+    if (scope === 'listing-and-contact' && s.name) {
+      if (hay.includes(String(s.name).toLowerCase())) {
+        violations.push(`"${s.name}" asked to be removed entirely (${s.requestedOn || 'date unrecorded'}) but still appears in the rendered page`);
+      }
+    }
+    // any scope that is not 'none'/'contact-only' bars the addresses themselves
+    for (const e of (s.emails || [])) {
+      if (hay.includes(String(e).toLowerCase())) {
+        violations.push(`the address ${e} is suppressed but still appears in the rendered page`);
+      }
+    }
+  }
+  return violations;
 }
 
 function build(opts) {
@@ -301,6 +585,13 @@ function build(opts) {
   const m = meta.load(path.join(CONTENT, '_meta.json'), { today: o.today });
   const sections = loadSections(m);
   const html = buildHtml(m, sections, o);
+
+  const violations = assertSuppressionHonoured(html);
+  if (violations.length) {
+    throw new Error('SUPPRESSION VIOLATED - refusing to build:\n  - ' + violations.join('\n  - ') +
+      '\nRemove them from the content and from data/actors.json. Do NOT edit data/suppression.json to silence this.');
+  }
+
   return { html, meta: m, sections };
 }
 
@@ -328,6 +619,7 @@ function main() {
   fs.mkdirSync(DOCS, { recursive: true });
   fs.writeFileSync(out, r.html);
   fs.writeFileSync(path.join(DOCS, '.nojekyll'), '');
+  writeCrawlFiles(r.meta);
 
   const words = r.sections.reduce((n, s) =>
     n + s.html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length, 0);
@@ -340,7 +632,7 @@ function main() {
   if (words < 6000) console.log(`  NOTE: target length is 6,000-12,000 words; currently ~${words}`);
 }
 
-module.exports = { build, buildHtml, loadSections };
+module.exports = { build, buildHtml, loadSections, assertSuppressionHonoured };
 
 /* ------------------------------------------------------------------ self-test */
 if (require.main === module && process.argv.includes('--self-test')) {
@@ -348,6 +640,7 @@ if (require.main === module && process.argv.includes('--self-test')) {
   const t = (name, fn) => { try { fn(); pass++; } catch (e) { fail++; console.error('FAIL: ' + name + '\n      ' + e.message); } };
   const has = (h, n, m) => { if (!h.includes(n)) throw new Error((m || '') + ' expected to contain ' + JSON.stringify(n)); };
   const hasnt = (h, n, m) => { if (h.includes(n)) throw new Error((m || '') + ' expected NOT to contain ' + JSON.stringify(n)); };
+  const eq = (a, b, m) => { if (a !== b) throw new Error((m || '') + ' expected ' + JSON.stringify(b) + ' got ' + JSON.stringify(a)); };
 
   const M = () => ({
     title: 'Timor-Leste Health Landscape Scan', edition: 'E1', status: 'prototype', documentLanguage: 'en',
@@ -401,7 +694,10 @@ if (require.main === module && process.argv.includes('--self-test')) {
     has(buildHtml(m, S(), { today: '2026-08-25' }), 'https://drive.google.com/x');
   });
   t('page is indexable - the whole point of not using an Artifact', () => {
-    has(buildHtml(M(), S(), { today: '2026-08-25' }), 'content="index, follow"');
+    // Substring, not equality: the directive legitimately carries extra hints
+    // (max-image-preview, max-snippet). What must never change is that it starts with index, follow.
+    has(buildHtml(M(), S(), { today: '2026-08-25' }), 'name="robots" content="index, follow');
+    hasnt(buildHtml(M(), S(), { today: '2026-08-25' }), 'noindex');
   });
   t('cross-references the related site rather than restating it', () => {
     has(buildHtml(M(), S(), { today: '2026-08-25' }), 'does not duplicate it');
@@ -435,8 +731,99 @@ if (require.main === module && process.argv.includes('--self-test')) {
     has(h, ':root[data-theme="dark"]');
     has(h, 'background:var(--bg)');
   });
+  t('SEO: emits structured data, social cards and an explicit index directive', () => {
+    const m = M(); m.seo = { titleFull: 'T Full', description: 'D', keywords: ['a','b'], audience: ['x'] };
+    const h = buildHtml(m, S(), { today: '2026-08-25' });
+    has(h, 'application/ld+json');
+    has(h, '"@type":"Report"');
+    has(h, 'og:title');
+    has(h, 'twitter:card');
+    has(h, 'content="index, follow');
+    has(h, '<title>T Full</title>');
+  });
+  t('SEO: structured data cannot break out of its script tag', () => {
+    const m = M(); m.seo = { titleFull: '</script><script>alert(1)</script>', description: 'D', keywords: [] };
+    const h = buildHtml(m, S(), { today: '2026-08-25' });
+    const i2 = h.indexOf('application/ld+json');
+    hasnt(h.slice(i2, i2 + 600), '</script><script>alert(1)', 'ld+json must escape a closing script tag');
+  });
+  t('SEO: a missing canonical URL degrades to a comment, never a broken link tag', () => {
+    const m = M(); m.canonicalUrl = null;
+    const h = buildHtml(m, S(), { today: '2026-08-25' });
+    hasnt(h, '<link rel="canonical" href="null"');
+    hasnt(h, '<link rel="canonical" href=""');
+  });
+  t('SEO: keywords live in metadata, NOT stuffed into visible prose', () => {
+    const m = M(); m.seo = { titleFull: 'T', description: 'D', keywords: ['medical mission Timor'] };
+    const h = buildHtml(m, S(), { today: '2026-08-25' });
+    const bodyOnly = h.slice(h.indexOf('<body>'));
+    const inMeta = h.slice(0, h.indexOf('<body>'));
+    has(inMeta, 'medical mission Timor');
+    hasnt(bodyOnly.replace(/<script[\s\S]*?<\/script>/g, ''), 'medical mission Timor');
+  });
+  t('suggestions: renders the empty state rather than an empty list', () => {
+    const sg = suggestionsBlock(M());
+    has(sg.body, 'No suggestions have been published yet');
+  });
+  t('suggestions: a submitter name is escaped - it is stranger-written text', () => {
+    const orig = fs.readFileSync(path.join(DATA, 'suggestions.json'), 'utf8');
+    try {
+      fs.writeFileSync(path.join(DATA, 'suggestions.json'), JSON.stringify({ suggestions: [
+        { date: '2026-08-25', from: '<img src=x onerror=alert(1)>', text: 'hi', status: 'new' } ] }));
+      const sg = suggestionsBlock(M());
+      hasnt(sg.body, '<img src=x');
+      has(sg.body, '&lt;img');
+    } finally { fs.writeFileSync(path.join(DATA, 'suggestions.json'), orig); }
+  });
+  t('suggestions: an unknown status still renders a readable label', () => {
+    const orig = fs.readFileSync(path.join(DATA, 'suggestions.json'), 'utf8');
+    try {
+      fs.writeFileSync(path.join(DATA, 'suggestions.json'), JSON.stringify({ suggestions: [
+        { date: '2026-08-25', text: 'hi', status: 'weird-new-status' } ] }));
+      has(suggestionsBlock(M()).body, 'weird-new-status');
+    } finally { fs.writeFileSync(path.join(DATA, 'suggestions.json'), orig); }
+  });
   t('tables scroll inside their own container, so the body never scrolls sideways', () => {
     has(css(), '.table-wrap{overflow-x:auto');
+  });
+
+  t('SUPPRESSION: a removed organisation cannot be published - the build THROWS', () => {
+    const sp = path.join(DATA, 'suppression.json');
+    const orig = fs.existsSync(sp) ? fs.readFileSync(sp, 'utf8') : null;
+    try {
+      fs.writeFileSync(sp, JSON.stringify({ suppressed: [
+        { id: 'pradet', name: 'PRADET', scope: 'listing-and-contact', requestedOn: '2026-08-25' } ] }));
+      let threw = false, msg = '';
+      try { build({}); } catch (e) { threw = true; msg = e.message; }
+      eq(threw, true, 'build must refuse');
+      has(msg, 'SUPPRESSION VIOLATED');
+      has(msg, 'PRADET');
+    } finally { if (orig !== null) fs.writeFileSync(sp, orig); }
+  });
+  t('SUPPRESSION: a suppressed ADDRESS is caught even if the name is absent', () => {
+    const sp = path.join(DATA, 'suppression.json');
+    const orig = fs.existsSync(sp) ? fs.readFileSync(sp, 'utf8') : null;
+    try {
+      fs.writeFileSync(sp, JSON.stringify({ suppressed: [
+        { id: 'z', name: 'Nothing With This Name', emails: ['info@pradet.org'], scope: 'contact-details' } ] }));
+      let threw = false, msg = '';
+      try { build({}); } catch (e) { threw = true; msg = e.message; }
+      eq(threw, true);
+      has(msg, 'info@pradet.org');
+    } finally { if (orig !== null) fs.writeFileSync(sp, orig); }
+  });
+  t('SUPPRESSION: scope "none" (withdrawn) and "contact-only" do NOT block listing', () => {
+    const sp = path.join(DATA, 'suppression.json');
+    const orig = fs.existsSync(sp) ? fs.readFileSync(sp, 'utf8') : null;
+    try {
+      fs.writeFileSync(sp, JSON.stringify({ suppressed: [
+        { id: 'pradet', name: 'PRADET', scope: 'none' },
+        { id: 'alola', name: 'Fundasaun Alola', scope: 'contact-only' } ] }));
+      build({});   // must not throw
+    } finally { if (orig !== null) fs.writeFileSync(sp, orig); }
+  });
+  t('SUPPRESSION: the real suppression file leaves the real build clean', () => {
+    eq(assertSuppressionHonoured(build({}).html).length, 0);
   });
 
   console.log(`build: ${pass} passed, ${fail} failed`);

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Sitemap omitted: canonicalUrl is not set in content/_meta.json yet.

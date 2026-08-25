@@ -9,6 +9,25 @@ a returning reader does not have to re-read the whole thing.
 **Compiled from desk research carried out 2026-08-24 and 2026-08-25**, with all data endpoints tested
 live on those dates.
 
+# Corrections to this document itself
+
+**2026-08-25 — two significant organisations were missing from §8 and have been added:**
+
+- **Maluk Timor** — one of the largest health NGOs working in the country, whose integrated primary
+  health care training curriculum the Ministry of Health accepted for 2024–2026.
+- **SABEH (*Saúde Ba Ema Hotu*)** — the only identified provider of family and community palliative
+  care in Timor-Leste.
+
+⚠️ **Why they were missing is worth stating, because it tells you what else might be.** The richest
+roster used to build §8 was a **UNFPA country programme evaluation**, which is excellent but scoped to
+**sexual and reproductive health and gender-based violence**. Organisations outside that frame are
+systematically under-represented in it. Maluk Timor was in fact named in the WHO CCS stakeholder annex
+all along and still did not reach the actor map — so this was a compilation failure, not only a
+sourcing one.
+
+**Assume the actor map is still incomplete, particularly in primary care, rehabilitation, disability
+services, eye and oral health, and mental health outside the GBV pathway.**
+
 # Corrections made to widely-repeated errors
 
 These are recorded because each appears in circulating partner documents, and a reader who has seen them

@@ -1,0 +1,29 @@
+{
+  "$comment": [
+    "Reader suggestions published on the page.",
+    "",
+    "FLOW: anyone submits via the form (no login). Submissions land in a Sheet. A human moves an",
+    "entry here to publish it. That one step between submission and publication is the whole design -",
+    "see content/13-suggestions.md for why an unmoderated stream was not the right answer for THIS",
+    "document.",
+    "",
+    "FIELDS",
+    "  date       YYYY-MM-DD, when the suggestion was received",
+    "  from       display name the submitter gave, or null for anonymous. NEVER an email or phone.",
+    "  org        their organisation, if given. Optional.",
+    "  section    which section it concerns, e.g. '08'. Optional.",
+    "  text       the suggestion, as submitted. Lightly edited for length only, never for meaning.",
+    "  status     'new' | 'verified' | 'incorporated' | 'disputed'",
+    "  response   the editor's note back, or null. Shown beneath the suggestion.",
+    "",
+    "STATUS MEANINGS, and they are shown to the reader:",
+    "  new          published as received; NOT checked by the editor",
+    "  verified     the editor checked it against a source and it holds",
+    "  incorporated the document text has been updated to reflect it",
+    "  disputed     published, but the editor could not confirm it or found contrary evidence",
+    "",
+    "NEVER publish a submitter's contact details here, even if they put them in the message body.",
+    "Strip them. The form collects contact separately and it does not belong on a public page."
+  ],
+  "suggestions": []
+}
