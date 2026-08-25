@@ -66,6 +66,8 @@ institutions.
 ⚠️ **If your intervention design assumes user fees, co-payments, cost-recovery or insurance
 reimbursement, it does not fit this country.**
 
+{{chart:asean-oop}}
+
 **Donor dependence is high but falling fast** — from 30.7% of health spending in 2021 to 15.3% in 2023.
 
 # The 2026 national health budget
@@ -75,15 +77,6 @@ Finance. Portal: [mof.gov.tl](https://www.mof.gov.tl) · [budgettransparency.gov
 
 - **Total State Budget 2026: US$2.291 billion** (+5.2% on 2025).
 - **Total health allocation: US$138.3 million** — **6.04% of the state budget**.
-
-| Entity | US$ |
-|---|---|
-| Ministry of Health | 76.8 m |
-| HNGV (national hospital) | 20.9 m |
-| **INFPM** (medicines and medical products) | 17.1 m |
-| Infrastructure Fund | 6.7 m |
-| SNAEM (ambulance and emergency) | 3.4 m |
-| INSP-TL, RAEOA, municipal health services | remainder |
 
 {{chart:budget-2026}}
 

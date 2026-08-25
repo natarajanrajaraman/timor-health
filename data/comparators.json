@@ -1,0 +1,549 @@
+{
+  "$comment": "ASEAN comparators, pulled from the World Bank API. Each value carries its OWN year - the World Bank does not align country years, and a table that hides that reads as a like-for-like comparison when it is not. Regenerate with node scripts/pull-comparators.js",
+  "source": "World Bank World Development Indicators",
+  "pulled": "2026-08-25",
+  "countries": {
+    "BRN": "Brunei",
+    "KHM": "Cambodia",
+    "IDN": "Indonesia",
+    "LAO": "Laos",
+    "MYS": "Malaysia",
+    "MMR": "Myanmar",
+    "PHL": "Philippines",
+    "SGP": "Singapore",
+    "THA": "Thailand",
+    "TLS": "Timor-Leste",
+    "VNM": "Vietnam"
+  },
+  "staleAfterYears": 5,
+  "indicators": [
+    {
+      "code": "SH.MED.PHYS.ZS",
+      "key": "physicians",
+      "label": "Physicians per 1,000 people",
+      "dp": 2,
+      "endpoint": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SH.MED.PHYS.ZS?format=json&per_page=2000&mrnev=1",
+      "values": {
+        "BRN": {
+          "value": 1.886,
+          "year": 2021,
+          "stale": false
+        },
+        "IDN": {
+          "value": 0.524,
+          "year": 2023,
+          "stale": false
+        },
+        "KHM": {
+          "value": 0.211,
+          "year": 2019,
+          "stale": false
+        },
+        "LAO": {
+          "value": 0.331,
+          "year": 2022,
+          "stale": false
+        },
+        "MMR": {
+          "value": 0.757,
+          "year": 2019,
+          "stale": false
+        },
+        "MYS": {
+          "value": 2.341,
+          "year": 2023,
+          "stale": false
+        },
+        "PHL": {
+          "value": 0.792,
+          "year": 2021,
+          "stale": false
+        },
+        "SGP": {
+          "value": 2.834,
+          "year": 2022,
+          "stale": false
+        },
+        "THA": {
+          "value": 0.541,
+          "year": 2021,
+          "stale": false
+        },
+        "TLS": {
+          "value": 0.752,
+          "year": 2020,
+          "stale": false
+        },
+        "VNM": {
+          "value": 1.107,
+          "year": 2021,
+          "stale": false
+        }
+      },
+      "newestYear": 2023,
+      "spanYears": 4
+    },
+    {
+      "code": "SH.MED.NUMW.P3",
+      "key": "nurses",
+      "label": "Nurses and midwives per 1,000 people",
+      "dp": 2,
+      "endpoint": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SH.MED.NUMW.P3?format=json&per_page=2000&mrnev=1",
+      "values": {
+        "BRN": {
+          "value": 6.617,
+          "year": 2021,
+          "stale": false
+        },
+        "IDN": {
+          "value": 3.24,
+          "year": 2023,
+          "stale": false
+        },
+        "KHM": {
+          "value": 1.008,
+          "year": 2019,
+          "stale": false
+        },
+        "LAO": {
+          "value": 1.027,
+          "year": 2023,
+          "stale": false
+        },
+        "MMR": {
+          "value": 0.205,
+          "year": 2022,
+          "stale": false
+        },
+        "MYS": {
+          "value": 4.054,
+          "year": 2023,
+          "stale": false
+        },
+        "PHL": {
+          "value": 4.788,
+          "year": 2021,
+          "stale": false
+        },
+        "SGP": {
+          "value": 6.559,
+          "year": 2022,
+          "stale": false
+        },
+        "THA": {
+          "value": 3.572,
+          "year": 2023,
+          "stale": false
+        },
+        "TLS": {
+          "value": 1.738,
+          "year": 2020,
+          "stale": false
+        },
+        "VNM": {
+          "value": 1.441,
+          "year": 2016,
+          "stale": true
+        }
+      },
+      "newestYear": 2023,
+      "spanYears": 7
+    },
+    {
+      "code": "SH.XPD.CHEX.PC.CD",
+      "key": "cheCapita",
+      "label": "Health spending per person (US$)",
+      "dp": 0,
+      "endpoint": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SH.XPD.CHEX.PC.CD?format=json&per_page=2000&mrnev=1",
+      "values": {
+        "BRN": {
+          "value": 733.00543213,
+          "year": 2023,
+          "stale": false
+        },
+        "IDN": {
+          "value": 131.77729797,
+          "year": 2023,
+          "stale": false
+        },
+        "KHM": {
+          "value": 114.56295776,
+          "year": 2023,
+          "stale": false
+        },
+        "LAO": {
+          "value": 27.41773605,
+          "year": 2023,
+          "stale": false
+        },
+        "MMR": {
+          "value": 56.18909836,
+          "year": 2023,
+          "stale": false
+        },
+        "MYS": {
+          "value": 450.33853149,
+          "year": 2023,
+          "stale": false
+        },
+        "PHL": {
+          "value": 194.05484009,
+          "year": 2023,
+          "stale": false
+        },
+        "SGP": {
+          "value": 3921.60253906,
+          "year": 2023,
+          "stale": false
+        },
+        "THA": {
+          "value": 326.50482178,
+          "year": 2023,
+          "stale": false
+        },
+        "TLS": {
+          "value": 144.21452332,
+          "year": 2023,
+          "stale": false
+        },
+        "VNM": {
+          "value": 197.19210815,
+          "year": 2023,
+          "stale": false
+        }
+      },
+      "newestYear": 2023,
+      "spanYears": 0
+    },
+    {
+      "code": "SH.XPD.OOPC.CH.ZS",
+      "key": "oop",
+      "label": "Out-of-pocket share of health spending (%)",
+      "dp": 1,
+      "endpoint": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SH.XPD.OOPC.CH.ZS?format=json&per_page=2000&mrnev=1",
+      "values": {
+        "BRN": {
+          "value": 7.41179371,
+          "year": 2023,
+          "stale": false
+        },
+        "IDN": {
+          "value": 31.0836544,
+          "year": 2023,
+          "stale": false
+        },
+        "KHM": {
+          "value": 60.60118866,
+          "year": 2023,
+          "stale": false
+        },
+        "LAO": {
+          "value": 44.84078598,
+          "year": 2023,
+          "stale": false
+        },
+        "MMR": {
+          "value": 71.12589264,
+          "year": 2023,
+          "stale": false
+        },
+        "MYS": {
+          "value": 37.09352112,
+          "year": 2023,
+          "stale": false
+        },
+        "PHL": {
+          "value": 44.36006165,
+          "year": 2023,
+          "stale": false
+        },
+        "SGP": {
+          "value": 25.41850281,
+          "year": 2023,
+          "stale": false
+        },
+        "THA": {
+          "value": 9.93404865,
+          "year": 2023,
+          "stale": false
+        },
+        "TLS": {
+          "value": 6.99333382,
+          "year": 2023,
+          "stale": false
+        },
+        "VNM": {
+          "value": 39.20284653,
+          "year": 2023,
+          "stale": false
+        }
+      },
+      "newestYear": 2023,
+      "spanYears": 0
+    },
+    {
+      "code": "SP.DYN.LE00.IN",
+      "key": "lifeExp",
+      "label": "Life expectancy at birth (years)",
+      "dp": 1,
+      "endpoint": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SP.DYN.LE00.IN?format=json&per_page=2000&mrnev=1",
+      "values": {
+        "BRN": {
+          "value": 75.501,
+          "year": 2024,
+          "stale": false
+        },
+        "IDN": {
+          "value": 71.288,
+          "year": 2024,
+          "stale": false
+        },
+        "KHM": {
+          "value": 70.817,
+          "year": 2024,
+          "stale": false
+        },
+        "LAO": {
+          "value": 69.225,
+          "year": 2024,
+          "stale": false
+        },
+        "MMR": {
+          "value": 67.095,
+          "year": 2024,
+          "stale": false
+        },
+        "MYS": {
+          "value": 76.821,
+          "year": 2024,
+          "stale": false
+        },
+        "PHL": {
+          "value": 69.946,
+          "year": 2024,
+          "stale": false
+        },
+        "SGP": {
+          "value": 83.3463414634146,
+          "year": 2024,
+          "stale": false
+        },
+        "THA": {
+          "value": 76.564,
+          "year": 2024,
+          "stale": false
+        },
+        "TLS": {
+          "value": 67.904,
+          "year": 2024,
+          "stale": false
+        },
+        "VNM": {
+          "value": 74.736,
+          "year": 2024,
+          "stale": false
+        }
+      },
+      "newestYear": 2024,
+      "spanYears": 0
+    },
+    {
+      "code": "SH.DYN.MORT",
+      "key": "u5mr",
+      "label": "Under-5 mortality per 1,000 live births",
+      "dp": 1,
+      "endpoint": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SH.DYN.MORT?format=json&per_page=2000&mrnev=1",
+      "values": {
+        "BRN": {
+          "value": 9.9,
+          "year": 2024,
+          "stale": false
+        },
+        "IDN": {
+          "value": 17.7,
+          "year": 2024,
+          "stale": false
+        },
+        "KHM": {
+          "value": 18.4,
+          "year": 2024,
+          "stale": false
+        },
+        "LAO": {
+          "value": 29.4,
+          "year": 2024,
+          "stale": false
+        },
+        "MMR": {
+          "value": 36.9,
+          "year": 2024,
+          "stale": false
+        },
+        "MYS": {
+          "value": 8.3,
+          "year": 2024,
+          "stale": false
+        },
+        "PHL": {
+          "value": 26.5,
+          "year": 2024,
+          "stale": false
+        },
+        "SGP": {
+          "value": 2.7,
+          "year": 2024,
+          "stale": false
+        },
+        "THA": {
+          "value": 9,
+          "year": 2024,
+          "stale": false
+        },
+        "TLS": {
+          "value": 47.6,
+          "year": 2024,
+          "stale": false
+        },
+        "VNM": {
+          "value": 17.3,
+          "year": 2024,
+          "stale": false
+        }
+      },
+      "newestYear": 2024,
+      "spanYears": 0
+    },
+    {
+      "code": "SH.STA.MMRT",
+      "key": "mmr",
+      "label": "Maternal mortality per 100,000 live births",
+      "dp": 0,
+      "endpoint": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SH.STA.MMRT?format=json&per_page=2000&mrnev=1",
+      "values": {
+        "BRN": {
+          "value": 36,
+          "year": 2023,
+          "stale": false
+        },
+        "IDN": {
+          "value": 140,
+          "year": 2023,
+          "stale": false
+        },
+        "KHM": {
+          "value": 137,
+          "year": 2023,
+          "stale": false
+        },
+        "LAO": {
+          "value": 112,
+          "year": 2023,
+          "stale": false
+        },
+        "MMR": {
+          "value": 185,
+          "year": 2023,
+          "stale": false
+        },
+        "MYS": {
+          "value": 26,
+          "year": 2023,
+          "stale": false
+        },
+        "PHL": {
+          "value": 84,
+          "year": 2023,
+          "stale": false
+        },
+        "SGP": {
+          "value": 6,
+          "year": 2023,
+          "stale": false
+        },
+        "THA": {
+          "value": 34,
+          "year": 2023,
+          "stale": false
+        },
+        "TLS": {
+          "value": 192,
+          "year": 2023,
+          "stale": false
+        },
+        "VNM": {
+          "value": 48,
+          "year": 2023,
+          "stale": false
+        }
+      },
+      "newestYear": 2023,
+      "spanYears": 0
+    },
+    {
+      "code": "SH.TBS.INCD",
+      "key": "tb",
+      "label": "Tuberculosis incidence per 100,000",
+      "dp": 0,
+      "endpoint": "https://api.worldbank.org/v2/country/BRN;KHM;IDN;LAO;MYS;MMR;PHL;SGP;THA;TLS;VNM/indicator/SH.TBS.INCD?format=json&per_page=2000&mrnev=1",
+      "values": {
+        "BRN": {
+          "value": 65,
+          "year": 2024,
+          "stale": false
+        },
+        "IDN": {
+          "value": 382,
+          "year": 2024,
+          "stale": false
+        },
+        "KHM": {
+          "value": 272,
+          "year": 2024,
+          "stale": false
+        },
+        "LAO": {
+          "value": 127,
+          "year": 2024,
+          "stale": false
+        },
+        "MMR": {
+          "value": 482,
+          "year": 2024,
+          "stale": false
+        },
+        "MYS": {
+          "value": 96,
+          "year": 2024,
+          "stale": false
+        },
+        "PHL": {
+          "value": 625,
+          "year": 2024,
+          "stale": false
+        },
+        "SGP": {
+          "value": 43,
+          "year": 2024,
+          "stale": false
+        },
+        "THA": {
+          "value": 146,
+          "year": 2024,
+          "stale": false
+        },
+        "TLS": {
+          "value": 496,
+          "year": 2024,
+          "stale": false
+        },
+        "VNM": {
+          "value": 182,
+          "year": 2024,
+          "stale": false
+        }
+      },
+      "newestYear": 2024,
+      "spanYears": 0
+    }
+  ]
+}

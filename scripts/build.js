@@ -180,6 +180,42 @@ ul.sugg{list-style:none; padding:0; margin:1rem 0}
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:.75em; color:#555; word-break:break-all}
   body{font-size:11pt}
 }
+/* ---- navigation (2026-08-25 usability audit) ----
+   The page is ~19,000 words. Before this, the only navigation was a TOC at the very top, and the
+   TOC's auto-numbering (1-15) contradicted the section numbers every cross-reference uses (0-13). */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section[id],div[id],figure[id]{scroll-margin-top:3.6rem}
+/* the ONE element that made the page body scroll sideways on a phone was an unbreakable inline URL */
+code{overflow-wrap:anywhere}
+.wrap a{overflow-wrap:anywhere}
+
+.topbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--rule)}
+.tb-in{max-width:var(--maxw);margin:0 auto;padding:.5rem 1.25rem;display:flex;align-items:center;
+  justify-content:space-between;gap:1rem}
+.tb-title{font-weight:650;font-size:.92rem;color:var(--fg);text-decoration:none;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tb-menu{position:relative;flex:none}
+.tb-menu>summary{list-style:none;cursor:pointer;font-size:.88rem;font-weight:650;color:var(--accent);
+  padding:.3rem .75rem;border:1px solid var(--rule);border-radius:6px;background:var(--card);user-select:none}
+.tb-menu>summary::-webkit-details-marker{display:none}
+.tb-list{position:absolute;right:0;top:calc(100% + 8px);z-index:21;background:var(--bg);
+  border:1px solid var(--rule);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);
+  padding:.55rem .4rem;margin:0;list-style:none;min-width:290px;max-width:min(92vw,24rem);
+  max-height:min(70vh,30rem);overflow:auto;font-size:.9rem}
+.tb-list li{margin:0}
+.tb-list a{display:block;padding:.28rem .6rem;border-radius:5px;text-decoration:none;color:var(--fg)}
+.tb-list a:hover{background:var(--card)}
+.tnum{display:inline-block;min-width:2.6em;color:var(--muted);font-weight:600}
+.toc-omitted{color:var(--muted);padding:.28rem .6rem}
+nav.toc ol{list-style:none;padding-left:.2rem}
+.secnum{color:var(--muted);font-weight:600;margin-right:.55rem;font-size:.92em}
+a.xref{text-decoration:none;border-bottom:1px dotted var(--accent)}
+
+.fig-scroll{overflow-x:auto}
+.fig-scroll svg.chart{min-width:560px}
+.fig-panel{font-size:.85rem;font-weight:650;color:var(--muted);margin:.9rem 0 .2rem}
+
 @media (max-width:34rem){ h1{font-size:1.55rem} .wrap{padding:1rem .9rem 3rem} }
 `.trim();
 }
@@ -417,6 +453,28 @@ function writeAiFiles(m, sections) {
       { fact: 'Ministry of Health website', value: 'None functioning', note: 'ms.gov.tl returns 502; moh.gov.tl dead since 2020. The live channel is Facebook (139,000 followers) and a document portal at apps.ms.gov.tl.' },
       { fact: 'Training and research approval', value: 'INSP-TL approval required for all clinical research and any training longer than 3 days' },
     ],
+    aseanPosition: (function () {
+      // Computed from data/comparators.json at build time, never typed in - a recalled comparator
+      // is this project's documented failure mode. Absent cache -> absent block, not stale numbers.
+      try {
+        const c = JSON.parse(fs.readFileSync(path.join(DATA, 'comparators.json'), 'utf8'));
+        const rank = (key) => {
+          const ind = c.indicators.find(i => i.key === key);
+          if (!ind || !ind.values.TLS) return null;
+          const rows = Object.entries(ind.values).sort((a, b) => b[1].value - a[1].value);
+          const pos = rows.findIndex(([iso]) => iso === 'TLS') + 1;
+          const t = ind.values.TLS;
+          return { indicator: ind.label, timorLeste: t.value, year: t.year,
+                   rankHighToLow: pos + ' of ' + rows.length };
+        };
+        return {
+          note: 'Rank 1 = highest value among the 11 ASEAN members. Each value is that country\u2019s ' +
+                'latest available year (the World Bank does not align them). Pulled ' + c.pulled + '.',
+          indicators: ['physicians', 'nurses', 'cheCapita', 'oop', 'lifeExp', 'u5mr', 'mmr', 'tb']
+            .map(rank).filter(Boolean),
+        };
+      } catch (e) { return null; }
+    })(),
     knownGaps: [
       'No 3W (who does what where) dataset and no health-cluster partner list for Timor-Leste.',
       'No national master facility list.',
@@ -534,6 +592,48 @@ function tooltipScript() {
 })();`.trim();
 }
 
+/* -------------------------------------------------------- section numbering & navigation */
+
+/** '§3' from id '03', '§8b' from '08b', '§10' from '10'. The display number every cross-reference
+ *  in the prose already uses - the TOC used to auto-number 1..15 against it, which made "Health
+ *  status" section 3 in the text and item 5 in the contents. */
+function secNum(id) { return '\u00a7' + String(id).replace(/^0/, ''); }
+
+/** ordering key so omitted-section notices can be interleaved at their true position:
+ *  '08b' -> 8.5 sits between '08' -> 8 and '10' -> 10, with the omitted '09' -> 9 between them. */
+function ordKey(id) {
+  const mch = /^(\d+)([a-z])?$/.exec(String(id));
+  if (!mch) return 999;
+  return parseInt(mch[1], 10) + (mch[2] ? 0.5 : 0);
+}
+
+/** One list of navigation entries - sections plus omitted placeholders - used by BOTH the sticky
+ *  topbar menu and the in-page Contents box, so the two can never disagree. */
+function navEntries(m, sections) {
+  const items = sections.map(sec => ({
+    key: ordKey(sec.id),
+    html: `<li><a href="#sec-${esc(sec.id)}"><span class="tnum">${secNum(sec.id)}</span>${esc(sec.title)}</a></li>`,
+  }));
+  for (const om of (m.omittedSections || []).filter(x => x.renderNotice)) {
+    items.push({
+      key: ordKey(om.id),
+      html: `<li class="toc-omitted"><span class="tnum">${secNum(om.id)}</span>${esc(om.title)} &mdash; <a href="#omitted-${esc(om.id)}">deliberately omitted</a></li>`,
+    });
+  }
+  return items.sort((a, b) => a.key - b.key).map(i => i.html).join('\n      ');
+}
+
+/** Closes the Contents dropdown when a destination is picked, and on any click outside it.
+ *  Pure enhancement: with JS off the details element still opens and every link still works. */
+function menuScript() {
+  return `
+(function(){
+  var m=document.getElementById('tbmenu'); if(!m) return;
+  m.addEventListener('click',function(e){ var a=e.target.closest&&e.target.closest('a'); if(a) m.removeAttribute('open'); });
+  document.addEventListener('click',function(e){ if(m.hasAttribute('open')&&!m.contains(e.target)) m.removeAttribute('open'); });
+})();`.trim();
+}
+
 /* ---------------------------------------------------------------- assembly */
 
 function buildHtml(m, sections, opts) {
@@ -542,27 +642,32 @@ function buildHtml(m, sections, opts) {
   const disc = meta.disclosure(m, today);
   const stale = meta.staleness(m, today);
 
-  const toc = sections.map(s =>
-    `<li><a href="#sec-${esc(s.id)}">${esc(s.title)}</a></li>`).join('\n      ');
+  const toc = navEntries(m, sections);
 
-  const omitted = (m.omittedSections || []).filter(s => s.renderNotice).map(s => `
-    <div class="notice">
-      <p class="n-head">Section ${esc(s.id)} &mdash; ${esc(s.title)} &mdash; is deliberately not included.</p>
-      <p>${esc(s.reason)}</p>
-    </div>`).join('');
-
-  const body = sections.map(s => {
+  // Section bodies and omitted-section notices are INTERLEAVED at their true ordinal position -
+  // the missing-section-9 notice sits between 8b and 10 where a reader looks for it, not stacked
+  // among the banners at the top of the page (a 2026-08-25 usability-audit fix; the top of the page
+  // had three notices before any content).
+  const flow = sections.map(s => {
     const st = meta.sectionState(s, m, today);
     const flag = (st === 'changed-since-review' || st === 'never-reviewed')
       ? `<span class="flag">${st === 'never-reviewed' ? 'not yet reviewed' : 'changed since review'}</span>` : '';
     const revTxt = s.lastReviewedByHuman ? `reviewed ${esc(s.lastReviewedByHuman)}` : 'not yet reviewed';
-    return `
+    return { key: ordKey(s.id), html: `
     <section id="sec-${esc(s.id)}">
-      <h2>${esc(s.title)}</h2>
+      <h2><span class="secnum">${secNum(s.id)}</span>${esc(s.title)}</h2>
       <p class="sec-stamp">Text updated ${esc(s.lastUpdatedByAI || 'unknown')} &middot; ${revTxt}${flag}</p>
       ${s.html}
-    </section>`;
-  }).join('\n');
+    </section>` };
+  });
+  for (const om of (m.omittedSections || []).filter(x => x.renderNotice)) {
+    flow.push({ key: ordKey(om.id), html: `
+    <div class="notice" id="omitted-${esc(om.id)}">
+      <p class="n-head">${secNum(om.id)} &mdash; ${esc(om.title)} &mdash; is deliberately not included.</p>
+      <p>${esc(om.reason)}</p>
+    </div>` });
+  }
+  const body = flow.sort((a, b) => a.key - b.key).map(i => i.html).join('\n');
 
   const annex = {
     title: m.title, edition: m.edition, status: m.status,
@@ -606,9 +711,20 @@ ${seoHead(m, disc)}
 <style>${css()}</style>
 </head>
 <body>
+<nav class="topbar" aria-label="Page navigation">
+  <div class="tb-in">
+    <a class="tb-title" href="#top">${esc(m.title)}</a>
+    <details class="tb-menu" id="tbmenu">
+      <summary>Contents</summary>
+      <ol class="tb-list">
+      ${toc}
+      </ol>
+    </details>
+  </div>
+</nav>
 <div class="wrap">
 
-<header>
+<header id="top">
   <p class="eyebrow">Unofficial &middot; AI-compiled &middot; Edition ${esc(m.edition)}</p>
   <h1>${esc(m.title)}</h1>
   <p class="sub">An orientation document for anyone considering or delivering health work in
@@ -629,8 +745,6 @@ ${seoHead(m, disc)}
 
 <div id="staleness" class="notice" style="display:none"></div>
 <div id="tip" role="status" aria-live="polite"></div>
-
-${omitted}
 
 <nav class="toc" aria-label="Contents">
   <p>Contents</p>
@@ -658,6 +772,7 @@ ${body}
 <script type="application/json" id="annex">${JSON.stringify(annex).replace(/</g, '\\u003c')}</script>
 <script>${stalenessScript(m)}</script>
 <script>${tooltipScript()}</script>
+<script>${menuScript()}</script>
 </body>
 </html>
 `;
@@ -685,15 +800,31 @@ function loadSections(m) {
     // The placeholder sits alone in its own paragraph, so markdown wraps it as <p>{{chart:x}}</p>.
     // Absorb that wrapper: a <figure> inside a <p> is invalid HTML and browsers silently close the
     // paragraph early, which breaks the surrounding layout in ways that are tedious to trace back.
+    // Make the ~96 cross-references (\u00a78, \u00a75...) actual links. External document references are
+    // never linkified: they are always decimal-suffixed ("CCS \u00a72.3.1", "NHSSP II \u00a75.1"), which the
+    // negative lookahead excludes - verified against every \u00a7-pattern in the content before this was
+    // enabled. \u00a79 links to the omitted-section notice; a number with no matching section is left as
+    // plain text rather than becoming a broken link.
+    const secIds = new Set(m.sections.map(x => x.id));
+    const omIds = new Set((m.omittedSections || []).map(x => x.id));
+    const pad = n => { const mm = /^(\d+)([a-z])?$/.exec(n); return (mm[1].length < 2 ? '0' + mm[1] : mm[1]) + (mm[2] || ''); };
+    const linkify = h => h.replace(/(?:\u00a7|&sect;)(\d{1,2}[ab]?)(?!\.?\d)/g, (m0, num) => {
+      const id = pad(num);
+      if (secIds.has(id)) return `<a class="xref" href="#sec-${id}">\u00a7${num}</a>`;
+      if (omIds.has(id)) return `<a class="xref" href="#omitted-${id}">\u00a7${num}</a>`;
+      return m0;
+    });
+
     const sg = suggestionsBlock(m);
     const html = r.html
       .replace(/<p>\s*\{\{chart:([a-z0-9-]+)\}\}\s*<\/p>/g, (m0, id) => charts.render(id))
       .replace(/\{\{chart:([a-z0-9-]+)\}\}/g, (m0, id) => charts.render(id))
       .replace(/<p>\s*\{\{suggestions-form\}\}\s*<\/p>/g, () => sg.cta)
       .replace(/<p>\s*\{\{suggestions-list\}\}\s*<\/p>/g, () => sg.body);
-    if (/\{\{chart:/.test(html)) throw new Error(`${s.file}: a malformed chart placeholder survived rendering`);
+    const linked = linkify(html);
+    if (/\{\{chart:/.test(linked)) throw new Error(`${s.file}: a malformed chart placeholder survived rendering`);
 
-    return Object.assign({}, s, { html, headings: r.headings });
+    return Object.assign({}, s, { html: linked, headings: r.headings });
   }).filter(Boolean);
 }
 
@@ -985,6 +1116,45 @@ if (require.main === module && process.argv.includes('--self-test')) {
     eq(assertSuppressionHonoured(build({}).html).length, 0);
   });
 
+  t('NAV: sticky topbar exists, with a Contents menu that reaches every section', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, 'class="topbar"');
+    has(h, 'id="tbmenu"');
+    has(h, '<summary>Contents</summary>');
+    has(h, 'href="#sec-08b"');
+  });
+  t('NAV: TOC and headings carry the REAL section numbers, not auto-numbering', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, 'class="secnum">\u00a73<');
+    has(h, 'class="tnum">\u00a78b<');
+    has(h, 'list-style:none', 'the TOC ol must not double-number');
+  });
+  t('NAV: cross-references are links, and external document refs are NOT', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, 'class="xref" href="#sec-08"');
+    has(h, 'CCS \u00a72.3.1', 'a decimal-suffixed external ref must stay plain text');
+    has(h, 'NHSSP II \u00a75.1', 'a decimal-suffixed external ref must stay plain text');
+  });
+  t('NAV: the omitted section 9 notice sits in flow between 8b and 10, and the TOC lists it', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    const a = h.indexOf('id="sec-08b"'), b = h.indexOf('id="omitted-09"'), c = h.indexOf('id="sec-10"');
+    eq(a > 0 && a < b && b < c, true, 'ordinal placement broken');
+    has(h, 'href="#omitted-09"');
+  });
+  t('MOBILE: the one overflow class is fixed and anchors clear the sticky bar', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, 'overflow-wrap:anywhere');
+    has(h, 'scroll-margin-top');
+    has(h, '.fig-scroll{overflow-x:auto}');
+  });
+  t('ASEAN: data.json carries a computed regional position with per-value years', () => {
+    const j = JSON.parse(fs.readFileSync(path.join(DOCS, 'data.json'), 'utf8'));
+    if (!j.aseanPosition) throw new Error('aseanPosition missing - is data/comparators.json present?');
+    eq(j.aseanPosition.indicators.length >= 8, true, 'expected 8 ranked indicators');
+    for (const r of j.aseanPosition.indicators) {
+      if (!r.year || !r.rankHighToLow) throw new Error(r.indicator + ' missing year or rank');
+    }
+  });
   t('AI: llms.txt tells an assistant the document is UNOFFICIAL and policy-not-practice', () => {
     const f = path.join(DOCS, 'llms.txt');
     if (!fs.existsSync(f)) throw new Error('llms.txt not emitted - run a build first');

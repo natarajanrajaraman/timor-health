@@ -11,6 +11,14 @@ Cuban-trained cohort arriving — see below.
 The public-sector workforce has grown roughly **six-fold in sixteen years**, with the great majority of
 that growth at municipal level.
 
+{{chart:asean-workforce}}
+
+**In its region, Timor-Leste's workforce density is mid-pack, not bottom** — 7th of the 11 ASEAN
+members on physicians per person, ahead of Thailand and Indonesia, and 7th on nurses and midwives
+(World Bank, each country's latest year). The intuition that Timor-Leste is short of health workers
+in the aggregate does not survive the comparison; what the comparison cannot see is **where** those
+workers are, which is exactly the problem the national assessment names.
+
 ⚠️ **Headcount is not the stated problem. Distribution is.** WHO CCS §2.3.3: *"equitable distribution of
 health workers is a major issue"*, with rural and urban staff density varying considerably. A proposal
 premised on there being too few health workers in the aggregate is arguing against the national

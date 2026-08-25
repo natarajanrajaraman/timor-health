@@ -38,9 +38,14 @@ const N = n => (Math.round(n * 100) / 100);
 /** figure wrapper: title, the svg, an optional note, and a mandatory source line */
 function figure(opts) {
   const { id, title, desc, svg, source, note } = opts;
+  // Charts scroll sideways on narrow screens rather than shrinking: a 720-unit viewBox scaled
+  // into a 360px phone renders its 11px tick labels at ~5.5px, which is not smaller text, it is
+  // no text. min-width on the svg + overflow-x on the wrapper follows the same rule as tables -
+  // wide content scrolls in its own container, the page body never scrolls sideways.
+  const body = svg.includes('<svg') ? `<div class="fig-scroll">${svg}</div>` : svg;
   return `<figure class="fig" id="fig-${esc(id)}">
   <figcaption class="fig-title">${esc(title)}</figcaption>
-  ${svg}
+  ${body}
   ${note ? `<p class="fig-note">${note}</p>` : ''}
   <p class="fig-src">Source: ${source}</p>
 </figure>`;
@@ -120,10 +125,11 @@ function barChartH(o) {
     const slot = r.slot || 1;
     bars += `<text class="blab" x="${labelW - 10}" y="${y + rowH / 2 + 4}" text-anchor="end">${esc(r.label)}</text>`;
     // 4px rounded data-end, anchored to the baseline at x=labelW
+    const vtext = r.valueText || (o.fmt ? o.fmt(r.value) : String(r.value));
     bars += `<rect class="bar" x="${labelW}" y="${y + 6}" width="${N(w)}" height="${rowH - 14}" rx="4"` +
-      ` style="fill:var(--series-${slot})" data-tip="${esc(r.label + ': ' + (o.fmt ? o.fmt(r.value) : r.value))}">` +
-      `<title>${esc(r.label + ': ' + (o.fmt ? o.fmt(r.value) : r.value))}</title></rect>`;
-    bars += `<text class="bval" x="${N(labelW + w + 8)}" y="${y + rowH / 2 + 4}">${esc(o.fmt ? o.fmt(r.value) : String(r.value))}</text>`;
+      ` style="fill:var(--series-${slot})" data-tip="${esc(r.label + ': ' + vtext)}">` +
+      `<title>${esc(r.label + ': ' + vtext)}</title></rect>`;
+    bars += `<text class="bval" x="${N(labelW + w + 8)}" y="${y + rowH / 2 + 4}">${esc(vtext)}</text>`;
   });
 
   return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="t-${esc(o.id)}">
@@ -258,6 +264,62 @@ function timeline(o) {
 }
 
 
+
+/* ------------------------------------------------------------------ ASEAN comparators */
+
+/**
+ * ASEAN comparison bars, fed from data/comparators.json (written by scripts/pull-comparators.js).
+ *
+ * WHY FED FROM A CACHE AND NOT TYPED IN: a comparator recalled by a model is the documented failure
+ * mode of this project (the 11.4%-of-GDP case, section 5). Every figure here traces to a World Bank
+ * API call whose endpoint and pull date are recorded in the cache and rendered in the source line.
+ *
+ * EACH COUNTRY'S LATEST YEAR DIFFERS - the World Bank does not align them. Hiding that would make
+ * the chart read as a like-for-like comparison it is not, so every bar carries its own year, and a
+ * value more than 5 years behind the newest in its row is marked with an asterisk that the source
+ * line explains. Do not "clean up" the years off the bars.
+ */
+const fsC = require('fs');
+const pathC = require('path');
+let _comp = null;
+function comparators() {
+  if (_comp) return _comp;
+  const p = pathC.join(__dirname, '..', '..', 'data', 'comparators.json');
+  if (!fsC.existsSync(p)) {
+    throw new Error('data/comparators.json is missing - run: node scripts/pull-comparators.js');
+  }
+  _comp = JSON.parse(fsC.readFileSync(p, 'utf8'));
+  return _comp;
+}
+
+function comparatorBar(indKey, opts) {
+  const o = opts || {};
+  const c = comparators();
+  const ind = c.indicators.find(i => i.key === indKey);
+  if (!ind) throw new Error('comparator indicator not cached: ' + indKey);
+  const rows = Object.entries(ind.values)
+    .map(([iso, v]) => Object.assign({ iso, name: c.countries[iso] }, v))
+    .sort((a, b) => b.value - a.value)
+    .map(r => ({
+      label: r.name,
+      value: r.value,
+      // Timor-Leste keeps one colour across every comparison - colour follows the entity
+      slot: r.iso === 'TLS' ? 2 : 1,
+      valueText: r.value.toFixed(o.dp !== undefined ? o.dp : 1) + '  (' + r.year + (r.stale ? '*' : '') + ')',
+    }));
+  const svg = (o.panelTitle ? '<p class="fig-panel">' + esc(o.panelTitle) + '</p>' : '') +
+    barChartH({ id: o.id || ('cmp-' + indKey), rows, labelW: 150, rowH: 30,
+      aria: o.aria || (ind.label + ' across the eleven ASEAN countries, Timor-Leste highlighted.') });
+  return { svg, ind, pulled: c.pulled };
+}
+
+function comparatorSource(parts) {
+  const c = comparators();
+  return 'World Bank World Development Indicators, queried ' + esc(c.pulled) + ' (' + parts + '). ' +
+    'Each bar carries the year of that country&rsquo;s latest available value - the World Bank does ' +
+    'not align them. * = more than 5 years older than the newest value in the row.';
+}
+
 /* ------------------------------------------------------------------ images */
 
 /**
@@ -287,6 +349,53 @@ function imageFigure(o) {
 /* ------------------------------------------------------------------ the registry */
 
 const CHARTS = {
+
+  'asean-workforce': () => {
+    const phys = comparatorBar('physicians', { id: 'cmp-phys', dp: 2, panelTitle: 'Physicians per 1,000 people' });
+    const nurs = comparatorBar('nurses', { id: 'cmp-nurs', dp: 2, panelTitle: 'Nurses and midwives per 1,000 people' });
+    return figure({
+      id: 'asean-workforce',
+      title: 'Health workforce density: Timor-Leste against the other ten ASEAN members',
+      svg: phys.svg + nurs.svg,
+      note: '<b>Timor-Leste is mid-pack, not bottom.</b> On physicians per person it sits 7th of 11 - ' +
+        '<b>ahead of Thailand and Indonesia</b> - and 7th on nurses and midwives. Read alongside the ' +
+        'outcome comparison in &sect;3, this is why a proposal premised on "too few health workers ' +
+        'in aggregate" is arguing with the data as well as with the national assessment: the stated ' +
+        'problem is <em>distribution</em>, and the binding constraint is <em>postgraduate</em> training.',
+      source: comparatorSource('indicators SH.MED.PHYS.ZS, SH.MED.NUMW.P3'),
+    });
+  },
+
+  'asean-oop': () => {
+    const oop = comparatorBar('oop', { id: 'cmp-oop', dp: 1, panelTitle: 'Out-of-pocket share of health spending (%)' });
+    const che = comparatorBar('cheCapita', { id: 'cmp-che', dp: 0, panelTitle: 'Health spending per person (US$)' });
+    return figure({
+      id: 'asean-oop',
+      title: 'Financial protection and spending: Timor-Leste against ASEAN',
+      svg: oop.svg + che.svg,
+      note: '<b>Timor-Leste has the LOWEST out-of-pocket share in ASEAN</b> - below Brunei, and under a ' +
+        'tenth of Myanmar&rsquo;s - which is the free-at-point-of-care system showing up in the money. On ' +
+        'spending per person it is 7th of 11, above Indonesia, Cambodia, Myanmar and Laos. Money is not ' +
+        'where Timor-Leste is the regional outlier; &sect;3 shows where it is.',
+      source: comparatorSource('indicators SH.XPD.OOPC.CH.ZS, SH.XPD.CHEX.PC.CD'),
+    });
+  },
+
+  'asean-outcomes': () => {
+    const u5 = comparatorBar('u5mr', { id: 'cmp-u5', dp: 1, panelTitle: 'Under-5 mortality per 1,000 live births' });
+    const mmr = comparatorBar('mmr', { id: 'cmp-mmr', dp: 0, panelTitle: 'Maternal mortality per 100,000 live births' });
+    return figure({
+      id: 'asean-outcomes',
+      title: 'Where Timor-Leste IS the regional outlier: child and maternal survival',
+      svg: u5.svg + mmr.svg,
+      note: '<b>Worst in ASEAN on both, and on under-5 mortality by a wide margin</b> - 47.6 against ' +
+        'next-worst Myanmar&rsquo;s 36.9. Set against mid-pack workforce density (&sect;6), mid-pack ' +
+        'spending and the region&rsquo;s best financial protection (&sect;5), the gap between ordinary ' +
+        'inputs and worst-in-region outcomes is itself the finding. TB incidence (&sect;3) is second ' +
+        'only to the Philippines.',
+      source: comparatorSource('indicators SH.DYN.MORT, SH.STA.MMRT'),
+    });
+  },
 
   'map-municipalities': () => imageFigure({
     id: 'map-municipalities',
@@ -442,6 +551,29 @@ if (require.main === module && process.argv.includes('--self-test')) {
   const eq = (a, b, m) => { if (a !== b) throw new Error((m || '') + ' expected ' + JSON.stringify(b) + ' got ' + JSON.stringify(a)); };
   const has = (h, n, m) => { if (!h.includes(n)) throw new Error((m || '') + ' expected to contain ' + JSON.stringify(n)); };
 
+  t('ASEAN: comparator charts render with Timor-Leste highlighted exactly once per panel', () => {
+    for (const id of ['asean-workforce', 'asean-oop', 'asean-outcomes']) {
+      const h = render(id);
+      const highlights = (h.match(/--series-2/g) || []).length;
+      eq(highlights, 2, id + ': expected exactly one highlighted bar in each of two panels');
+      has(h, 'Timor-Leste');
+    }
+  });
+  t('ASEAN: every bar carries its own year - the WB does not align country years', () => {
+    const h = render('asean-workforce');
+    const years = (h.match(/\(20[0-9][0-9]\*?\)/g) || []).length;
+    if (years < 44) throw new Error('expected a year on all 22 bars (each appears in tip+label), saw ' + years);
+  });
+  t('ASEAN: a value more than 5y behind its row is starred, and the source explains the star', () => {
+    const h = render('asean-workforce');   // Vietnam nurses 2016 vs newest 2023
+    has(h, '(2016*)', 'the stale Vietnam nurses value must be starred');
+    has(h, 'more than 5 years older', 'the source line must explain the star');
+  });
+  t('ASEAN: source line carries the pull date and the exact indicator codes', () => {
+    const h = render('asean-oop');
+    has(h, 'World Bank World Development Indicators, queried 20');
+    has(h, 'SH.XPD.OOPC.CH.ZS');
+  });
   t('every registered chart renders without throwing', () => {
     for (const id of ids()) { const s = render(id); if (!s || s.length < 200) throw new Error(id + ' produced nothing'); }
   });

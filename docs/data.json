@@ -219,6 +219,59 @@
       "value": "INSP-TL approval required for all clinical research and any training longer than 3 days"
     }
   ],
+  "aseanPosition": {
+    "note": "Rank 1 = highest value among the 11 ASEAN members. Each value is that country’s latest available year (the World Bank does not align them). Pulled 2026-08-25.",
+    "indicators": [
+      {
+        "indicator": "Physicians per 1,000 people",
+        "timorLeste": 0.752,
+        "year": 2020,
+        "rankHighToLow": "7 of 11"
+      },
+      {
+        "indicator": "Nurses and midwives per 1,000 people",
+        "timorLeste": 1.738,
+        "year": 2020,
+        "rankHighToLow": "7 of 11"
+      },
+      {
+        "indicator": "Health spending per person (US$)",
+        "timorLeste": 144.21452332,
+        "year": 2023,
+        "rankHighToLow": "7 of 11"
+      },
+      {
+        "indicator": "Out-of-pocket share of health spending (%)",
+        "timorLeste": 6.99333382,
+        "year": 2023,
+        "rankHighToLow": "11 of 11"
+      },
+      {
+        "indicator": "Life expectancy at birth (years)",
+        "timorLeste": 67.904,
+        "year": 2024,
+        "rankHighToLow": "10 of 11"
+      },
+      {
+        "indicator": "Under-5 mortality per 1,000 live births",
+        "timorLeste": 47.6,
+        "year": 2024,
+        "rankHighToLow": "1 of 11"
+      },
+      {
+        "indicator": "Maternal mortality per 100,000 live births",
+        "timorLeste": 192,
+        "year": 2023,
+        "rankHighToLow": "1 of 11"
+      },
+      {
+        "indicator": "Tuberculosis incidence per 100,000",
+        "timorLeste": 496,
+        "year": 2024,
+        "rankHighToLow": "2 of 11"
+      }
+    ]
+  },
   "knownGaps": [
     "No 3W (who does what where) dataset and no health-cluster partner list for Timor-Leste.",
     "No national master facility list.",

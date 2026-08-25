@@ -117,12 +117,23 @@ therefore worth reading even if NCDs are not your area.
 On the policy side, WHO's financing work has been on **pro-health taxation**: tobacco tax raised from
 US$19/kg to **US$50/kg**, and alcohol from US$4.45/litre to **US$8.9/litre** (CCS §2.3.1).
 
-# Overall
+# Overall — and where Timor-Leste stands in its region
 
-- **Life expectancy: 67.9 years** (World Bank, data through 2024). ⚠️ Note WHO's GHO life-expectancy
-  indicator was last refreshed 2024-08-02 and is the older of the two.
+- **Life expectancy: 67.9 years** (World Bank, data through 2024) — 9th of the 11 ASEAN members,
+  above Laos and Myanmar. ⚠️ Note WHO's GHO life-expectancy indicator was last refreshed 2024-08-02
+  and is the older of the two.
 - **UHC Service Coverage Index (SDG 3.8.1): 48** (2023, WHO GHED/GHO). ⚠️ WHO's own CCS gives **52**
   for the same measure — a second internal WHO inconsistency, alongside the financing one in §5.
+
+{{chart:asean-outcomes}}
+
+**The regional comparison is the context that makes every number in this section meaningful.**
+Timor-Leste has **ASEAN's worst under-5 mortality (47.6 per 1,000 — next worst is Myanmar at 36.9)
+and worst maternal mortality (192 per 100,000)**, and its **TB incidence is second only to the
+Philippines**. Yet §5 and §6 show mid-pack health spending, mid-pack workforce density, and the
+region's **best** financial protection. **The gap between ordinary inputs and worst-in-region
+outcomes is itself the finding** — and a better starting question for a partner than any single
+indicator here.
 
 # Where the numbers come from, and how to re-pull them
 
