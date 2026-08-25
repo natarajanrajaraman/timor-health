@@ -55,10 +55,11 @@ a poor proxy for domestic workforce supply. §6.
 days delivered to health professionals, requires approval from **INSP-TL**, the National Institute of
 Public Health. Partners planning to teach should treat this as the first step, not a formality. §6.
 
-**10. The current flagship primary care initiative is PIS — *Programa Integradu ba Saúde*** — an
+**10. The current flagship primary care initiative is PIS — *Programa Integradu Saúde*** — an
 integrated package of services delivered closer to where people live, linking health systems,
-facilities, national programmes, community and specialist care. It is what the WHO strategy describes
-without naming. Ask where your activity sits within it. §7.
+facilities, national programmes, community and specialist care. **Where WHO and others write
+"integrated health services programme" or "the new integrated health policy", they mean PIS.** Ask
+where your activity sits within it. §7.
 
 **11. A new tier of municipal hospitals is planned but does not yet exist.** NHSSP II sets out a
 service-delivery structure including municipal hospitals between the regional and community-health-centre

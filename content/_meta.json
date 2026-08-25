@@ -11,7 +11,7 @@
     "page must say so IN WORDS above the fold. build.js generates that banner automatically so it",
     "cannot be forgotten - do not replace it with two dates in a footer."
   ],
-  "title": "Timor-Leste Health Landscape Scan",
+  "title": "Start Here — Health in Timor-Leste",
   "edition": "2026-Q3-draft",
   "status": "prototype",
   "documentLanguage": "en",
@@ -133,6 +133,14 @@
       "lastReviewedByHuman": null
     },
     {
+      "id": "08b",
+      "file": "08b-guidelines.md",
+      "title": "National guidelines, policies and key documents",
+      "required": true,
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
       "id": "10",
       "file": "10-sources-method.md",
       "title": "Sources and method",
@@ -181,8 +189,8 @@
   },
   "seo": {
     "$comment": "Search terms the intended audience actually types. Used for the description, the JSON-LD keywords and the about[] topics - NEVER stuffed into visible body text, which Google penalises and which would wreck the prose. The real SEO here is a specific title, an honest description, structured data and a crawlable page.",
-    "titleFull": "Timor-Leste Health Landscape Scan - health system, primary care and partner directory",
-    "description": "An independent, sourced guide to health and the health system of Timor-Leste (East Timor): how primary health care and the national programmes actually work, what the data says, and a directory of NGOs and partners working in Timorese health. For clinicians, volunteers, medical missions, NGOs, funders and researchers.",
+    "titleFull": "Start Here — Health in Timor-Leste: the system, the data, and who is already working",
+    "description": "Start Here is an independent, sourced guide to health and the health system of Timor-Leste (East Timor): how primary health care and the national programmes actually work, what the data says and where it contradicts itself, links to the national clinical guidelines and essential medicines list, and a directory of the NGOs and partners already working in Timorese health. For clinicians, visiting teams and medical missions, NGOs, funders and researchers.",
     "keywords": [
       "Timor-Leste health",
       "East Timor health",
@@ -237,7 +245,15 @@
       "health landscape analysis",
       "health situation analysis",
       "Southeast Asia health",
-      "ASEAN health"
+      "ASEAN health",
+      "Start Here Timor-Leste health",
+      "Timor-Leste national clinical guidelines",
+      "Timor-Leste essential medicines list",
+      "Timor-Leste standard treatment guidelines",
+      "Timor-Leste TB guidelines",
+      "Timor-Leste HIV ART guidelines",
+      "Programa Integradu Saude",
+      "PIS Timor-Leste"
     ],
     "audience": [
       "clinicians and health professionals",

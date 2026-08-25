@@ -60,9 +60,9 @@ September 2021)*.
 ⚠️ **Current status is PARTIALLY UNVERIFIED, and it matters.** *"Saúde na Família"* **does not appear
 anywhere in the WHO CCS 2026–2030.** The CCS instead describes an "integrated health services
 programme", "home-based health-care delivery by health post staff", and "revitalization of community
-health volunteers". **Whether the branded programme still runs under that name, or has been absorbed
-into the newer Integrated Health Services Policy, cannot be established from published sources.** Ask
-in-country before building a proposal around the brand name.
+health volunteers". **The published sources do not say whether the branded programme still runs under
+that name or has been absorbed into PIS** (below) — though PIS is what the "integrated health services
+programme" formulations refer to. Ask in-country before building a proposal around the brand name.
 
 ## SISCa — the community outreach platform
 
@@ -91,10 +91,15 @@ community health workers**"*, alongside a *"revitalization of community health v
 vehicle.** A partner planning community delivery should ask which of the five platforms their activity
 belongs to, because that determines who owns it.
 
-## ⚠️ PIS — *Programa Integradu ba Saúde* — the current flagship
+## ⚠️ PIS — *Programa Integradu Saúde* — the current flagship
 
-**This is the Ministry's flagship primary health care initiative, and it is what the WHO Country
-Cooperation Strategy describes without naming.**
+**This is the Ministry's flagship primary health care initiative, and it is the programme that WHO and
+other documents refer to obliquely as the "integrated health services programme", the "new integrated
+health policy" and similar formulations. They all mean PIS.**
+
+Knowing that single fact resolves most of the confusion in this section: the unnamed policy behind the
+"four other outreach platforms" above, and the question of what became of *Saúde na Família* as a
+standalone brand, are the same programme under its current name.
 
 WHO's Representative in Timor-Leste, Dr Arvind Mathur, writing in December 2025:
 *"Recognizing that PHC is the key that unlocks UHC, the government is driving its flagship

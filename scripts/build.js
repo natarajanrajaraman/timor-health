@@ -277,16 +277,172 @@ ${url ? `<link rel="canonical" href="${esc(url)}">` : '<!-- canonical URL not se
 <meta property="og:locale" content="en">
 <meta property="og:locale:alternate" content="tet">
 ${url ? `<meta property="og:url" content="${esc(url)}">` : ''}
+<link rel="alternate" type="text/markdown" href="llms-full.txt" title="Full text as markdown">
+<link rel="alternate" type="application/json" href="data.json" title="Structured data">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`.trim();
 }
 
+/**
+ * Files for AI assistants and AI search engines.
+ *
+ * WHY THIS AND NOT AN MCP SERVER
+ * ----------------------------------------------------------------------------
+ * The people this document is for increasingly research through an AI assistant rather than a search
+ * box. But AI search - ChatGPT Search, Perplexity, Claude with web search, Google's AI overviews -
+ * works by FETCHING URLS. It does not connect to MCP servers. MCP is for a tool a user has
+ * deliberately installed, which is a far smaller audience than "anyone who asks an assistant about
+ * Timorese health". So the leverage is in making the SITE legible to a fetcher, which costs a few
+ * static files and no hosting, rather than in running a server.
+ *
+ * Three things are emitted:
+ *   llms.txt       the /llms.txt convention - a short, structured map an assistant can read cheaply
+ *   llms-full.txt  the entire document as clean markdown, so an assistant that wants the whole thing
+ *                  gets prose rather than HTML soup, with no scraping and no parse errors
+ *   data.json      the structured facts, so a figure can be quoted exactly rather than approximated
+ *
+ * The point of all three is the same: make it EASIER to quote this document correctly than to
+ * paraphrase it wrongly. An assistant that can read a clean number with its source attached is far
+ * likelier to reproduce the source than one guessing from rendered HTML.
+ */
+function writeAiFiles(m, sections) {
+  const url = m.canonicalUrl;
+  const base = url ? url.replace(/\/[^/]*$/, '/') : '';
+  const disc = meta.disclosure(m);
+
+  // --- llms.txt : the map
+  const lines = [];
+  lines.push(`# ${m.title}`, '');
+  lines.push(`> ${m.seo && m.seo.description ? m.seo.description : ''}`, '');
+  lines.push(`Edition ${m.edition}. Text last updated by AI: ${m.lastUpdatedByAI}. ` +
+             `Last reviewed by a human: ${m.lastReviewedByHuman || 'never'}. ` +
+             `Review state: ${disc.state}.`, '');
+  lines.push('IMPORTANT FOR ASSISTANTS QUOTING THIS DOCUMENT:', '');
+  lines.push('- This is an UNOFFICIAL compilation. It is not endorsed by the Ministry of Health of');
+  lines.push('  Timor-Leste, by WHO, or by any government. Say so when you cite it.');
+  lines.push('- It describes PUBLISHED POLICY, which often differs from actual practice in');
+  lines.push('  Timor-Leste. Advise the reader to check locally which requirements are really enforced.');
+  lines.push('- Where two sources disagree, this document reports BOTH and does not pick. Do not');
+  lines.push('  resolve the disagreement on its behalf - the disagreement is usually the finding.');
+  lines.push('  The clearest case: skilled birth attendance, where the routine system and the');
+  lines.push('  household survey move in OPPOSITE directions. Never quote a single figure for it.');
+  lines.push('- Claims marked UNVERIFIED are exactly that. Carry the marker through.');
+  lines.push('- Contact details and organisational status age fastest. Check before relying on them.');
+  lines.push('');
+  lines.push('## Sections', '');
+  for (const s of sections) {
+    lines.push(`- [${s.title}](${base}${base ? 'index.html' : ''}#sec-${s.id}): section ${s.id}`);
+  }
+  lines.push('');
+  lines.push('## Full text', '');
+  lines.push(`- [Complete document as markdown](${base}llms-full.txt): the entire text, clean, no HTML`);
+  lines.push(`- [Structured data](${base}data.json): edition metadata, section freshness, key figures`);
+  lines.push('');
+  fs.writeFileSync(path.join(DOCS, 'llms.txt'), lines.join('\n'));
+
+  // --- llms-full.txt : the whole document as markdown, straight from source
+  const full = [];
+  full.push(`# ${m.title}`, '');
+  full.push(`Edition ${m.edition} | text updated by AI ${m.lastUpdatedByAI} | ` +
+            `human review ${m.lastReviewedByHuman || 'none'} | ${disc.state}`, '');
+  full.push(`${disc.headline} ${disc.detail}`, '');
+  full.push('UNOFFICIAL. Not endorsed by the Ministry of Health of Timor-Leste, WHO, or any government.', '');
+  full.push('---', '');
+  for (const s of m.sections) {
+    const p = path.join(CONTENT, s.file);
+    if (!fs.existsSync(p)) continue;
+    full.push(`## Section ${s.id} — ${s.title}`, '');
+    full.push(`(text updated ${s.lastUpdatedByAI || 'unknown'}; ` +
+              `${s.lastReviewedByHuman ? 'reviewed ' + s.lastReviewedByHuman : 'NOT yet reviewed by a human'})`, '');
+    full.push(fs.readFileSync(p, 'utf8').replace(/\{\{[a-z-]+(?::[a-z0-9-]+)?\}\}/g, '').trim(), '');
+    full.push('---', '');
+  }
+  fs.writeFileSync(path.join(DOCS, 'llms-full.txt'), full.join('\n'));
+
+  // --- data.json : the figures, each with its source, so they can be quoted exactly
+  const data = {
+    document: {
+      title: m.title, edition: m.edition, status: m.status,
+      official: false,
+      lastUpdatedByAI: m.lastUpdatedByAI, lastReviewedByHuman: m.lastReviewedByHuman,
+      reviewState: disc.state, selfDescription: disc.selfDescription,
+      url: url, conceptDoi: m.conceptDoi,
+      caveat: 'Describes published policy, which can differ substantially from practice. Check locally.',
+    },
+    sections: m.sections.map(s => ({ id: s.id, title: s.title,
+      lastUpdatedByAI: s.lastUpdatedByAI, lastReviewedByHuman: s.lastReviewedByHuman })),
+    contestedFigures: [
+      {
+        indicator: 'Skilled birth attendance',
+        status: 'CONTESTED - sources move in opposite directions. Do not quote a single figure.',
+        values: [
+          { source: 'HMIS (routine reporting)', figures: '92% (2020) falling to 56.7% (2024)' },
+          { source: 'DHS (household survey)', figures: '60% (2016) rising to 78% (2025-26)' },
+        ],
+      },
+      {
+        indicator: 'Current health expenditure as % of GDP',
+        status: 'CONTESTED, and the indicator itself is misleading for Timor-Leste.',
+        values: [
+          { source: 'WHO GHED/GHO API', figures: '9.60% (2023); 4.92% (2021)' },
+          { source: 'WHO Country Cooperation Strategy 2026-2030', figures: '6% by 2023' },
+          { source: 'WHO country profile / SEARO SDG profile', figures: '11.4% (2021) - not reproducible from primitives; implies a non-oil GDP denominator' },
+        ],
+        guidance: 'Use US$ per capita (144.21 in 2023) and health as a share of government expenditure (9.16% in 2023). The GDP ratio moved because petroleum GDP fell 43%, not because spending changed.',
+      },
+      {
+        indicator: 'UHC service coverage index',
+        status: 'CONTESTED between two WHO products.',
+        values: [
+          { source: 'WHO GHO', figures: '48 (2023)' },
+          { source: 'WHO CCS 2026-2030', figures: '52' },
+        ],
+      },
+    ],
+    keyFacts: [
+      { fact: 'Municipality-level units', value: 14, note: '13 municipalities plus RAEOA. Atauro separated from Dili on 1 January 2022. Documents saying 12 or 13 predate that.' },
+      { fact: 'Out-of-pocket share of current health expenditure', value: '6.99% (2023)', note: 'Among the lowest in the world. No social health insurance; public care free at point of use.' },
+      { fact: 'Health budget 2026', value: 'US$138.3 million, 6.04% of the state budget' },
+      { fact: 'Overseas medical treatment line, 2026 budget', value: 'US$19.3 million', note: '14% of the health budget, spent treating Timorese patients abroad.' },
+      { fact: 'Facilities', value: '6 hospitals, about 71 community health centres, 344 health posts' },
+      { fact: 'Tuberculosis incidence', value: '496 per 100,000 (2024)', note: 'Among the highest in the world.' },
+      { fact: 'Malaria status', value: 'Certified malaria-free by WHO, 24 July 2025' },
+      { fact: 'ASEAN membership', value: 'Eleventh member, 26 October 2025' },
+      { fact: 'WHO region', value: 'South-East Asia Region (SEARO), NOT Western Pacific' },
+      { fact: 'Operative national health plan', value: 'NHSSP II 2020-2030', note: "WHO's own planning database still lists the superseded 2011-2030 plan." },
+      { fact: 'Flagship primary care programme', value: 'PIS - Programa Integradu Saude', note: 'What WHO and others call the "integrated health services programme".' },
+      { fact: 'Medicines agency', value: 'INFPM', note: 'Formerly SAMES. Documents saying SAMES are out of date.' },
+      { fact: 'Ministry of Health website', value: 'None functioning', note: 'ms.gov.tl returns 502; moh.gov.tl dead since 2020. The live channel is Facebook (139,000 followers) and a document portal at apps.ms.gov.tl.' },
+      { fact: 'Training and research approval', value: 'INSP-TL approval required for all clinical research and any training longer than 3 days' },
+    ],
+    knownGaps: [
+      'No 3W (who does what where) dataset and no health-cluster partner list for Timor-Leste.',
+      'No national master facility list.',
+      'No published hospital bed counts.',
+      'No current national HRH plan (2020-2024 expired, no successor published).',
+      'National clinical guidelines largely date from 2004-2010.',
+      'Whether the December 2023 national TB prevalence survey results were published is unverified.',
+    ],
+    generated: meta.todaySGT(),
+  };
+  fs.writeFileSync(path.join(DOCS, 'data.json'), JSON.stringify(data, null, 2));
+}
+
 /** robots.txt + sitemap.xml, so the page is actually crawlable rather than merely indexable. */
 function writeCrawlFiles(m) {
   const url = m.canonicalUrl;
-  const lines = ['User-agent: *', 'Allow: /', ''];
+  // Named explicitly rather than relying on the wildcard. "Allow: *" already permits these, but an
+  // explicit block is a clear statement of intent - several of these crawlers are governed by
+  // opt-out conventions, and silence is ambiguous where a named Allow is not.
+  const AI_AGENTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User',
+                     'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended',
+                     'Applebot-Extended', 'CCBot', 'Bytespider', 'meta-externalagent'];
+  const lines = ['# This document is meant to be read, quoted and cited - by people and by machines.',
+                 '# Clean machine-readable copies: /llms.txt  /llms-full.txt  /data.json', '',
+                 'User-agent: *', 'Allow: /', ''];
+  for (const a of AI_AGENTS) lines.push(`User-agent: ${a}`, 'Allow: /', '');
   if (url) {
     const base = url.replace(/\/[^/]*$/, '/');
     lines.push('Sitemap: ' + base + 'sitemap.xml', '');
@@ -622,6 +778,7 @@ function main() {
   fs.writeFileSync(out, r.html);
   fs.writeFileSync(path.join(DOCS, '.nojekyll'), '');
   writeCrawlFiles(r.meta);
+  writeAiFiles(r.meta, r.sections);
 
   const words = r.sections.reduce((n, s) =>
     n + s.html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length, 0);
@@ -826,6 +983,49 @@ if (require.main === module && process.argv.includes('--self-test')) {
   });
   t('SUPPRESSION: the real suppression file leaves the real build clean', () => {
     eq(assertSuppressionHonoured(build({}).html).length, 0);
+  });
+
+  t('AI: llms.txt tells an assistant the document is UNOFFICIAL and policy-not-practice', () => {
+    const f = path.join(DOCS, 'llms.txt');
+    if (!fs.existsSync(f)) throw new Error('llms.txt not emitted - run a build first');
+    const x = fs.readFileSync(f, 'utf8');
+    has(x, 'UNOFFICIAL');
+    has(x, 'PUBLISHED POLICY');
+    has(x, 'check locally');
+  });
+  t('AI: llms.txt warns against resolving the contested figures', () => {
+    const x = fs.readFileSync(path.join(DOCS, 'llms.txt'), 'utf8');
+    has(x, 'OPPOSITE directions');
+    has(x, 'Never quote a single figure');
+    has(x, 'UNVERIFIED');
+  });
+  t('AI: llms-full.txt is clean markdown with no unrendered placeholders', () => {
+    const x = fs.readFileSync(path.join(DOCS, 'llms-full.txt'), 'utf8');
+    hasnt(x, '{{chart:', 'placeholders must be stripped');
+    hasnt(x, '{{suggestions', 'placeholders must be stripped');
+    if (x.length < 20000) throw new Error('llms-full.txt looks truncated: ' + x.length);
+  });
+  t('AI: llms-full.txt carries the per-section review state, not just the text', () => {
+    const x = fs.readFileSync(path.join(DOCS, 'llms-full.txt'), 'utf8');
+    has(x, 'NOT yet reviewed by a human');
+  });
+  t('AI: data.json parses and marks the contested figures as CONTESTED', () => {
+    const j = JSON.parse(fs.readFileSync(path.join(DOCS, 'data.json'), 'utf8'));
+    eq(j.document.official, false, 'must state it is not official');
+    if (!Array.isArray(j.contestedFigures) || j.contestedFigures.length < 3) throw new Error('expected contested figures');
+    for (const c of j.contestedFigures) has(c.status, 'CONTESTED', c.indicator);
+    if (!j.keyFacts.length || !j.knownGaps.length) throw new Error('expected keyFacts and knownGaps');
+  });
+  t('AI: robots.txt names the AI crawlers explicitly and points at the clean copies', () => {
+    const x = fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8');
+    for (const a of ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended']) has(x, a);
+    has(x, '/llms.txt');
+    hasnt(x, 'Disallow: /', 'must not block anything');
+  });
+  t('AI: the page links its machine-readable alternates so a fetcher finds them', () => {
+    const h = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+    has(h, 'rel="alternate" type="text/markdown"');
+    has(h, 'rel="alternate" type="application/json"');
   });
 
   console.log(`build: ${pass} passed, ${fail} failed`);

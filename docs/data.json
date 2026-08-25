@@ -1,0 +1,231 @@
+{
+  "document": {
+    "title": "Start Here — Health in Timor-Leste",
+    "edition": "2026-Q3-draft",
+    "status": "prototype",
+    "official": false,
+    "lastUpdatedByAI": "2026-08-25",
+    "lastReviewedByHuman": null,
+    "reviewState": "never-reviewed",
+    "selfDescription": "automated compilation of cited sources",
+    "url": null,
+    "conceptDoi": null,
+    "caveat": "Describes published policy, which can differ substantially from practice. Check locally."
+  },
+  "sections": [
+    {
+      "id": "00",
+      "title": "What this is",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "01",
+      "title": "Executive summary",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "01b",
+      "title": "Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "02",
+      "title": "Country context",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "03",
+      "title": "Health status",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "04",
+      "title": "Organization and governance",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "05",
+      "title": "Financing",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "06",
+      "title": "Workforce, education and infrastructure",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "07",
+      "title": "Service delivery and priority programmes",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "08",
+      "title": "Who is doing what",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "08b",
+      "title": "National guidelines, policies and key documents",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "10",
+      "title": "Sources and method",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "11",
+      "title": "Limitations",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "12",
+      "title": "What changed this edition",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    },
+    {
+      "id": "13",
+      "title": "Suggest an addition or correction",
+      "lastUpdatedByAI": "2026-08-25",
+      "lastReviewedByHuman": null
+    }
+  ],
+  "contestedFigures": [
+    {
+      "indicator": "Skilled birth attendance",
+      "status": "CONTESTED - sources move in opposite directions. Do not quote a single figure.",
+      "values": [
+        {
+          "source": "HMIS (routine reporting)",
+          "figures": "92% (2020) falling to 56.7% (2024)"
+        },
+        {
+          "source": "DHS (household survey)",
+          "figures": "60% (2016) rising to 78% (2025-26)"
+        }
+      ]
+    },
+    {
+      "indicator": "Current health expenditure as % of GDP",
+      "status": "CONTESTED, and the indicator itself is misleading for Timor-Leste.",
+      "values": [
+        {
+          "source": "WHO GHED/GHO API",
+          "figures": "9.60% (2023); 4.92% (2021)"
+        },
+        {
+          "source": "WHO Country Cooperation Strategy 2026-2030",
+          "figures": "6% by 2023"
+        },
+        {
+          "source": "WHO country profile / SEARO SDG profile",
+          "figures": "11.4% (2021) - not reproducible from primitives; implies a non-oil GDP denominator"
+        }
+      ],
+      "guidance": "Use US$ per capita (144.21 in 2023) and health as a share of government expenditure (9.16% in 2023). The GDP ratio moved because petroleum GDP fell 43%, not because spending changed."
+    },
+    {
+      "indicator": "UHC service coverage index",
+      "status": "CONTESTED between two WHO products.",
+      "values": [
+        {
+          "source": "WHO GHO",
+          "figures": "48 (2023)"
+        },
+        {
+          "source": "WHO CCS 2026-2030",
+          "figures": "52"
+        }
+      ]
+    }
+  ],
+  "keyFacts": [
+    {
+      "fact": "Municipality-level units",
+      "value": 14,
+      "note": "13 municipalities plus RAEOA. Atauro separated from Dili on 1 January 2022. Documents saying 12 or 13 predate that."
+    },
+    {
+      "fact": "Out-of-pocket share of current health expenditure",
+      "value": "6.99% (2023)",
+      "note": "Among the lowest in the world. No social health insurance; public care free at point of use."
+    },
+    {
+      "fact": "Health budget 2026",
+      "value": "US$138.3 million, 6.04% of the state budget"
+    },
+    {
+      "fact": "Overseas medical treatment line, 2026 budget",
+      "value": "US$19.3 million",
+      "note": "14% of the health budget, spent treating Timorese patients abroad."
+    },
+    {
+      "fact": "Facilities",
+      "value": "6 hospitals, about 71 community health centres, 344 health posts"
+    },
+    {
+      "fact": "Tuberculosis incidence",
+      "value": "496 per 100,000 (2024)",
+      "note": "Among the highest in the world."
+    },
+    {
+      "fact": "Malaria status",
+      "value": "Certified malaria-free by WHO, 24 July 2025"
+    },
+    {
+      "fact": "ASEAN membership",
+      "value": "Eleventh member, 26 October 2025"
+    },
+    {
+      "fact": "WHO region",
+      "value": "South-East Asia Region (SEARO), NOT Western Pacific"
+    },
+    {
+      "fact": "Operative national health plan",
+      "value": "NHSSP II 2020-2030",
+      "note": "WHO's own planning database still lists the superseded 2011-2030 plan."
+    },
+    {
+      "fact": "Flagship primary care programme",
+      "value": "PIS - Programa Integradu Saude",
+      "note": "What WHO and others call the \"integrated health services programme\"."
+    },
+    {
+      "fact": "Medicines agency",
+      "value": "INFPM",
+      "note": "Formerly SAMES. Documents saying SAMES are out of date."
+    },
+    {
+      "fact": "Ministry of Health website",
+      "value": "None functioning",
+      "note": "ms.gov.tl returns 502; moh.gov.tl dead since 2020. The live channel is Facebook (139,000 followers) and a document portal at apps.ms.gov.tl."
+    },
+    {
+      "fact": "Training and research approval",
+      "value": "INSP-TL approval required for all clinical research and any training longer than 3 days"
+    }
+  ],
+  "knownGaps": [
+    "No 3W (who does what where) dataset and no health-cluster partner list for Timor-Leste.",
+    "No national master facility list.",
+    "No published hospital bed counts.",
+    "No current national HRH plan (2020-2024 expired, no successor published).",
+    "National clinical guidelines largely date from 2004-2010.",
+    "Whether the December 2023 national TB prevalence survey results were published is unverified."
+  ],
+  "generated": "2026-08-25"
+}
