@@ -40,6 +40,7 @@ All were tested with live calls on **2026-08-24** and all work **without an API 
 | **Humanitarian Data Exchange** | CKAN API | 114 Timor-Leste datasets; aggregates WHO, DHS and World Bank into uniform CSV; includes an OSM-derived health-facility layer as GeoJSON |
 | **d-portal.org** | unauthenticated | 968 Timor-Leste health activities. ⚠️ Use instead of ReliefWeb (now requires a registered `appname`) and the official IATI Datastore (requires a key) |
 | **World Directory of Medical Schools** | `search.wdoms.org` — country code **771** | ⚠️ No documented public API; the query used is an undocumented form endpoint. Supervised refresh only |
+| **Ministry of Health Facebook** | [facebook.com/MinisteriodaSaudeTL](https://www.facebook.com/MinisteriodaSaudeTL) | ⚠️ The most current source in the country, and **attended refresh only** — see below |
 
 # ⚠️ Five traps, documented because each one produced a wrong answer
 
@@ -70,6 +71,31 @@ to a fresh one in the payload.** The per-observation refresh stamp is logged.
 NXDOMAIN on two public resolvers and returns HTTP 200 via curl. More generally: **check content, not
 status codes** — §8 documents a domain that returns 200 and is not the organisation it appears to be,
 and another that looks dead over HTTPS and is alive over HTTP.
+
+# ⚠️ Social media is a primary source here, and that is not a compromise
+
+**In Timor-Leste, the most current published health-policy source is a Facebook page.** The Ministry's
+website returns 502; its Facebook page has **139,000 followers and posts near-daily** (§4). The same
+pattern holds for INSP-TL, and for a significant share of the civil-society organisations in §8, where
+a dead domain sits beside a live Facebook feed.
+
+Treating social media as a source has costs this document accepts deliberately:
+
+- **It is not archival.** Posts can be edited or deleted with no record, and there is no stable
+  citation. Where a Facebook post is the only source for a claim, the claim is dated and attributed to
+  the channel, and treated as more perishable than a document.
+- **It cannot be read by machine.** Facebook blocks unauthenticated HTTP requests outright, requires a
+  login for a browser, **renders only a few posts into the page at a time**, and **deliberately
+  interleaves decoy characters into post text to defeat scraping**. Bold headings are additionally
+  encoded as mathematical-alphanumeric characters rather than plain letters.
+- ⚠️ **So this source cannot be refreshed unattended.** The quarterly pipeline cannot log in and should
+  not try to. **When the refresh hits a login wall or an anti-bot block, it stops and emails the editor
+  to run that part of the update attended** rather than silently skipping the most current source in
+  the country and leaving the page looking complete.
+
+That last rule matters more than it sounds. A refresh that quietly fails on the freshest source, and
+succeeds everywhere else, produces a page that is confidently out of date — the exact failure this
+document is built to avoid.
 
 # On negative findings
 

@@ -10,7 +10,7 @@ The operative national plan is the **National Health Sector Strategic Plan II (2
 single current description of the system is the **WHO Country Cooperation Strategy 2026–2030**,
 published March 2026.
 
-# The ten things most worth knowing
+# The eleven things most worth knowing
 
 **1. Out-of-pocket spending is about 7% of current health expenditure** (2023) — among the lowest
 anywhere in the world. Public care is genuinely free at the point of use. If your intervention design
@@ -31,11 +31,12 @@ attendance is reported by the routine health information system as **92% (2020) 
 (2024)**, and by the Demographic and Health Survey as **60% (2016) rising to 78% (2025–26)**. These do
 not merely differ — **they move in opposite directions**. Do not pick a number. §3.
 
-**5. The Ministry of Health has no public informational website.** No news, no publications page, no
-facility registry, no contact page. It does run a live systems portal at `apps.ms.gov.tl`, linked from
-nowhere and largely absent from search results, which hosts the full national strategic plan and other
-core documents. Absence of a website is not absence of an institution — a pattern that repeats
-throughout. §4.
+**5. The Ministry of Health has no working website — its real public channel is Facebook.** The
+ministry page has **139,000 followers and posts near-daily**, and is by a wide margin the most current
+published source on Timorese health policy. The website returns 502; a separate live systems portal at
+`apps.ms.gov.tl`, linked from nowhere, hosts the full national strategic plan. **Absence of a website
+is not absence of an institution** — a pattern that repeats throughout. ⚠️ Two decoy pages rank above
+the real one in search, and one of them is **Portugal's** health ministry. §4.
 
 **6. There is no "who does what where" dataset for Timor-Leste** and no health-cluster partner list,
 because the country is not an active humanitarian-cluster operation. The actor map in §8 had to be
@@ -54,7 +55,12 @@ a poor proxy for domestic workforce supply. §6.
 days delivered to health professionals, requires approval from **INSP-TL**, the National Institute of
 Public Health. Partners planning to teach should treat this as the first step, not a formality. §6.
 
-**10. A new tier of municipal hospitals is planned but does not yet exist.** NHSSP II sets out a
+**10. The current flagship primary care initiative is PIS — *Programa Integradu ba Saúde*** — an
+integrated package of services delivered closer to where people live, linking health systems,
+facilities, national programmes, community and specialist care. It is what the WHO strategy describes
+without naming. Ask where your activity sits within it. §7.
+
+**11. A new tier of municipal hospitals is planned but does not yet exist.** NHSSP II sets out a
 service-delivery structure including municipal hospitals between the regional and community-health-centre
 levels. Plan against the system as it is, while knowing where it intends to go. §4, §7.
 

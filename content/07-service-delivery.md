@@ -91,6 +91,32 @@ community health workers**"*, alongside a *"revitalization of community health v
 vehicle.** A partner planning community delivery should ask which of the five platforms their activity
 belongs to, because that determines who owns it.
 
+## ⚠️ PIS — *Programa Integradu ba Saúde* — the current flagship
+
+**This is the Ministry's flagship primary health care initiative, and it is what the WHO Country
+Cooperation Strategy describes without naming.**
+
+WHO's Representative in Timor-Leste, Dr Arvind Mathur, writing in December 2025:
+*"Recognizing that PHC is the key that unlocks UHC, the government is driving its flagship
+**Programa-Integrado-Saúde**"* — **"an integrated package of services delivered closer to where people
+live."**
+
+**PIS links care across five areas: health systems, health facilities, national programmes, community,
+and specialist services** — the aim being seamless integration from specialist care through to
+community care, with working referral pathways in between. In practice this has meant, among other
+things, **specialist outreach moving closer to communities**, particularly for non-communicable
+diseases such as diabetes and hypertension.
+
+**Why this matters for anyone planning work here:** PIS is the frame the Ministry is currently
+organising primary care around. A proposal written against SISCa alone, or against *Saúde na Família*
+as a standalone brand, is describing components rather than the current programme. **Ask where your
+activity sits within PIS.**
+
+⚠️ **Detail on PIS is thin in published sources.** No launch date, governing document or named
+programme lead could be located, and the five areas above are reported rather than quoted from a
+Ministry document. Its most current traceable coverage is on the Ministry's Facebook channel (§4).
+**UNVERIFIED beyond what is cited here.**
+
 ## Community health volunteers
 
 **PSF — community health volunteers — are registered nationally, with 600+ reported.** The CCS describes

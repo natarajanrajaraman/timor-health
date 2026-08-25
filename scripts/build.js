@@ -127,6 +127,8 @@ footer{margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--rule); fo
        --grid:#262b33; --axis:#39404a; --tier:#1e232b; }
 
 figure.fig{margin:1.8rem 0; padding:0}
+figure.fig img{width:100%; height:auto; display:block; border:1px solid var(--rule); border-radius:6px;
+  background:#fff}
 .fig-title{font-weight:650; font-size:.98rem; margin:0 0 .5rem; line-height:1.4}
 .fig-note{font-size:.86rem; color:var(--muted); margin:.5rem 0 .2rem}
 .fig-src{font-size:.78rem; color:var(--muted); margin:.25rem 0 0}

@@ -10,9 +10,49 @@ assumption, and it shapes everything about how partners find information here.
 |---|---|
 | `moh.gov.tl` | **Dead.** DNS delegation exists but nameservers are unreachable. Last successful web archive capture **6 December 2020** — gone for over five years. |
 | `ms.gov.tl` | The real Ministry domain, but returning **502 Bad Gateway**. A rebuild appears to be in progress and unfinished. |
-| **`apps.ms.gov.tl`** | ✅ **The only live Ministry web presence.** |
+| **`apps.ms.gov.tl`** | ✅ **The only live Ministry WEB presence.** |
 
 ⚠️ **Search engines still surface `moh.gov.tl` URLs. They are dead. Do not cite them.**
+
+# ⚠️ The Ministry's real public channel is Facebook
+
+**This is the single most useful practical finding in this document for anyone trying to follow what
+the Ministry is actually doing.**
+
+**[facebook.com/MinisteriodaSaudeTL](https://www.facebook.com/MinisteriodaSaudeTL)** — page name
+*"Palácio das Cinzas"*, after the ministry building.
+
+| | |
+|---|---|
+| **Followers** | **139,000** |
+| Category | Government organisation |
+| Address | Rua de Caicoli, Dili |
+| Phone | **+670 7790 3355** |
+| Email | **msrdtl@ms.gov.tl** |
+| Posting cadence | **near-daily** |
+
+**Verified 2026-08-25, with posts from the day before.** Against a website returning 502, a Country
+Cooperation Strategy from March 2026 and a national plan from 2020, **the Facebook page is by a wide
+margin the most current published source on Timorese health policy and ministry activity.** Recent
+posts covered the parliamentary committee's analysis of the **2027 health budget and priorities**, a
+re-tender notice, HNGV's consultation with the civil service commission on health-worker recruitment,
+and Timor-Leste's participation in a regional essential-diagnostics meeting in Brunei Darussalam.
+
+⚠️ **Do not mistake the decoys.** Two other pages come up first in search and neither is the Ministry:
+
+- **`Ministerio da Saude Timor Leste`** (id ending 069305) — 320 followers, categorised as a "Medical
+  company", **no posts at all**.
+- **`Ministério da Saúde`** (id ending 472715) — **this is PORTUGAL's health ministry**: "XXV Governo",
+  a Lisbon address, a +351 number and `sns.gov.pt`. Searching the Portuguese name without a country
+  term will find Lisbon, not Dili.
+
+⚠️ **A related official page** — **Promosaun Edukasaun Saúde, Ministériu Saúde, Timor-Leste** (1,100
+followers, `promosaunsaude@gmail.com`) — is the National Directorate of Health Education and Promotion.
+Genuine, but much smaller and narrower than the main page.
+
+⚠️ **The Ministry's own Facebook tagline still cites the superseded PENSS 2011–2030.** The operative
+plan is **NHSSP II 2020–2030**. Even the ministry's most active channel carries the stale reference
+that circulates everywhere else.
 
 **What does work — and it is genuinely valuable — is `apps.ms.gov.tl`**, titled *"Ministériu Saúde,
 Diresaun Nasionál Saúde Públika, Timor-Leste"*. It hosts three things:
@@ -69,11 +109,18 @@ Each has its own line in the national budget.
 spreadsheets and partner materials still referring to SAMES are out of date — though the underlying
 content may still be perfectly usable.
 
-⚠️ **Leadership names change and this document does not track them reliably.** Named office-holders
-appear in WHO CCS 2026–2030 Annexure 1 and in NHSSP II acknowledgements, but at least one is
-inconsistent across sources — for INSP-TL, a former president is named in one source while a 2026 web
-source gives a different Director-General. **UNVERIFIED. Confirm current post-holders directly rather
-than from this document.**
+# Current office-holders
+
+Verified **2026-08-25** from the Ministry's own Facebook channel, which is the most current source
+available (above):
+
+- **Minister of Health: dr. Élia A. A. dos Reis Amaral, SH**
+- **Vice-Minister for Institutional Health Strengthening: Sr. José dos Reis Magno, Lic.SP.MM**
+
+⚠️ **Other named office-holders in this document are less current.** They come from WHO CCS 2026–2030
+Annexure 1 and NHSSP II acknowledgements, and at least one is inconsistent across sources — for
+INSP-TL, one source names a former president while another gives a different Director-General.
+**Confirm post-holders against the Facebook page rather than against this document.**
 
 # ⚠️ INSP-TL is a regulator, not only a training institute
 

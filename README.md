@@ -87,6 +87,24 @@ A quarterly job is invisible for 89 days at a time, so `publish.js` writes a liv
 page renders **its own staleness banner client-side** — it keeps telling the reader how old it is even
 after every piece of automation has died.
 
+## ⚠️ Escalation: bot blocks and login walls stop the run, they do not get skipped
+
+Standing instruction (Raj, 2026-08-25): **if the periodic update hits an anti-bot block or a login
+wall, email him and ask for an attended session** for that part of the refresh.
+
+This applies first and foremost to the **Ministry of Health Facebook page**, which is the most current
+health-policy source in Timor-Leste and is unreachable to an unattended agent: Facebook refuses plain
+HTTP, requires a login in a browser, virtualises its feed so only a few posts exist in the DOM at
+once, and interleaves decoy characters into post text specifically to defeat scraping.
+
+**The failure mode being designed against:** a refresh that quietly skips the freshest source while
+succeeding everywhere else publishes a page that looks complete and is out of date. So the rule is
+**stop and escalate, never skip and continue** — the same principle as the rest of this repo, where a
+guard sits at the point the harm would occur and fails closed.
+
+Escalate by **email to the editor**, not by filing into a task queue: `NAs (Attended CC)` is Raj's own
+capture list and agents may not create items there.
+
 ## Not yet done
 
 - `archive.js` — Zenodo concept DOI and web-archive snapshot

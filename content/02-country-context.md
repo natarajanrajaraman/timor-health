@@ -23,6 +23,8 @@ throughout.
 Documents written before 2022 — and a surprising number written after — say "12 municipalities plus
 RAEOA" or "13 districts". If a partner document says 12, it predates 2022 or copied something that did.
 
+{{chart:map-municipalities}}
+
 **RAEOA is not merely a municipality.** It is a special administrative region with its own authority
 and its own line in the national health budget, and it operates with a degree of autonomy that affects
 how programmes are agreed and delivered there. Treat Oecusse as a separate negotiation.

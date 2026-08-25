@@ -257,9 +257,49 @@ function timeline(o) {
   <title id="t-${esc(o.id)}">${esc(o.aria || '')}</title>${out}</svg>`;
 }
 
+
+/* ------------------------------------------------------------------ images */
+
+/**
+ * Third-party images.
+ *
+ * COMMITTED TO THE REPO, NEVER HOTLINKED. Three reasons, in order of importance: hotlinking
+ * Wikimedia at scale is against their guidance; an external image breaks the page's
+ * self-contained property, which is what lets it still render years from now; and a remote
+ * image can be changed or deleted underneath us without the caption ceasing to claim it.
+ *
+ * ⚠️ EVERY image here is under a share-alike licence, so the attribution block is not optional
+ * decoration - it is the licence condition. Author, licence name and a link to the licence text
+ * must all render. Do not "tidy" the credit line away.
+ */
+function imageFigure(o) {
+  return figure({
+    id: o.id,
+    title: o.title,
+    svg: `<img src="${esc(o.src)}" alt="${esc(o.alt)}" loading="lazy" decoding="async">`,
+    note: o.note,
+    source: `${esc(o.author)}, via <a href="${esc(o.pageUrl)}">Wikimedia Commons</a> &mdash; ` +
+            `licensed <a href="${esc(o.licenceUrl)}">${esc(o.licence)}</a>. ` +
+            `Retrieved ${esc(o.retrieved)}.${o.sourceExtra ? ' ' + o.sourceExtra : ''}`,
+  });
+}
+
 /* ------------------------------------------------------------------ the registry */
 
 const CHARTS = {
+
+  'map-municipalities': () => imageFigure({
+    id: 'map-municipalities',
+    title: 'The 14 municipality-level units of Timor-Leste',
+    src: 'img/tl-municipalities.png',
+    alt: 'Political map of Timor-Leste showing its fourteen municipality-level units, each in a different colour: Oecusse as a separate enclave to the west, Atauro as an island to the north, and Dili, Liquica, Ermera, Bobonaro, Cova Lima, Ainaro, Aileu, Manufahi, Manatuto, Baucau, Viqueque and Lautem on the main territory.',
+    author: 'J. Patrick Fischer, adapted by Smjg',
+    pageUrl: 'https://commons.wikimedia.org/wiki/File:Municipalities_of_Timor-Leste.png',
+    licence: 'CC BY-SA 3.0',
+    licenceUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+    retrieved: '2026-08-25',
+    note: 'Note <b>Atauro shown as a unit in its own right</b> - it separated from Dili on 1 January 2022, and many circulating maps still show it inside Dili and count 13 units. Note also that <b>Oecusse (RAEOA) is a physically separate enclave inside Indonesian West Timor</b>, which is why it is a separate negotiation as well as a separate administration (&sect;2).',
+  }),
 
   /** THE headline finding: two authoritative sources moving in opposite directions. */
   'sba-contradiction': () => figure({
@@ -393,7 +433,7 @@ function render(id) {
 
 function ids() { return Object.keys(CHARTS); }
 
-module.exports = { render, ids, figure, lineChart, barChartH, smallMultiples, slopeChart, tierDiagram, timeline, CHARTS };
+module.exports = { render, ids, figure, imageFigure, lineChart, barChartH, smallMultiples, slopeChart, tierDiagram, timeline, CHARTS };
 
 /* ------------------------------------------------------------------ self-test */
 if (require.main === module && process.argv.includes('--self-test')) {
@@ -408,14 +448,19 @@ if (require.main === module && process.argv.includes('--self-test')) {
   t('EVERY figure carries a source line - Raj 2026-08-25', () => {
     for (const id of ids()) has(render(id), '<p class="fig-src">Source:', id + ' is missing its source');
   });
-  t('every figure has an accessible name', () => {
-    for (const id of ids()) has(render(id), 'role="img"', id);
+  t('every figure has an accessible name - an SVG title, or img alt text', () => {
+    for (const id of ids()) {
+      const h = render(id);
+      const ok = h.includes('role="img"') || /<img[^>]*\salt="[^"]+"/.test(h);
+      if (!ok) throw new Error(id + ' has no accessible name');
+    }
   });
   t('every svg scales via viewBox rather than a fixed width', () => {
     for (const id of ids()) {
-      const s = render(id);
-      has(s, 'viewBox=', id);
-      if (/<svg[^>]*\swidth="\d/.test(s)) throw new Error(id + ' has a hard-coded pixel width');
+      const h = render(id);
+      if (!h.includes('<svg')) continue;          // image figures scale via CSS instead
+      has(h, 'viewBox=', id);
+      if (/<svg[^>]*\swidth="\d/.test(h)) throw new Error(id + ' has a hard-coded pixel width');
     }
   });
   t('NO dual y-axis anywhere - the financing comparison uses small multiples', () => {
@@ -443,6 +488,27 @@ if (require.main === module && process.argv.includes('--self-test')) {
       const used = [...s.matchAll(/--series-(\d+)/g)].map(m => +m[1]);
       for (const u of used) if (u > 3) throw new Error(id + ' uses slot ' + u + ', beyond the 3 validated for all-pairs');
     }
+  });
+  t('IMAGE LICENCE: every image figure renders author, licence name and a licence LINK', () => {
+    const h = render('map-municipalities');
+    has(h, 'J. Patrick Fischer', 'author is a licence condition');
+    has(h, 'CC BY-SA 3.0', 'licence name is a licence condition');
+    has(h, 'creativecommons.org/licenses/by-sa/3.0/', 'licence link is a licence condition');
+    has(h, 'commons.wikimedia.org', 'source page must be linked');
+  });
+  t('IMAGES are local, never hotlinked to a third-party host', () => {
+    for (const id of ids()) {
+      const h = render(id);
+      const imgs = [...h.matchAll(/<img[^>]*src="([^"]*)"/g)].map(m => m[1]);
+      for (const src of imgs) {
+        if (/^https?:/i.test(src)) throw new Error(id + ' hotlinks an external image: ' + src);
+      }
+    }
+  });
+  t('IMAGES carry substantive alt text, not a filename', () => {
+    const h = render('map-municipalities');
+    const alt = (/<img[^>]*alt="([^"]*)"/.exec(h) || [])[1] || '';
+    if (alt.length < 80) throw new Error('alt text too thin to be useful: ' + alt);
   });
   t('projected dates are labelled as this document arithmetic, not as source data', () => {
     has(render('medical-schools'), 'not</b> from the registry');
