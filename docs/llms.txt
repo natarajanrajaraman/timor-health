@@ -19,23 +19,23 @@ IMPORTANT FOR ASSISTANTS QUOTING THIS DOCUMENT:
 
 ## Sections
 
-- [What this is](#sec-00): section 00
-- [Executive summary](#sec-01): section 01
-- [Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)](#sec-01b): section 01b
-- [Country context](#sec-02): section 02
-- [Health status](#sec-03): section 03
-- [Organization and governance](#sec-04): section 04
-- [Financing](#sec-05): section 05
-- [Workforce, education and infrastructure](#sec-06): section 06
-- [Service delivery and priority programmes](#sec-07): section 07
-- [Who is doing what](#sec-08): section 08
-- [National guidelines, policies and key documents](#sec-08b): section 08b
-- [Sources and method](#sec-10): section 10
-- [Limitations](#sec-11): section 11
-- [What changed this edition](#sec-12): section 12
-- [Suggest an addition or correction](#sec-13): section 13
+- [What this is](https://natarajanrajaraman.github.io/timor-health/index.html#sec-00): section 00
+- [Executive summary](https://natarajanrajaraman.github.io/timor-health/index.html#sec-01): section 01
+- [Rezumu Ezekutivu (Tetun - tradusaun makina / machine translation)](https://natarajanrajaraman.github.io/timor-health/index.html#sec-01b): section 01b
+- [Country context](https://natarajanrajaraman.github.io/timor-health/index.html#sec-02): section 02
+- [Health status](https://natarajanrajaraman.github.io/timor-health/index.html#sec-03): section 03
+- [Organization and governance](https://natarajanrajaraman.github.io/timor-health/index.html#sec-04): section 04
+- [Financing](https://natarajanrajaraman.github.io/timor-health/index.html#sec-05): section 05
+- [Workforce, education and infrastructure](https://natarajanrajaraman.github.io/timor-health/index.html#sec-06): section 06
+- [Service delivery and priority programmes](https://natarajanrajaraman.github.io/timor-health/index.html#sec-07): section 07
+- [Who is doing what](https://natarajanrajaraman.github.io/timor-health/index.html#sec-08): section 08
+- [National guidelines, policies and key documents](https://natarajanrajaraman.github.io/timor-health/index.html#sec-08b): section 08b
+- [Sources and method](https://natarajanrajaraman.github.io/timor-health/index.html#sec-10): section 10
+- [Limitations](https://natarajanrajaraman.github.io/timor-health/index.html#sec-11): section 11
+- [What changed this edition](https://natarajanrajaraman.github.io/timor-health/index.html#sec-12): section 12
+- [Suggest an addition or correction](https://natarajanrajaraman.github.io/timor-health/index.html#sec-13): section 13
 
 ## Full text
 
-- [Complete document as markdown](llms-full.txt): the entire text, clean, no HTML
-- [Structured data](data.json): edition metadata, section freshness, key figures
+- [Complete document as markdown](https://natarajanrajaraman.github.io/timor-health/llms-full.txt): the entire text, clean, no HTML
+- [Structured data](https://natarajanrajaraman.github.io/timor-health/data.json): edition metadata, section freshness, key figures

@@ -43,4 +43,4 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
-# Sitemap omitted: canonicalUrl is not set in content/_meta.json yet.
+Sitemap: https://natarajanrajaraman.github.io/timor-health/sitemap.xml

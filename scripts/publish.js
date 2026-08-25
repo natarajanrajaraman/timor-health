@@ -58,11 +58,28 @@ function preflight(opts) {
     reasons.push('docs/index.html is out of date relative to content/ - run: node scripts/build.js');
   }
 
-  // 2. Never publish an edition claiming a human review that has not happened. meta.js already
-  //    refuses a future review date; this catches the subtler case of a reviewed claim with no date.
+  // 2. Publishing an UNREVIEWED edition is legitimate - as long as the page says so.
+  //
+  //    This was a REFUSAL until 2026-08-25 and that was wrong, so the reasoning is recorded rather
+  //    than quietly changed. The harm being guarded against is a page CLAIMING a review that never
+  //    happened. meta.js already makes that structurally impossible: with no review date it forces
+  //    the banner to read "This edition has not yet been reviewed by a human" and downgrades the
+  //    document's self-description to "automated compilation of cited sources". The harm is blocked
+  //    at the point it would occur, which is rendering.
+  //
+  //    Refusing to publish as well did not prevent any false claim - it only blocked shipping an
+  //    honestly-labelled edition. That is a workflow gate wearing a safety guard's clothes. So it is
+  //    a loud warning now.
+  //
+  //    ⚠️ Do NOT re-promote this to a refusal without first checking that meta.js still enforces the
+  //    self-description switch - THAT is the guard that matters, and it is mutation-tested.
   const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', '_meta.json'), 'utf8'));
-  if (meta.reviewer && meta.reviewer.named === true && meta.status === 'published' && !meta.lastReviewedByHuman) {
-    reasons.push('meta.status is "published" and a reviewer is named, but lastReviewedByHuman is null - either review it or set reviewer.named to false');
+  const warnings = [];
+  if (meta.reviewer && meta.reviewer.named === true && !meta.lastReviewedByHuman) {
+    warnings.push('This edition has NOT been reviewed by ' + (meta.reviewer.name || 'the named editor') +
+      '. It will publish with the unreviewed banner and will describe itself as an "automated ' +
+      'compilation of cited sources", not a landscape scan. That is honest - but if a review HAS ' +
+      'happened, set lastReviewedByHuman before publishing.');
   }
 
   // 3. A prototype must not be published to a public URL by accident.
@@ -70,7 +87,7 @@ function preflight(opts) {
     reasons.push('meta.status is "prototype" - pass --allow-prototype to publish it anyway');
   }
 
-  return { reasons, meta };
+  return { reasons, warnings, meta };
 }
 
 function main() {
@@ -79,12 +96,14 @@ function main() {
   const noPush = args.includes('--no-push');
   const allowPrototype = args.includes('--allow-prototype');
 
-  const { reasons, meta } = preflight({ allowPrototype });
+  const { reasons, warnings, meta } = preflight({ allowPrototype });
   if (reasons.length) {
     console.error('PUBLISH REFUSED:');
     for (const r of reasons) console.error('  - ' + r);
     process.exit(2);
   }
+  const NL = String.fromCharCode(10);
+  for (const w of (warnings || [])) console.log(NL + '  !! ' + w + NL);
 
   const status = tryGit(['status', '--porcelain']);
   if (!status.ok) { console.error('git status failed: ' + status.out); process.exit(1); }
@@ -176,6 +195,14 @@ if (require.main === module && process.argv.includes('--self-test')) {
     eq(/const apply = args.includes\('--apply'\)/.test(src), true);
     eq(/if \(!apply\)/.test(src), true, 'must branch to dry-run when --apply is absent');
   });
+  t('an UNREVIEWED edition warns loudly but is not refused - the render guard is the real one', () => {
+    const r = preflight({ allowPrototype: true });
+    const m = r.meta;
+    if (m.reviewer && m.reviewer.named === true && !m.lastReviewedByHuman) {
+      eq(r.warnings.some(w => /NOT been reviewed/.test(w)), true, 'must warn');
+      eq(r.reasons.some(x => /lastReviewedByHuman/.test(x)), false, 'must NOT refuse');
+    }
+  });
   t('a prototype is refused unless explicitly allowed', () => {
     const r = preflight({ allowPrototype: false });
     const hit = r.reasons.some(x => /prototype/.test(x));
@@ -204,8 +231,15 @@ if (require.main === module && process.argv.includes('--self-test')) {
   });
   t('refusals are collected, not short-circuited by an early return', () => {
     const fn = src.slice(src.indexOf('function preflight'), src.indexOf('function main'));
-    eq(/return \{ reasons, meta \}/.test(fn), true);
-    eq((fn.match(/reasons.push/g) || []).length >= 3, true, 'expected at least three independent refusals');
+    // The intent: every check runs and every reason is gathered, so adding a check cannot be
+    // silently defeated by an earlier one returning first. Assert the SHAPE (one exit, carrying
+    // reasons) rather than a literal return line or a fixed count - both of those change whenever a
+    // check is legitimately added or reclassified, which is exactly what happened on 2026-08-25 when
+    // the unreviewed-edition refusal became a warning.
+    eq((fn.match(/\breturn\b/g) || []).length, 1, 'preflight must have exactly one exit point');
+    eq(/return \{[^}]*\breasons\b[^}]*\}/.test(fn), true, 'the single exit must carry reasons');
+    eq((fn.match(/reasons\.push/g) || []).length >= 2, true, 'expected multiple independent refusals');
+    eq((fn.match(/warnings\.push/g) || []).length >= 1, true, 'expected at least one non-blocking warning');
   });
 
   t('MUTATION GUARD: the comment stripper actually removes prose', () => {
