@@ -1,13 +1,27 @@
 # This edition
 
-**2026-Q3 — prototype. Not yet reviewed by the named editor. Not yet published.**
+**2026-Q3 — the first published edition.**
 
-The first assembled edition. Everything in it is new, so a "what changed" list would be the whole
-document. From the next edition onward this section lists what actually changed, section by section, so
-a returning reader does not have to re-read the whole thing.
+Everything in it was new at first publication, so a "what changed" list would be the whole document.
+From the next edition onward this section lists what actually changed, section by section, so a
+returning reader does not have to re-read the whole thing. Changes made *within* this edition after
+the editor's review are listed below and are flagged by the banner at the top of the page.
 
 **Compiled from desk research carried out 2026-08-24 and 2026-08-25**, with all data endpoints tested
 live on those dates.
+
+## Updated 2026-08-28
+
+- **§5 Financing** — historical arc, the 2002 framework and financing-strategy objectives added from
+  Guterres Correia (2025), with a source-quality warning on that reference.
+- **§8b** — the partner document library **[Health Timor-SG Resources](https://drive.google.com/drive/folders/1CWgBpaObmQYRaHnDayizum_ugJdvb-Ft)**
+  is now linked, with the owner's permission, and was inventoried in full.
+- **§8b** — the clinical-guidelines finding was revised: a **2022 edition of the primary-care STG**
+  and **December 2021 national ANC and PNC protocols** were obtained via that library and verified.
+  The government's own library still posts nothing newer than 2010; the gap between the two is now
+  the stated finding.
+- **§8b** — the previous edition's unverified flag on a Timor-Leste-specific PEN protocol is
+  **resolved**: the 2017 PEN package and the Version-1 PEN protocols were opened and verified.
 
 # Corrections to this document itself
 

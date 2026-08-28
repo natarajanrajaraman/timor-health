@@ -42,8 +42,8 @@
     "name": "Health Timor-SG Resources",
     "url": "https://drive.google.com/drive/folders/1CWgBpaObmQYRaHnDayizum_ugJdvb-Ft",
     "ownedByUs": false,
-    "linkApproved": false,
-    "$comment": "Lois's folder, reused rather than duplicated (Raj 2026-08-25). linkApproved MUST be set true before build.js will render the link - she has not yet been asked. See QUESTIONS-FOR-LOIS.md."
+    "linkApproved": true,
+    "$comment": "Lois's folder, reused rather than duplicated (Raj 2026-08-25). Lois consented to the link AND added Raj as editor by email 2026-08-28 15:04 SGT (her reply on the 'TL health site is live + two small favours' thread, forwarded to the agents mailbox as 1a047980db5103c2)."
   },
   "relatedSite": {
     "name": "TL-SG Health Collective",
@@ -130,7 +130,7 @@
       "file": "08-actor-map.md",
       "title": "Who is doing what",
       "required": true,
-      "lastUpdatedByAI": "2026-08-25",
+      "lastUpdatedByAI": "2026-08-28",
       "lastReviewedByHuman": "2026-08-25"
     },
     {
@@ -138,7 +138,7 @@
       "file": "08b-guidelines.md",
       "title": "National guidelines, policies and key documents",
       "required": true,
-      "lastUpdatedByAI": "2026-08-25",
+      "lastUpdatedByAI": "2026-08-28",
       "lastReviewedByHuman": "2026-08-25"
     },
     {
@@ -162,7 +162,7 @@
       "file": "12-changelog.md",
       "title": "What changed this edition",
       "required": true,
-      "lastUpdatedByAI": "2026-08-25",
+      "lastUpdatedByAI": "2026-08-28",
       "lastReviewedByHuman": "2026-08-25"
     },
     {

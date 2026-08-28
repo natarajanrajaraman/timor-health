@@ -134,9 +134,11 @@ standards approved by the Ministry of Health and WHO**.
 
 Works with **SABEH**, the **Ministry of Health** and **WHO**.
 
-⚠️ Worth reading alongside §8b: the national clinical guidelines a tool like this would draw on are
-largely from **2004–2010**, while the essential medicines list was refreshed in 2025. Any clinical
-decision support built on the national corpus inherits the currency of that corpus.
+⚠️ Worth reading alongside §8b: the newest primary-care guideline posted on the government's own
+portal is from **2010**, and the newer editions that exist — a 2022 STG, the December 2021 maternal
+protocols — circulate hand-to-hand rather than on any government website. Any clinical decision
+support built on the national corpus inherits both the currency of that corpus and the difficulty of
+assembling it.
 
 [equity.tech](https://www.equity.tech) · contact via the form on their site · LinkedIn
 [@equitechcollective](https://www.linkedin.com/company/equitechcollective)
