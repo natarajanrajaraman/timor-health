@@ -104,6 +104,35 @@ the national accounts.
 WHO's health-financing work in Timor-Leste has focused on taxation rather than premiums. Tobacco tax
 rose from **US$19/kg to US$50/kg**, and alcohol from **US$4.45/litre to US$8.9/litre** (CCS §2.3.1).
 
+# How the money got here — and one strategy that has expired
+
+Today's picture is the tail of a 25-year transition out of a system funded almost entirely from
+outside. After 1999 the sector drew on the **Consolidated Fund for East Timor (CFET)**, the
+**Transition Fund for East Timor (TFET)**, the UNTAET budget and a World Bank-managed trust fund, with
+most of the sector's money managed by the World Bank rather than by government. Read against that
+history, the fall in donor share from **30.7% to 15.3% between 2021 and 2023** is not a recent
+development — it is the closing phase of a long handover.
+
+The **2002 Health Policy Framework** is where free essential services and financial protection for
+vulnerable populations were first committed to. The very low out-of-pocket share above is the durable
+result of a choice made that early.
+
+**The Health Financing Strategy 2019–2023 set four objectives:** financial protection of the
+population; more financing for unmet need across essential services, hospital care and the
+communicable and non-communicable disease burden; reduced inequality in resources and service use
+across territories and population groups; and better technical and allocative efficiency at system
+level.
+
+⚠️ **That strategy expired at the end of 2023, and a live search on 2026-08-28 did not surface a
+published successor.** Treat that as a gap in the public record rather than as proof none exists — the
+Ministry has no public informational website (see §10), so its documents are routinely undiscoverable
+rather than absent. **If you are designing against a national financing framework, this is the first
+thing to ask the Ministry about.**
+
+*The historical arc, the 2002 framework and the financing strategy's objectives above are drawn from
+Guterres Correia (2025). Read the ⚠️ on that row in the table below before carrying anything from it
+onward.*
+
 # Sources and refreshability
 
 | Source | What it gives | Refreshable? |
@@ -112,5 +141,6 @@ rose from **US$19/kg to US$50/kg**, and alcohol from **US$4.45/litre to US$8.9/l
 | **World Bank WDI** `api.worldbank.org/v2/country/TLS/indicator/SH.XPD.*` | Independent corroboration; matched GHO exactly | ✅ ~quarterly refresh |
 | **General State Budget 2026** (Ministry of Finance) | Budget lines, entity allocations, programme splits | ✅ Annual, plus mid-year rectification budgets |
 | World Bank, *Leveling Up: How ASEAN Membership Can Support Timor-Leste's Economic Transformation* | Petroleum Fund and macro-fiscal context | One-off |
+| Guterres Correia, A. (2025), *The Health System in Timor-Leste: A Historical Overview from the Portuguese Colonial Period to 25 Years of Reconstruction* — [Academia.edu](https://www.academia.edu/144290338/The_Health_System_in_Timor_Leste_A_Historical_Overview_from_the_Portuguese_Colonial_Period_to_25_Years_of_Reconstruction) | The post-1999 financing arc, the 2002 Health Policy Framework, and the objectives of the 2019–2023 financing strategy. Its author is Dean of the Faculty of Medical Sciences at UNPAZ and a senior health adviser to the Ministry. ⚠️ **Unrefereed preprint — no journal, no DOI — and its reference list contains placeholder entries that correspond to no real publication.** It is cited here for its narrative account only. No figure has been taken from it: every number in this section comes from the sources above, and its own financing figures were left out. **Do not carry its citations onward without the primary document.** | One-off |
 
-*Financing series queried live 2026-08-24.*
+*Financing series queried live 2026-08-24. Guterres Correia (2025) added 2026-08-28.*

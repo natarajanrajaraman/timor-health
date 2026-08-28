@@ -24,7 +24,7 @@
     "$comment": "If named is set to false, build.js rewrites the disclosure to 'automated compilation of cited sources' and DROPS the word 'landscape scan' from the header claim. The paragraph has to be true."
   },
   "lastReviewedByHuman": "2026-08-25",
-  "lastUpdatedByAI": "2026-08-25",
+  "lastUpdatedByAI": "2026-08-28",
   "refresh": {
     "cadenceDays": 90,
     "stalenessWarnDays": 120,
@@ -106,7 +106,7 @@
       "file": "05-financing.md",
       "title": "Financing",
       "required": true,
-      "lastUpdatedByAI": "2026-08-25",
+      "lastUpdatedByAI": "2026-08-28",
       "lastReviewedByHuman": "2026-08-25"
     },
     {

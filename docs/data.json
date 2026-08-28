@@ -4,9 +4,9 @@
     "edition": "2026-Q3-draft",
     "status": "published",
     "official": false,
-    "lastUpdatedByAI": "2026-08-25",
+    "lastUpdatedByAI": "2026-08-28",
     "lastReviewedByHuman": "2026-08-25",
-    "reviewState": "reviewed",
+    "reviewState": "changed-since-review",
     "selfDescription": "landscape scan",
     "url": "https://natarajanrajaraman.github.io/timor-health/",
     "conceptDoi": null,
@@ -52,7 +52,7 @@
     {
       "id": "05",
       "title": "Financing",
-      "lastUpdatedByAI": "2026-08-25",
+      "lastUpdatedByAI": "2026-08-28",
       "lastReviewedByHuman": "2026-08-25"
     },
     {
@@ -280,5 +280,5 @@
     "National clinical guidelines largely date from 2004-2010.",
     "Whether the December 2023 national TB prevalence survey results were published is unverified."
   ],
-  "generated": "2026-08-25"
+  "generated": "2026-08-28"
 }
