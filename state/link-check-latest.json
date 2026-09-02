@@ -1,0 +1,717 @@
+{
+  "checkedOn": "2026-09-02",
+  "total": 61,
+  "counts": {
+    "ok": 46,
+    "changed": 0,
+    "dead": 0,
+    "blocked": 13,
+    "unreachable": 2,
+    "suspect": 0,
+    "new": 0
+  },
+  "results": [
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/",
+      "fingerprint": "351f9cdb97df8942373a506080810b20",
+      "textLength": 348,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/doc/",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/doc/",
+      "fingerprint": "dcc166d7eef04e25efe4ff9bc7f40039",
+      "textLength": 3109,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/doc/Antimicrobial%20Guidelines%202022.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/doc/Antimicrobial%20Guidelines%202022.pdf",
+      "fingerprint": "bf0ff33f051bc1428bbfda734ce66ff0",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/doc/Antimicrobial%20Guidelines%202022%20(Spanish).pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/doc/Antimicrobial%20Guidelines%202022%20(Spanish).pdf",
+      "fingerprint": "68ac0c7a271d84ad570136b842fd7f89",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/doc/Decreto-Lei%20N.%C2%BA%203%20-2019%20de%205%20de%20Mar%C3%A7o%20Organica%20do%20Ministerio%20da%20Saude.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/doc/Decreto-Lei%20N.%C2%BA%203%20-2019%20de%205%20de%20Mar%C3%A7o%20Organica%20do%20Ministerio%20da%20Saude.pdf",
+      "fingerprint": "84e304036bd6608e3b714b7c9052752c",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/doc/EMLTL%202025,%20Approved.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/doc/EMLTL%202025,%20Approved.pdf",
+      "fingerprint": "c1a6a5eebea644dccfd69326865c14a7",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/doc/Pharmacovigilance%20Manuals%20Approved_2025.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/doc/Pharmacovigilance%20Manuals%20Approved_2025.pdf",
+      "fingerprint": "69448150d988821af4a535801c50df4b",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/doc/Regime%20de%20Prescri%C3%A7%C3%A3o%20M%C3%A9dica-DL%20n%C2%BA7-2025-16%20Abril%20(1).pdf",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 112 characters of readable text (4489 bytes) - almost no readable text, not the cited content",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/doc/Timor-Leste%20National%20Medicines%20and%20Health%20Products%20Policy%202025%20.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/doc/Timor-Leste%20National%20Medicines%20and%20Health%20Products%20Policy%202025%20.pdf",
+      "fingerprint": "13074495d18a751f2164e64b54f0f4f1",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/guidelines/",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/guidelines/",
+      "fingerprint": "9d2d13be184bff3189c0165ce19ec844",
+      "textLength": 998,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/guidelines/Lista%20Medikamentus%20Esensial%20Timor%20Leste_2010_%20TETUM.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/guidelines/Lista%20Medikamentus%20Esensial%20Timor%20Leste_2010_%20TETUM.pdf",
+      "fingerprint": "a7ded3855943d20321927caac5f03d42",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/guidelines/Lista%20Medikamentus%20Esensial%20Timor%20Leste%20Tetum%202015.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/guidelines/Lista%20Medikamentus%20Esensial%20Timor%20Leste%20Tetum%202015.pdf",
+      "fingerprint": "ab33192c300e48c4407611dc40f4f990",
+      "textLength": 316072,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/guidelines/Standard%20Treatment%20Guidelines%20for%20Primary%20Healthcare%20Timor%20Leste_2010.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/guidelines/Standard%20Treatment%20Guidelines%20for%20Primary%20Healthcare%20Timor%20Leste_2010.pdf",
+      "fingerprint": "a3c8b27f583cc64e1f7b095cafad1a08",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/guidelines/Timor%20Leste%20Essential%20Medicines%20List_2010_%20ENGLISH.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/guidelines/Timor%20Leste%20Essential%20Medicines%20List_2010_%20ENGLISH.pdf",
+      "fingerprint": "8490d9e461742f1d33ab05ce37a6d0b4",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/law/",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/law/",
+      "fingerprint": "8e5909635ab8c01474ac1d13094e504d",
+      "textLength": 265,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/law/degree/Decree%20Law%20No.122_2004_English.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/law/degree/Decree%20Law%20No.122_2004_English.pdf",
+      "fingerprint": "41a138522586a46a6fc59a265ab446e9",
+      "textLength": 194840,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/law/degree/Decreto%20Lei%20No.12_2004_Portugues.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/law/degree/Decreto%20Lei%20No.12_2004_Portugues.pdf",
+      "fingerprint": "0560f5da7f26a25d54067390c65b10d8",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/law/diploma/",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/law/diploma/",
+      "fingerprint": "c4718468a94fd79ab5987adb94d51b73",
+      "textLength": 474,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/law/organica/Lei%20Organica%20MdS%202015.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/law/organica/Lei%20Organica%20MdS%202015.pdf",
+      "fingerprint": "3deb6efc9c8fc86a928f7f6004c7c392",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/dnfm/docs/policy/TL%20NMP_2017-ENG.pdf",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/dnfm/docs/policy/TL%20NMP_2017-ENG.pdf",
+      "fingerprint": "d0a9c58b4e41833a97b74e04d3976f1f",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://apps.ms.gov.tl/hris/mdoc/",
+      "status": 200,
+      "finalUrl": "https://apps.ms.gov.tl/hris/mdoc/",
+      "fingerprint": "e912f77c41a1c59cb54d5f55a0eaa383",
+      "textLength": 715,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "02-country-context.md",
+        "04-governance.md",
+        "06-workforce-education.md",
+        "07-service-delivery.md"
+      ]
+    },
+    {
+      "url": "https://apps.who.int/nha/database",
+      "status": 200,
+      "finalUrl": "https://apps.who.int/nha/database/",
+      "fingerprint": "1db9f5bef46f5550a7dbe65cfb3f86f6",
+      "textLength": 2550,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "05-financing.md"
+      ]
+    },
+    {
+      "url": "https://budgettransparency.gov.tl",
+      "status": 200,
+      "finalUrl": "https://budgettransparency.gov.tl/public/index;jsessionid=61A2B082A057732FA943C942E410BBA3",
+      "fingerprint": "2d08e75e96e141e7055729e891ec5b75",
+      "textLength": 901,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "05-financing.md"
+      ]
+    },
+    {
+      "url": "https://casavidatimorleste.org/",
+      "status": 200,
+      "finalUrl": "https://casavidatimorleste.org/",
+      "fingerprint": "81a418890ad00d5e8bb50b18953362d7",
+      "textLength": 5195,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://catalpa.io",
+      "status": 200,
+      "finalUrl": "https://catalpa.io/",
+      "fingerprint": "cb67a4c643a4f9fa09d71ddb90f432c4",
+      "textLength": 4880,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://catalpa.io/contact/",
+      "status": 200,
+      "finalUrl": "https://catalpa.io/contact/",
+      "fingerprint": "8bd9c9b03fa7a48360a13e7082e214f0",
+      "textLength": 935,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://cdn.who.int/media/docs/default-source/searo/hsd/edm/essential-medicines-lists-2025-timor-leste.pdf",
+      "status": 200,
+      "finalUrl": "https://cdn.who.int/media/docs/default-source/searo/hsd/edm/essential-medicines-lists-2025-timor-leste.pdf",
+      "fingerprint": "8d22fbce28e0e9c48c8134782eed3e24",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://cdn.who.int/media/docs/default-source/searo/hsd/edm/national-medicines-and-health-products-policy-2025-timor-leste.pdf",
+      "status": 200,
+      "finalUrl": "https://cdn.who.int/media/docs/default-source/searo/hsd/edm/national-medicines-and-health-products-policy-2025-timor-leste.pdf",
+      "fingerprint": "f621220738357e5cbca0cd807cf6a448",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://cdn.who.int/media/docs/default-source/timor-leste-docs/8_timor-leste-hhs-nsp_08-may-2023.pdf",
+      "status": 200,
+      "finalUrl": "https://cdn.who.int/media/docs/default-source/timor-leste-docs/8_timor-leste-hhs-nsp_08-may-2023.pdf",
+      "fingerprint": "5a42d92da21dcdbde9042ea265cc0fe3",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://data.who.int/countries/626",
+      "status": 200,
+      "finalUrl": "https://data.who.int/countries/626",
+      "fingerprint": "216e63e66b337d80c0ebd481d32c6b56",
+      "textLength": 11222,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "05-financing.md"
+      ]
+    },
+    {
+      "url": "https://dhis2.org/timor-leste-immunization/",
+      "status": 200,
+      "finalUrl": "https://dhis2.org/timor-leste-immunization/",
+      "fingerprint": "d109b36e829bf6a7ce69f19cc9d1c161",
+      "textLength": 38906,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "07-service-delivery.md"
+      ]
+    },
+    {
+      "url": "https://drive.google.com/drive/folders/1CWgBpaObmQYRaHnDayizum_ugJdvb-Ft",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 918 characters of readable text (408835 bytes) - a large script payload wrapped around almost nothing (JS-only shell / login wall), not the cited content",
+      "citedIn": [
+        "08b-guidelines.md",
+        "12-changelog.md"
+      ]
+    },
+    {
+      "url": "https://fongtil.org.tl/",
+      "status": 200,
+      "finalUrl": "https://fongtil.org.tl/",
+      "fingerprint": "9b87c111e1d43e749626ef7f490804e9",
+      "textLength": 10732,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://hiamhealth.org/",
+      "status": 200,
+      "finalUrl": "https://hiamhealth.org/",
+      "fingerprint": "b422b9ebf7ef99c6430ffa9b6815076a",
+      "textLength": 2075,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://iris.who.int/handle/10665/385106",
+      "state": "unreachable",
+      "detail": "fetch failed - could not be reached FROM THIS MACHINE/NETWORK; this is NOT evidence the page is gone. Re-run from another network before touching the citation.",
+      "citedIn": [
+        "02-country-context.md",
+        "03-health-status.md",
+        "04-governance.md",
+        "06-workforce-education.md",
+        "07-service-delivery.md",
+        "10-sources-method.md"
+      ]
+    },
+    {
+      "url": "https://iris.who.int/handle/10665/386866",
+      "state": "unreachable",
+      "detail": "fetch failed - could not be reached FROM THIS MACHINE/NETWORK; this is NOT evidence the page is gone. Re-run from another network before touching the citation.",
+      "citedIn": [
+        "03-health-status.md",
+        "07-service-delivery.md",
+        "08b-guidelines.md",
+        "10-sources-method.md"
+      ]
+    },
+    {
+      "url": "https://kliburdomin.tl/",
+      "status": 200,
+      "finalUrl": "https://kliburdomin.tl/",
+      "fingerprint": "6cd13abb997bfaee14596c5656e9262f",
+      "textLength": 3547,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://maluktimor.org/",
+      "status": 200,
+      "finalUrl": "https://maluktimor.org/",
+      "fingerprint": "8c7507b5b3ddec26c686f86b9f6213ed",
+      "textLength": 3070,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://reliefweb.int/report/timor-leste/democratic-republic-timor-leste-ministry-health-comprehensive-tb-guidelines-national-tuberculosis-program-v-edition",
+      "state": "blocked",
+      "status": 406,
+      "detail": "HTTP 406 - server refused an automated client; verify in a browser, do NOT treat as dead",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://reliefweb.int/report/timor-leste/national-strategic-plan-ending-tb-2020-2024",
+      "state": "blocked",
+      "status": 406,
+      "detail": "HTTP 406 - server refused an automated client; verify in a browser, do NOT treat as dead",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://saudebaemahotu.org/",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 555 characters of readable text (57437 bytes) - a large script payload wrapped around almost nothing (JS-only shell / login wall), not the cited content",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://sites.google.com/view/tlsghealth/teaching-training",
+      "status": 200,
+      "finalUrl": "https://sites.google.com/view/tlsghealth/teaching-training",
+      "fingerprint": "aeffc5e0901cb10284c9404a602ef02e",
+      "textLength": 14779,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "06-workforce-education.md"
+      ]
+    },
+    {
+      "url": "https://www.academia.edu/144290338/The_Health_System_in_Timor_Leste_A_Historical_Overview_from_the_Portuguese_Colonial_Period_to_25_Years_of_Reconstruction",
+      "state": "blocked",
+      "status": 403,
+      "detail": "HTTP 403 - server refused an automated client; verify in a browser, do NOT treat as dead",
+      "citedIn": [
+        "05-financing.md"
+      ]
+    },
+    {
+      "url": "https://www.alolafoundation.org/",
+      "status": 200,
+      "finalUrl": "https://www.alolafoundation.org/",
+      "fingerprint": "f3cd49001544e0c19a90d9344fa50fd8",
+      "textLength": 10098,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.bafuturu.org/",
+      "status": 200,
+      "finalUrl": "https://www.bafuturu.org/",
+      "fingerprint": "76cb5bc838557a0130ee41a7807b3aed",
+      "textLength": 4579,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.belun.tl/",
+      "status": 200,
+      "finalUrl": "https://www.belun.tl/en/",
+      "fingerprint": "4f6da132684dbf67d05110d1e945b283",
+      "textLength": 1919,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.equity.tech",
+      "status": 200,
+      "finalUrl": "https://www.equity.tech/",
+      "fingerprint": "7857cac049b33b127f5f237954dd6ff5",
+      "textLength": 5476,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.facebook.com/EstrelaPlus/",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 325 characters of readable text (435691 bytes) - a large script payload wrapped around almost nothing (JS-only shell / login wall), not the cited content",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.facebook.com/HamutukNasaunSaudavel/",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 325 characters of readable text (435740 bytes) - a large script payload wrapped around almost nothing (JS-only shell / login wall), not the cited content",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.facebook.com/MinisteriodaSaudeTL",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 325 characters of readable text (435609 bytes) - a large script payload wrapped around almost nothing (JS-only shell / login wall), not the cited content",
+      "citedIn": [
+        "01-executive-summary.md",
+        "04-governance.md",
+        "10-sources-method.md"
+      ]
+    },
+    {
+      "url": "https://www.facebook.com/PradetTimorLeste/",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 325 characters of readable text (435605 bytes) - a large script payload wrapped around almost nothing (JS-only shell / login wall), not the cited content",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.facebook.com/RedeFetoTimorLeste/",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 325 characters of readable text (435619 bytes) - a large script payload wrapped around almost nothing (JS-only shell / login wall), not the cited content",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.fokupers.org/",
+      "status": 200,
+      "finalUrl": "https://www.fokupers.org/",
+      "fingerprint": "a05d8a7eb3e4d4274f24903372ce3665",
+      "textLength": 6613,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.jus.tl/",
+      "status": 200,
+      "finalUrl": "https://www.jus.tl/",
+      "fingerprint": "ade8982caa5ef736ed245ed5268f12b6",
+      "textLength": 5614,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.linkedin.com/company/equitechcollective",
+      "status": 200,
+      "finalUrl": "https://www.linkedin.com/company/equitechcollective",
+      "fingerprint": "bfe325d8ddff38569b4fc87e069ef706",
+      "textLength": 17243,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.mariestopes.tl/",
+      "status": 200,
+      "finalUrl": "https://www.mariestopes.tl/",
+      "fingerprint": "b926d70f4e3e39a2e728d6a235976be6",
+      "textLength": 4643,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md"
+      ]
+    },
+    {
+      "url": "https://www.mof.gov.tl",
+      "state": "blocked",
+      "status": 200,
+      "detail": "2xx but only 66 characters of readable text (3653 bytes) - almost no readable text, not the cited content",
+      "citedIn": [
+        "05-financing.md",
+        "10-sources-method.md"
+      ]
+    },
+    {
+      "url": "https://www.unfpa.org/sites/default/files/2025-03/Annexes-UNFPA%20Timor-Leste%204th%20Country%20Programme%20Evaluation%20(2021-2025).pdf",
+      "status": 200,
+      "finalUrl": "https://www.unfpa.org/sites/default/files/2025-03/Annexes-UNFPA%20Timor-Leste%204th%20Country%20Programme%20Evaluation%20(2021-2025).pdf",
+      "fingerprint": "2b7ad2c7bdc14a52cf260231d036331c",
+      "textLength": 349528,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08-actor-map.md",
+        "10-sources-method.md"
+      ]
+    },
+    {
+      "url": "https://www.unicef.org/timorleste/media/4766/file/unicef%20National%20Health%20Sector%20Nutrition%20Strategic%20Plan%202022-2026%20Eng-low%20res.pdf",
+      "state": "blocked",
+      "status": 403,
+      "detail": "HTTP 403 - server refused an automated client; verify in a browser, do NOT treat as dead",
+      "citedIn": [
+        "07-service-delivery.md",
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://www.who.int/timorleste/publications/guidelines-for-antiretroviral-therapy--management-of-opportunistic-infections-for-children--adolescents---adults-living-with-hiv",
+      "status": 200,
+      "finalUrl": "https://www.who.int/timorleste/publications/guidelines-for-antiretroviral-therapy--management-of-opportunistic-infections-for-children--adolescents---adults-living-with-hiv",
+      "fingerprint": "69a866172ff9c2361728284f97749ad0",
+      "textLength": 2851,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    },
+    {
+      "url": "https://www.who.int/timorleste/publications/the-joint-hiv-tb-external--review-mission-2023",
+      "status": 200,
+      "finalUrl": "https://www.who.int/timorleste/publications/the-joint-hiv-tb-external--review-mission-2023",
+      "fingerprint": "b73238071fa49a06f77776f2c12b9096",
+      "textLength": 3562,
+      "state": "ok",
+      "detail": "unchanged since 2026-09-02",
+      "citedIn": [
+        "08b-guidelines.md"
+      ]
+    }
+  ]
+}

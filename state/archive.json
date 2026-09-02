@@ -1,0 +1,14 @@
+{
+  "$comment": "written by scripts/archive.js",
+  "snapshots": [
+    {
+      "edition": "2026-Q3-draft",
+      "lastUpdatedByAI": "2026-08-28",
+      "archivedOn": "2026-09-02",
+      "timestamp": "20260902014031",
+      "url": "https://web.archive.org/web/20260902014031/https://natarajanrajaraman.github.io/timor-health/",
+      "verifiedBytes": 264927
+    }
+  ],
+  "zenodo": null
+}

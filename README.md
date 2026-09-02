@@ -3,7 +3,7 @@
 Source for a public, quarterly-refreshed orientation document on health and the health system of
 Timor-Leste. Built to a single self-contained HTML page and served from GitHub Pages.
 
-**Status: prototype. Not yet reviewed, not yet published.**
+**Status: published and reviewed (2026-08-25). Quarterly refresh trigger live since 2026-09-02.**
 
 ## Quick start
 
@@ -12,6 +12,9 @@ node scripts/build.js            # content/*.md -> docs/index.html
 node scripts/build.js --check    # fail if docs/index.html is stale
 node scripts/publish.js          # dry run: show what would be committed
 node scripts/publish.js --apply  # commit and push (the ONLY publisher)
+node scripts/pull-data.js        # re-pull TL indicators; reports drift, edits nothing
+node scripts/check-links.js      # fetch + fingerprint every citation (never a status ping)
+node scripts/archive.js          # snapshot the published edition to the Wayback Machine
 ```
 
 Run all self-tests — each must print `0 failed`:
@@ -21,6 +24,10 @@ node scripts/lib/meta.js --self-test
 node scripts/lib/md.js   --self-test
 node scripts/build.js    --self-test
 node scripts/publish.js  --self-test
+node scripts/check-links.js       --self-test
+node scripts/pull-data.js         --self-test
+node scripts/archive.js           --self-test
+node scripts/refresh-preflight.js --self-test
 ```
 
 ⚠️ **Assert the failure count, never the pass count.** Pass counts drift upward as checks are added,
@@ -105,11 +112,40 @@ guard sits at the point the harm would occur and fails closed.
 Escalate by **email to the editor**, not by filing into a task queue: `NAs (Attended CC)` is Raj's own
 capture list and agents may not create items there.
 
+## The quarterly trigger (built 2026-09-02)
+
+`refresh-preflight.js` runs **daily** as the Windows task *"OpenClaw TL Scan Refresh Preflight"*
+(10:12 SGT, via `scripts/oc-script-crons/run-script-cron.ps1 -Job tl-scan-refresh`). On a day with
+nothing due it reads one JSON file and exits - no network, no model, no mail.
+
+**The 90-day cadence lives in `content/_meta.json`, not in the scheduler**, and that is deliberate:
+a launcher-side freshness guard keys off a stamp file's mtime, which knows nothing about whether the
+*document* was refreshed, so a hand-published edition would not re-arm it. The script computes
+`lastUpdatedByAI + refresh.cadenceDays`, raises the brief **14 days early** (an attended session
+needs notice), and emails **once per cycle** - stamped on the success path only, so a failed send
+retries tomorrow rather than consuming the cycle. A new edition re-arms it automatically.
+
+**It does the deterministic half and stops.** `pull-data`, `pull-comparators`, `check-links` and
+`archive --check` all run unattended; the brief then hands Raj the drift, the citation problems and
+the list of sources an automated client cannot reach. It never edits `content/` and never publishes -
+design rule 1, and Raj's 2026-08-25 escalation rule, both enforced structurally rather than remembered.
+
+```bash
+node scripts/refresh-preflight.js --status             # the cadence maths
+node scripts/refresh-preflight.js --force --dry-run    # full rehearsal, sends nothing
+```
+
 ## Not yet done
 
-- `archive.js` — Zenodo concept DOI and web-archive snapshot
-- `pull-data.js` — deterministic indicator re-pull
-- `check-links.js` — fetch-and-fingerprint citation checking
-- The corrections form, and wiring its URL into `_meta.json`
+- The Zenodo **concept DOI**. `archive.js --zenodo` refuses without `ZENODO_TOKEN` rather than
+  reporting a clean archive, and minting the *first* DOI is deliberately attended: it is permanent
+  and it fixes the author list and licence for every later version. Web-archive snapshots work now
+  (first verified capture: 2026-09-02, 264,927 bytes).
 - Confirming permission to link the shared document library
 - A Tetun speaker's check of the machine-translated summary
+
+**Known state of the citations, 2026-09-02** (first ever run of `check-links.js`): 46 ok, 0 dead,
+**13 blocked**, 2 unreachable. The 13 are the five Timorese Facebook pages (including the Ministry
+of Health page), the Drive library, `mof.gov.tl`, `saudebaemahotu.org`, one ministry PDF, and
+ReliefWeb x2 / UNICEF / Academia.edu, which refuse non-browser clients. **None of these is a dead
+link** and none should be removed from the document on the strength of an automated report.
